@@ -42,11 +42,12 @@ public class Achats extends Commandes {
 	            String idE = String.valueOf(split[0]);
 	            String prixE = String.valueOf(split[1]);
 	            double qteE = Double.valueOf(split[3]);
-	            if (prixE != "NA" && qteE > 0) {
-	            	this.prix.put(idE, prixE);
-	            	this.qte.put(idE,qteE);
-		        }
-		            
+		        if (prixE.lastIndexOf("NA") == -1) {
+	            	if ( qteE > 0) {
+		            	this.prix.put(idE, prixE);
+		            	this.qte.put(idE,qteE);
+			        }
+	        	}    
 	            
 	            
 	        }
