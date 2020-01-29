@@ -1,12 +1,12 @@
 package fr.miage.toulouse.dev;
 
-public class Elements {
+public class Element {
 	private int id;
 	private String nom;
 	private double qte;
 	private String unite;
 	
-	public Elements(int id, String nom, double qte, String unite) {
+	public Element(int id, String nom, double qte, String unite) {
 		this.id=id;
 		this.nom=nom;
 		this.qte=qte;
