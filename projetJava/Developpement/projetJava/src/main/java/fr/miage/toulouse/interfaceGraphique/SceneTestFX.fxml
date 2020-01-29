@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="404.0" prefWidth="483.0"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="fr.miage.toulouse.interfaceGraphique.ControleurTestFx">
+	<children>
+		<Label fx:id="labelTest" alignment="TOP_LEFT" layoutX="216.0"
+			layoutY="51.0" text="SALUT" />
+		<Button fx:id="boutonTest" layoutX="195.0" layoutY="183.0"
+			mnemonicParsing="false" onAction="#clicBoutonTest" text="CLIQUE !" />
+	</children>
+</AnchorPane>
