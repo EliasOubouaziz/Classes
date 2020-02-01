@@ -11,42 +11,45 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class ChargementControleur implements Initializable {
-
-	@FXML
-	private TextField tfElem;
-	@FXML
-	private TextField tfChaine;
-	@FXML
-	private TextField tfCommande;
-
-	@FXML
-	private Button btnParcoursElem;
-	@FXML
-	private Button btnParcoursChaine;
-	@FXML
-	private Button btnParcoursComm;
-
-	@FXML
-	private Button btnElem;
-	@FXML
-	private Button btnChaine;
-	@FXML
-	private Button btnCommande;
-
+public class StockControleur implements Initializable {
+	
 	@FXML
 	private Button btnRetour;
+	
+	@FXML
+	private Button btnChargmnt;
 
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public void versChargement(ActionEvent e) throws IOException {
+		System.out.println("Stock - Clic sur btnChargmnt, Changement de fenêtre");
 
+		// Fermeture de la fenetre
+		Stage fen = (Stage) btnChargmnt.getScene().getWindow();
+
+		fen.close();
+
+		// Chargement de la scène suivante
+		FXMLLoader fxmlLoader = new FXMLLoader(
+				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/ChargementScene.fxml"));
+		Parent root1 = (Parent) fxmlLoader.load();
+
+		// Création de la nouvelle fenêtre
+		Stage newFen = new Stage();
+		newFen.setTitle("Chargement des données");
+		newFen.setScene(new Scene(root1));
+		newFen.setResizable(false);
+		newFen.show();
+		newFen.centerOnScreen();
+	}
+	
 	public void retourMenu(ActionEvent e) throws IOException {
-		System.out.println("Chargement - clic sur btnRetour");
+		System.out.println("Stock - clic sur btnRetour");
 
 		// Fermeture de la fenetre
 		Stage fen = (Stage) btnRetour.getScene().getWindow();
@@ -65,7 +68,8 @@ public class ChargementControleur implements Initializable {
 		newFen.setResizable(false);
 		newFen.show();
 		newFen.centerOnScreen();
-
 	}
+	
+	
 
 }

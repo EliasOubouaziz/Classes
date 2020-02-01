@@ -1,54 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="417.0" prefWidth="635.0"
-	xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0"
+	prefWidth="635.0" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="fr.miage.toulouse.interfaceGraphique.ChargementControleur">
 	<children>
-		<Label layoutX="169.0" layoutY="40.0"
-			text="Chargement des données">
-			<font>
-				<Font name="System Bold" size="25.0" />
-			</font>
-		</Label>
-		<Label layoutX="61.0" layoutY="125.0" text="Eléments">
-			<font>
-				<Font size="22.0" />
-			</font>
-		</Label>
-		<Label layoutX="61.0" layoutY="193.0" text="Chaines">
-			<font>
-				<Font size="22.0" />
-			</font>
-		</Label>
-		<Label layoutX="61.0" layoutY="275.0" text="Commande">
-			<font>
-				<Font size="22.0" />
-			</font>
-		</Label>
-		<TextField fx:id="tfElem" layoutX="206.0" layoutY="122.0"
-			promptText="lien du fichier" />
-		<TextField fx:id="tfChaine" layoutX="206.0" layoutY="189.0"
-			promptText="lien du fichier" />
-		<TextField fx:id="tfCommande" layoutX="206.0"
-			layoutY="272.0" promptText="lien du fichier" />
-		<Button fx:id="btnParcoursElem" layoutX="437.0" layoutY="122.0"
-			mnemonicParsing="false" text="..." />
-		<Button fx:id="btnParcoursChaine" layoutX="437.0"
-			layoutY="190.0" mnemonicParsing="false" text="..." />
-		<Button fx:id="btnParcoursComm" layoutX="437.0" layoutY="272.0"
-			mnemonicParsing="false" text="..." />
-		<Button fx:id="btnElem" layoutX="493.0" layoutY="122.0"
-			mnemonicParsing="false" text="Charger" />
-		<Button fx:id="btnChaine" layoutX="493.0" layoutY="189.0"
-			mnemonicParsing="false" text="Charger" />
-		<Button fx:id="btnCommande" layoutX="493.0" layoutY="272.0"
-			mnemonicParsing="false" text="Charger" />
+		<BorderPane prefHeight="417.0" prefWidth="635.0"
+			AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+			AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+			<center>
+				<GridPane alignment="CENTER" prefHeight="417.0"
+					prefWidth="636.0" BorderPane.alignment="CENTER">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES"
+							maxWidth="318.0" minWidth="10.0" prefWidth="318.0" />
+						<ColumnConstraints hgrow="SOMETIMES"
+							maxWidth="154.0" minWidth="0.0" prefWidth="0.0" />
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints maxHeight="113.0" minHeight="5.0"
+							prefHeight="103.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="201.0" minHeight="10.0"
+							prefHeight="100.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="231.0" minHeight="10.0"
+							prefHeight="125.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<Button fx:id="btnElem" mnemonicParsing="false"
+							text="Charger" GridPane.columnIndex="3"
+							GridPane.halignment="CENTER" />
+						<Button fx:id="btnParcoursElem" mnemonicParsing="false"
+							text="..." GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+						<TextField fx:id="tfElem" editable="false"
+							promptText="lien du fichier" GridPane.columnIndex="1" />
+						<Label text="Eléments" GridPane.halignment="CENTER">
+							<font>
+								<Font size="22.0" />
+							</font>
+						</Label>
+						<Label text="Chaines" GridPane.halignment="CENTER"
+							GridPane.rowIndex="1">
+							<font>
+								<Font size="22.0" />
+							</font>
+						</Label>
+						<Label text="Commande" GridPane.halignment="CENTER"
+							GridPane.rowIndex="2">
+							<font>
+								<Font size="22.0" />
+							</font>
+						</Label>
+						<TextField fx:id="tfChaine" editable="false"
+							promptText="lien du fichier" GridPane.columnIndex="1"
+							GridPane.rowIndex="1" />
+						<TextField fx:id="tfCommande" editable="false"
+							promptText="lien du fichier" GridPane.columnIndex="1"
+							GridPane.rowIndex="2" />
+						<Button fx:id="btnParcoursChaine" mnemonicParsing="false"
+							text="..." GridPane.columnIndex="2" GridPane.halignment="CENTER"
+							GridPane.rowIndex="1" />
+						<Button fx:id="btnParcoursComm" mnemonicParsing="false"
+							text="..." GridPane.columnIndex="2" GridPane.halignment="CENTER"
+							GridPane.rowIndex="2" />
+						<Button fx:id="btnChaine" mnemonicParsing="false"
+							text="Charger" GridPane.columnIndex="3"
+							GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+						<Button fx:id="btnCommande" mnemonicParsing="false"
+							text="Charger" GridPane.columnIndex="3"
+							GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+					</children>
+					<padding>
+						<Insets bottom="50.0" />
+					</padding>
+				</GridPane>
+			</center>
+			<top>
+				<GridPane>
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<Label prefHeight="36.0" prefWidth="403.0"
+							text="Chargement des données" BorderPane.alignment="CENTER"
+							GridPane.columnIndex="1" GridPane.halignment="CENTER">
+							<font>
+								<Font name="System Bold" size="25.0" />
+							</font>
+						</Label>
+						<Button fx:id="btnRetour" mnemonicParsing="false"
+							onAction="#retourMenu" text="Retour" GridPane.halignment="CENTER" />
+					</children>
+					<padding>
+						<Insets bottom="50.0" top="10.0" />
+					</padding>
+				</GridPane>
+			</top>
+		</BorderPane>
 	</children>
 </AnchorPane>

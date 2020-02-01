@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="729.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.miage.toulouse.interfaceGraphique.StockControleur">
+	<children>
+		<BorderPane prefHeight="729.0" prefWidth="804.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+			<top>
+				<GridPane BorderPane.alignment="CENTER">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<BorderPane.margin>
+						<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+					</BorderPane.margin>
+					<children>
+						<Button fx:id="btnRetour" mnemonicParsing="false" onAction="#retourMenu" text="Retour" GridPane.halignment="LEFT" />
+						<Button fx:id="btnChargmnt" mnemonicParsing="false" onAction="#versChargement" text="Charger des données" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
+						<Label text="Etat des Stocks" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+							<font>
+								<Font name="System Bold" size="28.0" />
+							</font>
+						</Label>
+					</children>
+				</GridPane>
+			</top>
+			<center>
+				<GridPane gridLinesVisible="true" BorderPane.alignment="CENTER">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints maxHeight="294.0" minHeight="10.0" prefHeight="122.0" vgrow="SOMETIMES" />
+						<RowConstraints maxHeight="494.0" minHeight="10.0" prefHeight="477.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<GridPane gridLinesVisible="true">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+								<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+							</rowConstraints>
+							<children>
+								<Label text="Stock Disponible" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+								<GridPane gridLinesVisible="true">
+									<columnConstraints>
+										<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+									</columnConstraints>
+									<rowConstraints>
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+										<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+									</rowConstraints>
+									<children>
+										<Label text="Elément" GridPane.halignment="CENTER" />
+										<GridPane gridLinesVisible="true" GridPane.rowIndex="1">
+											<columnConstraints>
+												<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+												<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+											</columnConstraints>
+											<rowConstraints>
+												<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+											</rowConstraints>
+											<children>
+												<Label text="Code" GridPane.halignment="CENTER" />
+												<Label text="Libellé" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+											</children>
+										</GridPane>
+									</children>
+								</GridPane>
+							</children>
+						</GridPane>
+						<GridPane gridLinesVisible="true" GridPane.rowIndex="1">
+							<columnConstraints>
+								<ColumnConstraints hgrow="SOMETIMES" maxWidth="257.0" minWidth="10.0" prefWidth="195.0" />
+								<ColumnConstraints hgrow="SOMETIMES" maxWidth="408.0" minWidth="10.0" prefWidth="196.0" />
+								<ColumnConstraints hgrow="SOMETIMES" maxWidth="431.0" minWidth="10.0" prefWidth="392.0" />
+							</columnConstraints>
+							<rowConstraints>
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+								<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+							</rowConstraints>
+						</GridPane>
+					</children>
+					<BorderPane.margin>
+						<Insets bottom="10.0" left="10.0" right="10.0" top="50.0" />
+					</BorderPane.margin>
+				</GridPane>
+			</center>
+		</BorderPane>
+	</children>
+</AnchorPane>

@@ -21,8 +21,8 @@
 			mnemonicParsing="false" onAction="#versChargement" prefHeight="39.0"
 			prefWidth="575.0" text="Charger des données" textAlignment="CENTER" />
 		<Button fx:id="btnEtatStock" layoutX="81.0" layoutY="214.0"
-			mnemonicParsing="false" prefHeight="39.0" prefWidth="575.0"
-			text="Etat des stocks" textAlignment="CENTER" />
+			mnemonicParsing="false" onAction="#versEtatStock" prefHeight="39.0"
+			prefWidth="575.0" text="Etat des stocks" textAlignment="CENTER" />
 		<Button fx:id="btnGestionProd" layoutX="81.0" layoutY="278.0"
 			mnemonicParsing="false" prefHeight="39.0" prefWidth="575.0"
 			text="Gestion Chaines de Production" textAlignment="CENTER" />
