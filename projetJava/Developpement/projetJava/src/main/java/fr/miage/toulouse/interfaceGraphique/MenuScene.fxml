@@ -6,8 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="555.0" prefWidth="736.0"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane fx:id="rootPane" prefHeight="555.0"
+	prefWidth="736.0" xmlns="http://javafx.com/javafx/8"
+	xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="fr.miage.toulouse.interfaceGraphique.MenuControleur">
 	<children>
 		<Label alignment="TOP_CENTER" contentDisplay="CENTER"
@@ -17,8 +18,8 @@
 			</font>
 		</Label>
 		<Button fx:id="btnChargmnt" layoutX="81.0" layoutY="149.0"
-			mnemonicParsing="false" prefHeight="39.0" prefWidth="575.0"
-			text="Charger des données" textAlignment="CENTER" />
+			mnemonicParsing="false" onAction="#versChargement" prefHeight="39.0"
+			prefWidth="575.0" text="Charger des données" textAlignment="CENTER" />
 		<Button fx:id="btnEtatStock" layoutX="81.0" layoutY="214.0"
 			mnemonicParsing="false" prefHeight="39.0" prefWidth="575.0"
 			text="Etat des stocks" textAlignment="CENTER" />

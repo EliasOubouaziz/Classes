@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="417.0" prefWidth="635.0"
+	xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+	fx:controller="fr.miage.toulouse.interfaceGraphique.ChargementControleur">
+	<children>
+		<Label layoutX="169.0" layoutY="40.0"
+			text="Chargement des données">
+			<font>
+				<Font name="System Bold" size="25.0" />
+			</font>
+		</Label>
+		<Label layoutX="61.0" layoutY="125.0" text="Eléments">
+			<font>
+				<Font size="22.0" />
+			</font>
+		</Label>
+		<Label layoutX="61.0" layoutY="193.0" text="Chaines">
+			<font>
+				<Font size="22.0" />
+			</font>
+		</Label>
+		<Label layoutX="61.0" layoutY="275.0" text="Commande">
+			<font>
+				<Font size="22.0" />
+			</font>
+		</Label>
+		<TextField fx:id="tfElem" layoutX="206.0" layoutY="122.0"
+			promptText="lien du fichier" />
+		<TextField fx:id="tfChaine" layoutX="206.0" layoutY="189.0"
+			promptText="lien du fichier" />
+		<TextField fx:id="tfCommande" layoutX="206.0"
+			layoutY="272.0" promptText="lien du fichier" />
+		<Button fx:id="btnParcoursElem" layoutX="437.0" layoutY="122.0"
+			mnemonicParsing="false" text="..." />
+		<Button fx:id="btnParcoursChaine" layoutX="437.0"
+			layoutY="190.0" mnemonicParsing="false" text="..." />
+		<Button fx:id="btnParcoursComm" layoutX="437.0" layoutY="272.0"
+			mnemonicParsing="false" text="..." />
+		<Button fx:id="btnElem" layoutX="493.0" layoutY="122.0"
+			mnemonicParsing="false" text="Charger" />
+		<Button fx:id="btnChaine" layoutX="493.0" layoutY="189.0"
+			mnemonicParsing="false" text="Charger" />
+		<Button fx:id="btnCommande" layoutX="493.0" layoutY="272.0"
+			mnemonicParsing="false" text="Charger" />
+	</children>
+</AnchorPane>
