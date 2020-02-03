@@ -2,15 +2,14 @@ package fr.miage.toulouse.dev;
 import java.util.HashMap;
 
 public class Ventes extends Commandes {
-	private HashMap <Integer, Double> prix;
-	private HashMap <Integer, Double> qte;
-	private double prixE;
-	private double qteE;
-	private int idE;
+	protected HashMap <String, String> prix ;
+	protected HashMap <String, Double> qte;
+
 	
-	public Ventes(int idE, double prixE, double qtE) {
-		this.prix.put(idE,prixE);
-		this.qte.put(idE, qtE);
+	
+	public Ventes () {
+		this.prix = new HashMap <String, String>();
+		this.qte = new HashMap <String, Double>();
 	}
 	
 	
