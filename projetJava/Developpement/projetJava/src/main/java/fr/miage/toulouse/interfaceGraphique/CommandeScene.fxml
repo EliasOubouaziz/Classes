@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="613.0" prefWidth="685.0"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="fr.miage.toulouse.interfaceGraphique.CommandeControleur">
+	<children>
+		<BorderPane prefHeight="613.0" prefWidth="685.0"
+			AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+			AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+			<top>
+				<Pane prefHeight="124.0" prefWidth="685.0"
+					BorderPane.alignment="CENTER">
+					<children>
+						<Label alignment="CENTER" layoutX="179.0" layoutY="23.0"
+							text="Gestion des Chaines de production" textAlignment="CENTER">
+							<font>
+								<Font name="System Bold" size="20.0" />
+							</font>
+						</Label>
+						<Button fx:id="btnRetour" layoutX="14.0" layoutY="18.0"
+							mnemonicParsing="false" onAction="#retourMenu" text="Retour" />
+						<RadioButton layoutX="252.0" layoutY="68.0"
+							mnemonicParsing="false" text="Achat">
+							<toggleGroup>
+								<ToggleGroup fx:id="commande" />
+							</toggleGroup>
+						</RadioButton>
+						<RadioButton layoutX="353.0" layoutY="68.0"
+							mnemonicParsing="false" text="Vente" toggleGroup="$commande" />
+						<Button fx:id="btnValiderCommande" layoutX="593.0"
+							layoutY="18.0" mnemonicParsing="false" text="Valider" />
+					</children>
+				</Pane>
+			</top>
+			<center>
+				<TableView prefHeight="200.0" prefWidth="200.0"
+					BorderPane.alignment="CENTER">
+					<columns>
+						<TableColumn fx:id="colCode" prefWidth="113.0"
+							text="Code" />
+						<TableColumn fx:id="colNom" prefWidth="181.0"
+							text="Nom" />
+						<TableColumn fx:id="colPU" prefWidth="132.0"
+							text="Prix Unitaire" />
+						<TableColumn fx:id="colQte" prefWidth="129.0"
+							text="Quantité" />
+						<TableColumn fx:id="colPrixTot" prefWidth="129.0"
+							text="Prix Total" />
+					</columns>
+				</TableView>
+			</center>
+		</BorderPane>
+	</children>
+</AnchorPane>

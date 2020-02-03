@@ -11,32 +11,25 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 
-public class ChargementControleur implements Initializable {
-
+public class ChaineProdControleur implements Initializable {
+	
+	
+	// TODO affecter types
 	@FXML
-	private TextField tfElem;
+	private TableColumn<?, ?> colID;
+	
 	@FXML
-	private TextField tfChaine;
+	private TableColumn<?, ?> colNomC;
+	
 	@FXML
-	private TextField tfCommande;
-
+	private TableColumn<?, ?> colEtat;
+	
 	@FXML
-	private Button btnParcoursElem;
-	@FXML
-	private Button btnParcoursChaine;
-	@FXML
-	private Button btnParcoursComm;
-
-	@FXML
-	private Button btnElem;
-	@FXML
-	private Button btnChaine;
-	@FXML
-	private Button btnCommande;
-
+	private TableColumn<?, ?> colDetail;
+	
 	@FXML
 	private Button btnRetour;
 
@@ -44,9 +37,9 @@ public class ChargementControleur implements Initializable {
 		// TODO Auto-generated method stub
 
 	}
-
+	
 	public void retourMenu(ActionEvent e) throws IOException {
-		System.out.println("Chargement - clic sur btnRetour");
+		System.out.println("ChaineProd - clic sur btnRetour");
 
 		// Fermeture de la fenetre
 		Stage fen = (Stage) btnRetour.getScene().getWindow();

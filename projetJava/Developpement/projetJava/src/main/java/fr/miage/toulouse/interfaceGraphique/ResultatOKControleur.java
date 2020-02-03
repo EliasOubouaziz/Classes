@@ -11,42 +11,23 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class ChargementControleur implements Initializable {
-
-	@FXML
-	private TextField tfElem;
-	@FXML
-	private TextField tfChaine;
-	@FXML
-	private TextField tfCommande;
-
-	@FXML
-	private Button btnParcoursElem;
-	@FXML
-	private Button btnParcoursChaine;
-	@FXML
-	private Button btnParcoursComm;
-
-	@FXML
-	private Button btnElem;
-	@FXML
-	private Button btnChaine;
-	@FXML
-	private Button btnCommande;
-
+public class ResultatOKControleur implements Initializable {
+	
 	@FXML
 	private Button btnRetour;
+	
+	@FXML
+	private Button btnExport;
 
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 
 	}
-
+	
 	public void retourMenu(ActionEvent e) throws IOException {
-		System.out.println("Chargement - clic sur btnRetour");
+		System.out.println("Saisie Commande - clic sur btnRetour");
 
 		// Fermeture de la fenetre
 		Stage fen = (Stage) btnRetour.getScene().getWindow();

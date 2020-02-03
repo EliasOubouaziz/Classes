@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="700.0"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="fr.miage.toulouse.interfaceGraphique.ResultatOKControleur">
+	<children>
+		<BorderPane layoutX="226.0" layoutY="244.0"
+			prefHeight="700.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0"
+			AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0">
+			<top>
+				<GridPane BorderPane.alignment="CENTER">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0"
+							vgrow="SOMETIMES" />
+					</rowConstraints>
+					<BorderPane.margin>
+						<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+					</BorderPane.margin>
+					<children>
+						<Label contentDisplay="CENTER" text="Résultat"
+							textAlignment="CENTER" GridPane.columnIndex="1"
+							GridPane.halignment="CENTER">
+							<font>
+								<Font name="System Bold" size="24.0" />
+							</font>
+						</Label>
+						<Button fx:id="btnRetour" mnemonicParsing="false"
+							onAction="#retourMenu" text="Retour" />
+						<Button fx:id="btnExport" alignment="CENTER_RIGHT"
+							contentDisplay="RIGHT" mnemonicParsing="false" text="Exporter"
+							GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
+					</children>
+				</GridPane>
+			</top>
+			<center>
+				<GridPane BorderPane.alignment="CENTER">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0"
+							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0"
+							vgrow="SOMETIMES" />
+					</rowConstraints>
+					<BorderPane.margin>
+						<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+					</BorderPane.margin>
+					<children>
+						<Label text="Indicateur de valeur" underline="true"
+							GridPane.halignment="LEFT" GridPane.valignment="TOP">
+							<font>
+								<Font size="20.0" />
+							</font>
+						</Label>
+						<Label text="Indicateur de commande" underline="true"
+							GridPane.halignment="LEFT" GridPane.rowIndex="1"
+							GridPane.valignment="TOP">
+							<font>
+								<Font size="20.0" />
+							</font>
+						</Label>
+						<Label text="Efficacité : " GridPane.halignment="LEFT">
+							<GridPane.margin>
+								<Insets left="100.0" />
+							</GridPane.margin>
+						</Label>
+						<Label text="Commandes satisfaites :" GridPane.rowIndex="1">
+							<GridPane.margin>
+								<Insets left="100.0" />
+							</GridPane.margin>
+						</Label>
+						<TextField alignment="CENTER" editable="false"
+							prefHeight="39.0" prefWidth="327.0" GridPane.halignment="RIGHT"
+							GridPane.valignment="CENTER">
+							<GridPane.margin>
+								<Insets left="350.0" right="150.0" />
+							</GridPane.margin>
+						</TextField>
+						<TextField editable="false" prefHeight="39.0"
+							prefWidth="141.0" GridPane.halignment="CENTER"
+							GridPane.rowIndex="1" GridPane.valignment="CENTER">
+							<GridPane.margin>
+								<Insets left="350.0" right="150.0" />
+							</GridPane.margin>
+						</TextField>
+					</children>
+				</GridPane>
+			</center>
+		</BorderPane>
+	</children>
+</AnchorPane>

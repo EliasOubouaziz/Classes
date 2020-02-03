@@ -99,4 +99,70 @@ public class MenuControleur implements Initializable {
 		newFen.centerOnScreen();
 	}
 
+	public void versChaineProd(ActionEvent e) throws IOException {
+		System.out.println("Menu - Clic sur btnGestionProd, Changement de fenêtre");
+
+		// Fermeture de la fenetre
+		Stage fen = (Stage) btnEtatStock.getScene().getWindow();
+
+		fen.close();
+
+		// Chargement de la scène suivante
+		FXMLLoader fxmlLoader = new FXMLLoader(
+				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/ChaineProdScene.fxml"));
+		Parent root1 = (Parent) fxmlLoader.load();
+
+		// Création de la nouvelle fenêtre
+		Stage newFen = new Stage();
+		newFen.setTitle("Gestion des Chaines de Production");
+		newFen.setScene(new Scene(root1));
+		newFen.setResizable(false);
+		newFen.show();
+		newFen.centerOnScreen();
+	}
+	
+	public void versCommande(ActionEvent e) throws IOException {
+		System.out.println("Menu - Clic sur btnSaisieComm, Changement de fenêtre");
+
+		// Fermeture de la fenetre
+		Stage fen = (Stage) btnSaisieComm.getScene().getWindow();
+
+		fen.close();
+
+		// Chargement de la scène suivante
+		FXMLLoader fxmlLoader = new FXMLLoader(
+				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/CommandeScene.fxml")); 
+		Parent root1 = (Parent) fxmlLoader.load();
+
+		// Création de la nouvelle fenêtre
+		Stage newFen = new Stage();
+		newFen.setTitle("Saisie Commande");
+		newFen.setScene(new Scene(root1));
+		newFen.setResizable(false);
+		newFen.show();
+		newFen.centerOnScreen();
+	}
+	
+	public void versResult(ActionEvent e) throws IOException {
+		System.out.println("Menu - Clic sur btnAfficheResult, Changement de fenêtre");
+
+		// Fermeture de la fenetre
+		Stage fen = (Stage) btnAfficheResult.getScene().getWindow();
+
+		fen.close();
+
+		// Chargement de la scène suivante
+		FXMLLoader fxmlLoader = new FXMLLoader(
+				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/ResultatOKScene.fxml")); 
+		Parent root1 = (Parent) fxmlLoader.load();
+
+		// Création de la nouvelle fenêtre
+		Stage newFen = new Stage();
+		newFen.setTitle("Affichage Résultat");
+		newFen.setScene(new Scene(root1));
+		newFen.setResizable(false);
+		newFen.show();
+		newFen.centerOnScreen();
+	}
+
 }
