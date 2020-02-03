@@ -87,7 +87,32 @@ public class LireFich {
 	
 	
 	
-	public static void LireFichier() {
+	public static void LireFichierElements() {
+		Path orderPath = Paths.get("elements.csv");
+        List<String> lines = null; //null mean no value by default
+        try {
+            lines = Files.readAllLines(orderPath);
+        } catch (IOException e) {
+            System.out.println("Impossible de lire le fichier des élements");
+        }
+        if (lines.size() < 2) {
+            System.out.println("Il n'y a pas d'élements dans le fichier");
+            return;
+        }
+        
+        for (int i = 1; i < lines.size(); i++) {
+            String[] split = lines.get(i).split(";");
+            String id = String.valueOf(split[0]);
+            String nom = String.valueOf(split[2]);
+            double qte = Double.valueOf(split[2]);
+            String unite = String.valueOf(split[3]);
+	        Element elm = new Element(id,nom,qte,unite);
+                      
+			System.out.println (id+"=>"+nom + " "+ qte + " "+unite);
+		}
+	}
+	
+	public static void LireFichierChaineProd() {
 		Path orderPath = Paths.get("elements.csv");
         List<String> lines = null; //null mean no value by default
         try {
@@ -113,6 +138,9 @@ public class LireFich {
 	}
 	
 	
+	
+	
+	
 
 	
 	
@@ -125,7 +153,7 @@ public class LireFich {
 		final Ventes vte = new Ventes();
 		LireFichier(ach);
 		LireFichier(vte);
-		LireFichier();
+		LireFichierElements();
 
 		
 		
