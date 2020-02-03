@@ -3,9 +3,9 @@ import java.util.HashMap;
 
 
 public abstract class Commandes {
-	protected HashMap <Integer, Element> commande;
+	protected HashMap <String, Element> commande;
 	
 	public Commandes() {
-		this.commande = new HashMap <Integer, Element>();
+		this.commande = new HashMap <String, Element>();
 	}
 }

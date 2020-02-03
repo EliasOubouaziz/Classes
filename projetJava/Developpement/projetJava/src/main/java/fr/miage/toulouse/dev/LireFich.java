@@ -103,7 +103,7 @@ public class LireFich {
         for (int i = 1; i < lines.size(); i++) {
             String[] split = lines.get(i).split(";");
             String id = String.valueOf(split[0]);
-            String nom = String.valueOf(split[2]);
+            String nom = String.valueOf(split[1]);
             double qte = Double.valueOf(split[2]);
             String unite = String.valueOf(split[3]);
 	        Element elm = new Element(id,nom,qte,unite);
@@ -112,28 +112,69 @@ public class LireFich {
 		}
 	}
 	
+	
+	
+	
+	
 	public static void LireFichierChaineProd() {
-		Path orderPath = Paths.get("elements.csv");
+		Path orderPath = Paths.get("chaines.csv");
         List<String> lines = null; //null mean no value by default
         try {
             lines = Files.readAllLines(orderPath);
         } catch (IOException e) {
-            System.out.println("Impossible de lire le fichier des élements");
+            System.out.println("Impossible de lire le fichier des chaines");
         }
         if (lines.size() < 2) {
-            System.out.println("Il n'y a pas d'élements dans le fichier");
+            System.out.println("Il n'y a pas de chaines dans le fichier");
             return;
         }
         
         for (int i = 1; i < lines.size(); i++) {
+        	String info = "";
+        	
             String[] split = lines.get(i).split(";");
             String id = String.valueOf(split[0]);
-            String nom = String.valueOf(split[2]);
-            double qte = Double.valueOf(split[2]);
-            String unite = String.valueOf(split[3]);
-	        Element elm = new Element(id,nom,qte,unite);
+            String nom = String.valueOf(split[1]);
+            ChaineDeProd cdp = new ChaineDeProd(id,nom);
+            
+            String[] splitEntree = split[2].split("/");
+            for (int j = 0; j < splitEntree.length; j++) {
+            	String[] splitElemEntree = splitEntree[j].split(",");
+            	String idE = String.valueOf(splitElemEntree[0]);
+            	double qteE = Double.valueOf(splitElemEntree[1]);
+            	cdp.entree.put(idE,qteE);
+            }
+            
+            String[] splitSortie = split[3].split("/");
+            for (int j = 0; j < splitEntree.length; j++) {
+            	String[] splitElemSortie = splitSortie[j].split(",");
+            	String idE = String.valueOf(splitElemSortie[0]);
+            	double qteE = Double.valueOf(splitElemSortie[1]);
+            	cdp.sortie.put(idE,qteE);
+            }
+            
+            info = info + id + " => "+ nom + " ";
+            
+    		Set<String> listKeys= cdp.entree.keySet();
+    		Iterator<String> iterateur=listKeys.iterator();
+    		while(iterateur.hasNext())
+    		{
+    			Object key= iterateur.next();
+    			info = info +" + "+key + "*"+cdp.entree.get(key) ;
+    		}
+    		
+    		info = info + " => ";
+            
+    		Set<String> listKeys2= cdp.sortie.keySet();
+    		Iterator<String> iterateur2=listKeys2.iterator();
+    		while(iterateur2.hasNext())
+    		{
+    			Object key= iterateur2.next();
+    			info = info +" + "+key + "*"+cdp.sortie.get(key) ;
+    		}
+	        
                       
-			System.out.println (id+"=>"+nom + " "+ qte + " "+unite);
+			System.out.println (info);
 		}
 	}
 	
@@ -149,11 +190,7 @@ public class LireFich {
 	
 	public static void main(String[] args) {
 		
-		final Achats ach = new Achats();
-		final Ventes vte = new Ventes();
-		LireFichier(ach);
-		LireFichier(vte);
-		LireFichierElements();
+		LireFichierChaineProd();
 
 		
 		
