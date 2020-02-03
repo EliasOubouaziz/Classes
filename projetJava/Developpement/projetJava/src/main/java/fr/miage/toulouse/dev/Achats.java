@@ -59,7 +59,7 @@ public class Achats extends Commandes {
     		while(iterateur.hasNext())
     		{
     			Object key= iterateur.next();
-    			System.out.println (key+"=>"+this.prix.get(key)+" € x "+this.qte.get(key) );
+    			System.out.println (key+"=>"+this.prix.get(key)+"€ x "+this.qte.get(key) );
     		}
 	    }
 
