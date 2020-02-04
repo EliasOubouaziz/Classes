@@ -12,7 +12,8 @@ import java.util.Set;
 public class LireFich {
 
 	
-	public static void LireFichier(Achats ach, String URL) {
+	public static void LireFichierAchats(String URL) {
+		Achats ach = new Achats();
 		Path orderPath = Paths.get(URL);
         List<String> lines = null; //null mean no value by default
         try {
@@ -49,7 +50,8 @@ public class LireFich {
 		}
 	}
 	
-	public static void LireFichier(Ventes vte, String URL) {
+	public static void LireFichierVentes(String URL) {
+		Ventes vte = new Ventes();
 		Path orderPath = Paths.get(URL);
         List<String> lines = null; //null mean no value by default
         try {
@@ -181,21 +183,4 @@ public class LireFich {
 		}
 	}
 	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	public static void main(String[] args) {
-		
-		
-		LireFichierChaineProd();
-		
-		
-	}
 }
