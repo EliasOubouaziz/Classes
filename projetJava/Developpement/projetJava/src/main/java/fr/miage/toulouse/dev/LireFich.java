@@ -1,6 +1,7 @@
 package fr.miage.toulouse.dev;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -88,10 +89,11 @@ public class LireFich {
 	
 	
 	public static void LireFichierElements() {
+		Charset  charset = Charset.forName("ISO-8859-1");
 		Path orderPath = Paths.get("elements.csv");
         List<String> lines = null; //null mean no value by default
         try {
-            lines = Files.readAllLines(orderPath);
+            lines = Files.readAllLines(orderPath, charset);
         } catch (IOException e) {
             System.out.println("Impossible de lire le fichier des élements");
         }
@@ -117,10 +119,11 @@ public class LireFich {
 	
 	
 	public static void LireFichierChaineProd() {
+		Charset  charset = Charset.forName("ISO-8859-1");
 		Path orderPath = Paths.get("chaines.csv");
         List<String> lines = null; //null mean no value by default
         try {
-            lines = Files.readAllLines(orderPath);
+            lines = Files.readAllLines(orderPath, charset);
         } catch (IOException e) {
             System.out.println("Impossible de lire le fichier des chaines");
         }
@@ -146,7 +149,7 @@ public class LireFich {
             }
             
             String[] splitSortie = split[3].split("/");
-            for (int j = 0; j < splitEntree.length; j++) {
+            for (int j = 0; j < splitSortie.length; j++) {
             	String[] splitElemSortie = splitSortie[j].split(",");
             	String idE = String.valueOf(splitElemSortie[0]);
             	double qteE = Double.valueOf(splitElemSortie[1]);
@@ -170,7 +173,7 @@ public class LireFich {
     		while(iterateur2.hasNext())
     		{
     			Object key= iterateur2.next();
-    			info = info +" + "+key + "*"+cdp.sortie.get(key) ;
+    			info = info +key + "*"+cdp.sortie.get(key)+" " ;
     		}
 	        
                       
@@ -190,8 +193,8 @@ public class LireFich {
 	
 	public static void main(String[] args) {
 		
+		
 		LireFichierChaineProd();
-
 		
 		
 	}
