@@ -12,8 +12,8 @@ import java.util.Set;
 public class LireFich {
 
 	
-	public static void LireFichier(Achats ach) {
-		Path orderPath = Paths.get("prix.csv");
+	public static void LireFichier(Achats ach, String URL) {
+		Path orderPath = Paths.get(URL);
         List<String> lines = null; //null mean no value by default
         try {
             lines = Files.readAllLines(orderPath);
@@ -49,8 +49,8 @@ public class LireFich {
 		}
 	}
 	
-	public static void LireFichier(Ventes vte) {
-		Path orderPath = Paths.get("prix.csv");
+	public static void LireFichier(Ventes vte, String URL) {
+		Path orderPath = Paths.get(URL);
         List<String> lines = null; //null mean no value by default
         try {
             lines = Files.readAllLines(orderPath);
@@ -88,9 +88,9 @@ public class LireFich {
 	
 	
 	
-	public static void LireFichierElements() {
+	public static void LireFichierElements(String URL) {
 		Charset  charset = Charset.forName("ISO-8859-1");
-		Path orderPath = Paths.get("elements.csv");
+		Path orderPath = Paths.get(URL);
         List<String> lines = null; //null mean no value by default
         try {
             lines = Files.readAllLines(orderPath, charset);
@@ -118,9 +118,9 @@ public class LireFich {
 	
 	
 	
-	public static void LireFichierChaineProd() {
+	public static void LireFichierChaineProd(String URL) {
 		Charset  charset = Charset.forName("ISO-8859-1");
-		Path orderPath = Paths.get("chaines.csv");
+		Path orderPath = Paths.get(URL);
         List<String> lines = null; //null mean no value by default
         try {
             lines = Files.readAllLines(orderPath, charset);
