@@ -1,5 +1,6 @@
 package fr.miage.toulouse.interfaceGraphique;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -12,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class ChargementControleur implements Initializable {
@@ -39,6 +41,8 @@ public class ChargementControleur implements Initializable {
 
 	@FXML
 	private Button btnRetour;
+
+	final FileChooser fileChooser = new FileChooser();
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
@@ -68,4 +72,68 @@ public class ChargementControleur implements Initializable {
 
 	}
 
+	public void parcourirElement(ActionEvent e) {
+		tfElem.clear();
+		File file = fileChooser.showOpenDialog((Stage) btnParcoursElem.getScene().getWindow());
+		if (file != null) {
+			String url = file.getAbsolutePath();
+			tfElem.setText(url);
+		}
+	}
+
+	public void parcourirChaine(ActionEvent e) {
+		tfChaine.clear();
+		File file = fileChooser.showOpenDialog((Stage) btnParcoursChaine.getScene().getWindow());
+		if (file != null) {
+			String url = file.getAbsolutePath();
+			tfChaine.setText(url);
+		}else {
+			System.out.println("cherchez un fichier à charger");
+		}
+	}
+
+	public void parcourirCommande(ActionEvent e) {
+		tfCommande.clear();
+		File file = fileChooser.showOpenDialog((Stage) btnParcoursComm.getScene().getWindow());
+		if (file != null) {
+			String url = file.getAbsolutePath();
+			tfCommande.setText(url);
+		}
+	}
+
+	public void chargerElements(ActionEvent e) {
+		System.out.println("Chargement - clic sur btnChargerElem");
+		String url = "";
+		url = tfElem.getText();
+		if (url != "") {
+			fr.miage.toulouse.dev.LireFich.LireFichierElements(url);
+		}else {
+			System.out.println("cherchez un fichier à charger");
+		}
+	}
+	
+	public void chargerChaine(ActionEvent e) {
+		System.out.println("Chargement - clic sur btnChargerChaine");
+		String url = "";
+		url = tfChaine.getText();
+		System.out.println(url);
+		if (url != "") {
+			fr.miage.toulouse.dev.LireFich.LireFichierChaineProd(url);
+		}else {
+			System.out.println("cherchez un fichier à charger");
+		}
+	}
+	
+	public void chargerCommande(ActionEvent e) {
+		System.out.println("Chargement - clic sur btnChargerComm");
+		String url = "";
+		url = tfCommande.getText();
+		System.out.println(url);
+		if (url != "") {
+			fr.miage.toulouse.dev.LireFich.LireFichierAchats(url);
+			fr.miage.toulouse.dev.LireFich.LireFichierVentes(url);
+		}else {
+			System.out.println("cherchez un fichier à charger");
+		}
+	}
 }

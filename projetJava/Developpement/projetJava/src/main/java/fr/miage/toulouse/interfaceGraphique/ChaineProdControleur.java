@@ -19,13 +19,13 @@ public class ChaineProdControleur implements Initializable {
 	
 	// TODO affecter types
 	@FXML
-	private TableColumn<?, ?> colID;
+	private TableColumn<TESTChaineProd, String> colID;
 	
 	@FXML
-	private TableColumn<?, ?> colNomC;
+	private TableColumn<TESTChaineProd, String> colNomC;
 	
 	@FXML
-	private TableColumn<?, ?> colEtat;
+	private TableColumn<TESTChaineProd, Integer> colEtat;
 	
 	@FXML
 	private TableColumn<?, ?> colDetail;

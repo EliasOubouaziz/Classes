@@ -39,10 +39,11 @@
 					</rowConstraints>
 					<children>
 						<Button fx:id="btnElem" mnemonicParsing="false"
-							text="Charger" GridPane.columnIndex="3"
-							GridPane.halignment="CENTER" />
+							onAction="#chargerElements" text="Charger"
+							GridPane.columnIndex="3" GridPane.halignment="CENTER" />
 						<Button fx:id="btnParcoursElem" mnemonicParsing="false"
-							text="..." GridPane.columnIndex="2" GridPane.halignment="CENTER" />
+							onAction="#parcourirElement" text="..." GridPane.columnIndex="2"
+							GridPane.halignment="CENTER" />
 						<TextField fx:id="tfElem" editable="false"
 							promptText="lien du fichier" GridPane.columnIndex="1" />
 						<Label text="Eléments" GridPane.halignment="CENTER">
@@ -69,16 +70,16 @@
 							promptText="lien du fichier" GridPane.columnIndex="1"
 							GridPane.rowIndex="2" />
 						<Button fx:id="btnParcoursChaine" mnemonicParsing="false"
-							text="..." GridPane.columnIndex="2" GridPane.halignment="CENTER"
-							GridPane.rowIndex="1" />
+							onAction="#parcourirChaine" text="..." GridPane.columnIndex="2"
+							GridPane.halignment="CENTER" GridPane.rowIndex="1" />
 						<Button fx:id="btnParcoursComm" mnemonicParsing="false"
-							text="..." GridPane.columnIndex="2" GridPane.halignment="CENTER"
-							GridPane.rowIndex="2" />
+							onAction="#parcourirCommande" text="..." GridPane.columnIndex="2"
+							GridPane.halignment="CENTER" GridPane.rowIndex="2" />
 						<Button fx:id="btnChaine" mnemonicParsing="false"
-							text="Charger" GridPane.columnIndex="3"
+							text="Charger" onAction="#chargerChaine" GridPane.columnIndex="3"
 							GridPane.halignment="CENTER" GridPane.rowIndex="1" />
 						<Button fx:id="btnCommande" mnemonicParsing="false"
-							text="Charger" GridPane.columnIndex="3"
+							text="Charger" onAction="#chargerCommande" GridPane.columnIndex="3"
 							GridPane.halignment="CENTER" GridPane.rowIndex="2" />
 					</children>
 					<padding>
