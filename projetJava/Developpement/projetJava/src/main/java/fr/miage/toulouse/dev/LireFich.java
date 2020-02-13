@@ -1,5 +1,6 @@
 package fr.miage.toulouse.dev;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -8,9 +9,56 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.io.FilenameFilter;
 
 public class LireFich {
+	
+	public static void LireFichier(String URL) {
+		Path fich = Paths.get(URL);
+		System.out.println(fich);
+		File fichiers = fich.toFile();
+		System.out.println(fichiers);
 
+		
+		String[] nomFichiers = fichiers.list(new FilenameFilter() {
+		    public boolean accept(File directory, String fileName) {
+		        return fileName.endsWith(".csv");
+		    }
+		});
+				
+				
+		
+		for (int i=0 ; i<nomFichiers.length; i++) {
+			String nm = nomFichiers[i];
+			
+			
+			if(nm.equals("chaines.csv")) {
+				System.out.println();
+				System.out.println("Chaines de production : ");
+				String nom = URL+'\\'+nomFichiers[i];
+				LireFichierChaineProd(nom);
+			}
+			else if(nm.equals("elements.csv")) {
+				System.out.println();
+				System.out.println("Elements :");
+				String nom = URL+'\\'+nomFichiers[i];
+				LireFichierElements(nom);
+			}
+			else if(nm.equals("prix.csv")) {
+				String nom = URL+'\\'+nomFichiers[i];
+				System.out.println();
+				System.out.println("Liste des Achats :");
+				LireFichierAchats(nom);
+				System.out.println();
+				System.out.println("Liste des Ventes :");
+				LireFichierVentes(nom);
+			}
+		}
+	}
+	
+	
+	
+	
 	
 	public static void LireFichierAchats(String URL) {
 		Achats ach = new Achats();
@@ -183,4 +231,11 @@ public class LireFich {
 		}
 	}
 	
+
+
+public static void main(String[] args) {
+	LireFichier("C:\\Users\\MartinTourancheau\\Documents\\GitHub\\projetJava\\Developpement\\projetJava");
+	
 }
+}
+
