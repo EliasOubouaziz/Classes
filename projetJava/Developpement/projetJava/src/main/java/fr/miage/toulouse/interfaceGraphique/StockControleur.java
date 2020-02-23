@@ -11,15 +11,25 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 
 public class StockControleur implements Initializable {
-	
+
 	@FXML
 	private Button btnRetour;
 	
 	@FXML
 	private Button btnChargmnt;
+		
+	@FXML
+	private TableColumn<?, ?> colCode;
+
+	@FXML
+	private TableColumn<?, ?> colNom;
+	
+	@FXML
+	private TableColumn<?, ?> colStock;
 
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
