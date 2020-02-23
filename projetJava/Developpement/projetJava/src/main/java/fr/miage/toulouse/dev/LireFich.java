@@ -233,9 +233,5 @@ public class LireFich {
 	
 
 
-public static void main(String[] args) {
-	LireFichier("C:\\Users\\MartinTourancheau\\Documents\\GitHub\\projetJava\\Developpement\\projetJava");
-	
-}
 }
 
