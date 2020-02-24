@@ -17,4 +17,24 @@ public class ChaineDeProd {
 		this.sortie = new HashMap <String, Double>();
 		this.activation = 0;
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public HashMap<String, Double> getEntree() {
+		return entree;
+	}
+
+	public HashMap<String, Double> getSortie() {
+		return sortie;
+	}
+
+	public int getActivation() {
+		return activation;
+	}
 }

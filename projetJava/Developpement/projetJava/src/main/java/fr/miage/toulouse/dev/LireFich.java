@@ -158,8 +158,7 @@ public class LireFich {
             String nom = String.valueOf(split[1]);
             double qte = Double.valueOf(split[2]);
             String unite = String.valueOf(split[3]);
-	        Element elm = new Element(id,nom,qte,unite);
-                      
+	        Element elm = new Element(id,nom,qte,unite);                    
 			System.out.println (id+"=>"+nom + " "+ qte + " "+unite);
 		}
 	}

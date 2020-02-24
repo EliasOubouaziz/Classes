@@ -71,10 +71,6 @@ public class MenuControleur implements Initializable {
 		newFen.setResizable(false);
 		newFen.show();
 		newFen.centerOnScreen();
-
-		// AnchorPane pane =
-		// FXMLLoader.lneoad(getClass().getResource("/fr/miage/toulouse/interfaceGraphique/ChargementScene.fxml"));
-		// rootPane.getChildren().setAll(pane);
 	}
 
 	public void versEtatStock(ActionEvent e) throws IOException {
@@ -89,14 +85,16 @@ public class MenuControleur implements Initializable {
 		FXMLLoader fxmlLoader = new FXMLLoader(
 				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/StockScene.fxml"));
 		Parent root1 = (Parent) fxmlLoader.load();
+		
 
 		// Création de la nouvelle fenêtre
-		Stage newFen = new Stage();
+		Stage newFen = new Stage();		
 		newFen.setTitle("Etat des Stocks");
 		newFen.setScene(new Scene(root1));
 		newFen.setResizable(false);
 		newFen.show();
 		newFen.centerOnScreen();
+		
 	}
 
 	public void versChaineProd(ActionEvent e) throws IOException {

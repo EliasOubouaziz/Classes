@@ -6,27 +6,43 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.collections.*?>
+<?import fxmltableview.*?>
 
-<AnchorPane prefHeight="729.0" prefWidth="804.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.miage.toulouse.interfaceGraphique.StockControleur">
+<AnchorPane prefHeight="729.0" prefWidth="804.0"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="fr.miage.toulouse.interfaceGraphique.StockControleur">
 	<children>
-		<BorderPane prefHeight="729.0" prefWidth="804.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+		<BorderPane fx:id="border" prefHeight="729.0"
+			prefWidth="804.0" AnchorPane.bottomAnchor="0.0"
+			AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0">
 			<top>
 				<GridPane BorderPane.alignment="CENTER">
 					<columnConstraints>
-						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="100.0" />
 					</columnConstraints>
 					<rowConstraints>
-						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0"
+							vgrow="SOMETIMES" />
 					</rowConstraints>
 					<BorderPane.margin>
 						<Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
 					</BorderPane.margin>
 					<children>
-						<Button fx:id="btnRetour" mnemonicParsing="false" onAction="#retourMenu" text="Retour" GridPane.halignment="LEFT" />
-						<Button fx:id="btnChargmnt" mnemonicParsing="false" onAction="#versChargement" text="Charger des données" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
-						<Label text="Etat des Stocks" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+						<Button fx:id="btnRetour" mnemonicParsing="false"
+							onAction="#retourMenu" text="Retour" GridPane.halignment="LEFT" />
+						<Button fx:id="btnChargmnt" mnemonicParsing="false"
+							onAction="#versChargement" text="Charger des données"
+							GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
+						<Label text="Etat des Stocks" GridPane.columnIndex="1"
+							GridPane.halignment="CENTER">
 							<font>
 								<Font name="System Bold" size="28.0" />
 							</font>
@@ -35,17 +51,46 @@
 				</GridPane>
 			</top>
 			<center>
-				<TableView prefHeight="200.0" prefWidth="200.0"
-					BorderPane.alignment="CENTER" >
+				<TableView fx:id="tableStock" prefHeight="200.0"
+					prefWidth="200.0" BorderPane.alignment="CENTER">
 					<columns>
-						<TableColumn fx:id="colNom" prefWidth="200.0"
-						text="Nom" />
+
 						<TableColumn fx:id="colCode" prefWidth="200.0"
-						text="Code" />
+							text="Code">
+
+							<cellValueFactory>
+								<PropertyValueFactory property="id" />
+							</cellValueFactory>
+
+						</TableColumn>
+						<TableColumn fx:id="colNom" prefWidth="200.0"
+							text="Nom">
+
+							<cellValueFactory>
+								<PropertyValueFactory property="nom" />
+							</cellValueFactory>
+
+						</TableColumn>
+
+
 						<TableColumn fx:id="colStock" prefWidth="200.0"
-						text="Stock" />
+							text="Stock">
+
+							<cellValueFactory>
+								<PropertyValueFactory property="qte" />
+							</cellValueFactory>
+
+						</TableColumn>
+						<TableColumn fx:id="colUnit" prefWidth="152.0"
+							text="Unité">
+
+							<cellValueFactory>
+								<PropertyValueFactory property="unite" />
+							</cellValueFactory>
+
+						</TableColumn>
 					</columns>
-					</TableView>
+				</TableView>
 			</center>
 		</BorderPane>
 	</children>

@@ -1,43 +1,51 @@
 package fr.miage.toulouse.interfaceGraphique;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
+import fr.miage.toulouse.dev.ChaineDeProd;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-public class ChaineProdControleur implements Initializable {
-	
-	
-	// TODO affecter types
+public class ChaineProdControleur {
+
 	@FXML
-	private TableColumn<TESTChaineProd, String> colID;
-	
+	private TableView<ChaineDeProd> tableCdp;
+
 	@FXML
-	private TableColumn<TESTChaineProd, String> colNomC;
-	
+	private TableColumn<ChaineDeProd, String> colID;
+
 	@FXML
-	private TableColumn<TESTChaineProd, Integer> colEtat;
-	
+	private TableColumn<ChaineDeProd, String> colNomC;
+
+	@FXML
+	private TableColumn<ChaineDeProd, Integer> colEtat;
+
 	@FXML
 	private TableColumn<?, ?> colDetail;
-	
+
 	@FXML
 	private Button btnRetour;
 
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-
+	@FXML
+	public void initialize() {
+		tableCdp.setItems(getChainesDeProd());
 	}
-	
+
+	private ObservableList<ChaineDeProd> getChainesDeProd() {
+		ObservableList<ChaineDeProd> ChDP = FXCollections.observableArrayList();
+		ChDP.add(new ChaineDeProd("1", "A1"));
+		ChDP.add(new ChaineDeProd("2", "A2"));
+		return ChDP;
+	}
+
 	public void retourMenu(ActionEvent e) throws IOException {
 		System.out.println("ChaineProd - clic sur btnRetour");
 

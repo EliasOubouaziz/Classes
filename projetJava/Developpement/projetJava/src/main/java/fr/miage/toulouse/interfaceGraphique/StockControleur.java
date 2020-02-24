@@ -1,41 +1,61 @@
 package fr.miage.toulouse.interfaceGraphique;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
+import fr.miage.toulouse.dev.Element;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class StockControleur implements Initializable {
+public class StockControleur {
+
+	@FXML
+	private BorderPane border;
 
 	@FXML
 	private Button btnRetour;
-	
+
 	@FXML
 	private Button btnChargmnt;
-		
-	@FXML
-	private TableColumn<?, ?> colCode;
 
 	@FXML
-	private TableColumn<?, ?> colNom;
-	
-	@FXML
-	private TableColumn<?, ?> colStock;
+	private TableView<Element> tableStock;
 
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+	@FXML
+	private TableColumn<Element, String> colCode;
+
+	@FXML
+	private TableColumn<Element, String> colNom;
+
+	@FXML
+	private TableColumn<Element, Double> colStock;
+
+	@FXML
+	private TableColumn<Element, String> colUnit;
+
+	@FXML
+	public void initialize() {
+		//Affecte les éléments dans le tableau
+		tableStock.setItems(getElements());
 
 	}
-	
+
+	private ObservableList<Element> getElements() {
+		
+		ObservableList<Element> elems = FXCollections.observableArrayList();
+		elems.add(new Element("1", "Pain", 10.0, "kg"));
+		elems.add(new Element("2", "Acier", 10.0, "tonnes"));
+		return elems;
+	}
+
 	public void versChargement(ActionEvent e) throws IOException {
 		System.out.println("Stock - Clic sur btnChargmnt, Changement de fenêtre");
 
@@ -57,7 +77,7 @@ public class StockControleur implements Initializable {
 		newFen.show();
 		newFen.centerOnScreen();
 	}
-	
+
 	public void retourMenu(ActionEvent e) throws IOException {
 		System.out.println("Stock - clic sur btnRetour");
 
@@ -79,7 +99,5 @@ public class StockControleur implements Initializable {
 		newFen.show();
 		newFen.centerOnScreen();
 	}
-	
-	
 
 }
