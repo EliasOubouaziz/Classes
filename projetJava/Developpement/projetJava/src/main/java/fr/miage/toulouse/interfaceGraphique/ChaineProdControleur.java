@@ -1,7 +1,10 @@
 package fr.miage.toulouse.interfaceGraphique;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import fr.miage.toulouse.dev.ChaineDeProd;
+import fr.miage.toulouse.dev.LireFich;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,13 +42,29 @@ public class ChaineProdControleur {
 		tableCdp.setItems(getChainesDeProd());
 	}
 
+	/**getChainesDeProd
+	 * 
+	 * 
+	 * @return la liste des Chaines de production à afficher
+	 */
 	private ObservableList<ChaineDeProd> getChainesDeProd() {
+		
+		//Récupère la liste des Elements chargés depuis le CSV
+		ArrayList<ChaineDeProd> listChdP = LireFich.getListChdP();
 		ObservableList<ChaineDeProd> ChDP = FXCollections.observableArrayList();
-		ChDP.add(new ChaineDeProd("1", "A1"));
-		ChDP.add(new ChaineDeProd("2", "A2"));
+		
+		for(ChaineDeProd c : listChdP) {
+			ChDP.add(c);
+		}
 		return ChDP;
 	}
 
+	/**Méthode appelée lors d'un clic sur le bouton retour
+	 * qui fait revenir au menu principal
+	 * 
+	 * @param e event du clic
+	 * @throws IOException Exception levée
+	 */
 	public void retourMenu(ActionEvent e) throws IOException {
 		System.out.println("ChaineProd - clic sur btnRetour");
 

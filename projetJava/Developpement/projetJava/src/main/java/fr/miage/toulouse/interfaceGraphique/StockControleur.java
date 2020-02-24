@@ -1,7 +1,10 @@
 package fr.miage.toulouse.interfaceGraphique;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import fr.miage.toulouse.dev.Element;
+import fr.miage.toulouse.dev.LireFich;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -48,11 +51,20 @@ public class StockControleur {
 
 	}
 
+	/**getElements 
+	 * 
+	 * @return la liste des Eléments à afficher dans le tableau des stocks
+	 */
 	private ObservableList<Element> getElements() {
 		
+		//Récupère la liste des Elements chargés depuis le CSV
+		ArrayList<Element> listElem = LireFich.getListElem();
 		ObservableList<Element> elems = FXCollections.observableArrayList();
-		elems.add(new Element("1", "Pain", 10.0, "kg"));
-		elems.add(new Element("2", "Acier", 10.0, "tonnes"));
+		
+		for(Element e : listElem) {
+			elems.add(e);
+		}
+		
 		return elems;
 	}
 
