@@ -10,7 +10,7 @@
 <?import javafx.collections.*?>
 <?import fxmltableview.*?>
 
-<AnchorPane prefHeight="729.0" prefWidth="804.0"
+<AnchorPane prefHeight="624.0" prefWidth="775.0"
 	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="fr.miage.toulouse.interfaceGraphique.StockControleur">
 	<children>

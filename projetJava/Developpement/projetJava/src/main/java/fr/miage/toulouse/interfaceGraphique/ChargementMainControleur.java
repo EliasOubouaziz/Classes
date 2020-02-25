@@ -115,7 +115,7 @@ public class ChargementMainControleur {
 		// Définit le titre de la fenêtre de sélection
 		d.setTitle("Sélectionnez un dossier");
 		// Définit le répertoire initial
-		d.setInitialDirectory(new File(System.getProperty("user.home")));
+		//d.setInitialDirectory(new File(System.getProperty("user.home")));
 	}
 
 }
