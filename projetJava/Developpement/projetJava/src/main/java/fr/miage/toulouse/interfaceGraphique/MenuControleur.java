@@ -61,7 +61,7 @@ public class MenuControleur implements Initializable {
 
 		// Chargement de la scène suivante
 		FXMLLoader fxmlLoader = new FXMLLoader(
-				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/ChargementScene.fxml"));
+				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/ChargementMainScene.fxml"));
 		Parent root1 = (Parent) fxmlLoader.load();
 
 		// Création de la nouvelle fenêtre

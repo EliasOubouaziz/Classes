@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="291.0" prefWidth="597.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.miage.toulouse.interfaceGraphique.ChargementMainControleur">
+	<children>
+		<BorderPane layoutX="84.0" layoutY="46.0" prefHeight="291.0" prefWidth="597.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+			<top>
+				<GridPane prefHeight="54.0" prefWidth="596.0" BorderPane.alignment="CENTER">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<Label alignment="CENTER" contentDisplay="CENTER" text="Chargement" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+							<GridPane.margin>
+								<Insets top="20.0" />
+							</GridPane.margin>
+						</Label>
+						<Button fx:id="btnRetour" mnemonicParsing="false" onAction="#retourMenu" text="Retour">
+							<GridPane.margin>
+								<Insets left="10.0" top="20.0" />
+							</GridPane.margin>
+						</Button>
+						<Button fx:id="btnChFic" mnemonicParsing="false" onAction="#versChargementFichier" text="Charger Fichier" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+							<GridPane.margin>
+								<Insets right="10.0" top="20.0" />
+							</GridPane.margin>
+						</Button>
+					</children>
+				</GridPane>
+			</top>
+			<center>
+				<Button fx:id="btnChargementDossier" mnemonicParsing="false" onAction="#chargementDossier" text="Charger un dossier" BorderPane.alignment="CENTER" />
+			</center>
+			<bottom>
+				<GridPane prefHeight="98.0" prefWidth="595.0" BorderPane.alignment="CENTER">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<Label fx:id="resChDossier" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+							<GridPane.margin>
+								<Insets bottom="50.0" />
+							</GridPane.margin>
+						</Label>
+					</children>
+				</GridPane>
+			</bottom>
+		</BorderPane>
+	</children>
+</AnchorPane>

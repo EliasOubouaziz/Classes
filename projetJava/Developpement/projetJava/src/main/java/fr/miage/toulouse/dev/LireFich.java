@@ -20,7 +20,8 @@ public class LireFich {
 	// Liste de tous les Eléments chargés
 	private static ArrayList<ChaineDeProd> listChdP = new ArrayList<ChaineDeProd>();
 
-	public static void LireFichier(String URL) {
+	public static Boolean[] LireFichier(String URL) {
+		Boolean[] result = { false, false, false };
 		Path fich = Paths.get(URL);
 		System.out.println(fich);
 		File fichiers = fich.toFile();
@@ -40,11 +41,13 @@ public class LireFich {
 				System.out.println("Chaines de production : ");
 				String nom = URL + '\\' + nomFichiers[i];
 				LireFichierChaineProd(nom);
+				result[0] = true;
 			} else if (nm.equals("elements.csv")) {
 				System.out.println();
 				System.out.println("Elements :");
 				String nom = URL + '\\' + nomFichiers[i];
 				LireFichierElements(nom);
+				result[1] = true;
 			} else if (nm.equals("prix.csv")) {
 				String nom = URL + '\\' + nomFichiers[i];
 				System.out.println();
@@ -53,8 +56,10 @@ public class LireFich {
 				System.out.println();
 				System.out.println("Liste des Ventes :");
 				LireFichierVentes(nom);
+				result[2] = true;
 			}
 		}
+		return result;
 	}
 
 	public static void LireFichierAchats(String URL) {
@@ -219,7 +224,7 @@ public class LireFich {
 	public static ArrayList<Element> getListElem() {
 		return LireFich.listElem;
 	}
-	
+
 	public static ArrayList<ChaineDeProd> getListChdP() {
 		return LireFich.listChdP;
 	}
