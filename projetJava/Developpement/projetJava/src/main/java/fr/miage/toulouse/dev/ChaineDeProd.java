@@ -37,4 +37,8 @@ public class ChaineDeProd {
 	public int getActivation() {
 		return activation;
 	}
+
+	public void setActivation(int activation) {
+		this.activation = activation;
+	}
 }
