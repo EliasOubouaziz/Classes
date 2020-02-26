@@ -10,36 +10,27 @@
 <?import javafx.collections.*?>
 <?import fxmltableview.*?>
 
-<AnchorPane prefHeight="624.0" prefWidth="775.0"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="fr.miage.toulouse.interfaceGraphique.ChaineProdControleur">
+<AnchorPane prefHeight="624.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.miage.toulouse.interfaceGraphique.ChaineProdControleur">
 	<children>
-		<BorderPane prefHeight="624.0" prefWidth="775.0"
-			AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-			AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+		<BorderPane prefHeight="624.0" prefWidth="775.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 			<top>
-				<Pane prefHeight="89.0" prefWidth="775.0"
-					BorderPane.alignment="CENTER">
+				<Pane prefHeight="89.0" prefWidth="775.0" BorderPane.alignment="CENTER">
 					<children>
-						<Label alignment="CENTER" layoutX="224.0" layoutY="22.0"
-							text="Gestion des Chaines de production" textAlignment="CENTER">
+						<Label alignment="CENTER" layoutX="224.0" layoutY="22.0" text="Gestion des Chaines de production" textAlignment="CENTER">
 							<font>
 								<Font name="System Bold" size="20.0" />
 							</font>
 						</Label>
-						<Button fx:id="btnRetour" layoutX="14.0" layoutY="18.0"
-							mnemonicParsing="false" onAction="#retourMenu" text="Retour" />
+						<Button fx:id="btnRetour" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" onAction="#retourMenu" text="Retour" />
 					</children>
 				</Pane>
 			</top>
 			<center>
-				<TableView fx:id="tableCdp" prefHeight="457.0"
-					prefWidth="775.0" BorderPane.alignment="CENTER">
+				<TableView fx:id="tableCdp" editable="true" prefHeight="457.0" prefWidth="775.0" BorderPane.alignment="CENTER">
 					<columns>
 
 
-						<TableColumn fx:id="colID" editable="false"
-							prefWidth="118.0" text="Id">
+						<TableColumn fx:id="colID" editable="false" prefWidth="118.0" text="Id">
 
 							<cellValueFactory>
 								<PropertyValueFactory property="id" />
@@ -47,8 +38,7 @@
 
 						</TableColumn>
 
-						<TableColumn fx:id="colNomC" editable="false"
-							prefWidth="306.0" text="Nom Chaine">
+						<TableColumn fx:id="colNomC" editable="false" prefWidth="306.0" text="Nom Chaine">
 
 							<cellValueFactory>
 								<PropertyValueFactory property="nom" />
@@ -56,15 +46,13 @@
 
 						</TableColumn>
 
-						<TableColumn fx:id="colEtat" prefWidth="159.0"
-							text="Etat">
+						<TableColumn fx:id="colEtat" onEditCommit="#changementEtat" prefWidth="159.0" text="Etat">
 							<cellValueFactory>
 								<PropertyValueFactory property="activation" />
 							</cellValueFactory>
 						</TableColumn>
 
-						<TableColumn fx:id="colDetail" editable="false"
-							minWidth="0.0" prefWidth="228.0" sortable="false" text="Détails">
+						<TableColumn fx:id="colDetail" editable="false" minWidth="0.0" prefWidth="228.0" sortable="false" text="Détails">
 						</TableColumn>
 					</columns>
 					<columnResizePolicy>

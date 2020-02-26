@@ -2,13 +2,10 @@ package fr.miage.toulouse.interfaceGraphique;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,7 +13,13 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-public class ChargementControleur implements Initializable {
+/**
+ * Classe chargementControleur controleur de l'écran de chargement d'un fichier
+ * 
+ * @author MARTRES Robin
+ *
+ */
+public class ChargementControleur {
 
 	@FXML
 	private TextField tfElem;
@@ -42,24 +45,26 @@ public class ChargementControleur implements Initializable {
 	@FXML
 	private Button btnRetour;
 
+	//Sélecteur de fichier
 	final FileChooser fileChooser = new FileChooser();
 
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
-
-	}
-
+	/**Méthode retourMenu : 
+	 * 
+	 * Lors d'un clic sur le bouton retour, renvoie à la page de chargement principale
+	 * 
+	 * @param e Event clic sur btnRetour
+	 * @throws IOException Exception
+	 */
 	public void retourMenu(ActionEvent e) throws IOException {
 		System.out.println("Chargement - clic sur btnRetour");
 
 		// Fermeture de la fenetre
 		Stage fen = (Stage) btnRetour.getScene().getWindow();
-
 		fen.close();
 
 		// Chargement de la scène suivante
 		FXMLLoader fxmlLoader = new FXMLLoader(
-				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/MenuScene.fxml"));
+				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/ChargementMainScene.fxml"));
 		Parent root1 = (Parent) fxmlLoader.load();
 
 		// Création de la nouvelle fenêtre
@@ -67,27 +72,45 @@ public class ChargementControleur implements Initializable {
 		newFen.setTitle("Menu");
 		newFen.setScene(new Scene(root1));
 		newFen.setResizable(false);
+		
+		//Affichage de la fenêtre
 		newFen.show();
 		newFen.centerOnScreen();
 
 	}
 
+	/**Méthode parcourirElement : 
+	 * 
+	 * Lors d'un clic sur le bouton parcourir (...) affiche l'url du fichier choisi
+	 * 
+	 * @param e Event clic sur bouton
+	 */
 	public void parcourirElement(ActionEvent e) {
+		//Vide le champ texte
 		tfElem.clear();
+		
+		//Sélection du fichier à charger
 		File file = fileChooser.showOpenDialog((Stage) btnParcoursElem.getScene().getWindow());
+		//S'il n'est pas null, récupére son url et l'affiche dans le champ texte
 		if (file != null) {
 			String url = file.getAbsolutePath();
 			tfElem.setText(url);
 		}
 	}
 
+	/**Méthode parcourirChaine : 
+	 * 
+	 * Lors d'un clic sur le bouton parcourir chaine de prod (...) affiche l'url du fichier choisi
+	 * 
+	 * @param e
+	 */
 	public void parcourirChaine(ActionEvent e) {
 		tfChaine.clear();
 		File file = fileChooser.showOpenDialog((Stage) btnParcoursChaine.getScene().getWindow());
 		if (file != null) {
 			String url = file.getAbsolutePath();
 			tfChaine.setText(url);
-		}else {
+		} else {
 			System.out.println("cherchez un fichier à charger");
 		}
 	}
@@ -107,11 +130,11 @@ public class ChargementControleur implements Initializable {
 		url = tfElem.getText();
 		if (url != "") {
 			fr.miage.toulouse.dev.LireFich.LireFichierElements(url);
-		}else {
+		} else {
 			System.out.println("cherchez un fichier à charger");
 		}
 	}
-	
+
 	public void chargerChaine(ActionEvent e) {
 		System.out.println("Chargement - clic sur btnChargerChaine");
 		String url = "";
@@ -119,11 +142,11 @@ public class ChargementControleur implements Initializable {
 		System.out.println(url);
 		if (url != "") {
 			fr.miage.toulouse.dev.LireFich.LireFichierChaineProd(url);
-		}else {
+		} else {
 			System.out.println("cherchez un fichier à charger");
 		}
 	}
-	
+
 	public void chargerCommande(ActionEvent e) {
 		System.out.println("Chargement - clic sur btnChargerComm");
 		String url = "";
@@ -132,7 +155,7 @@ public class ChargementControleur implements Initializable {
 		if (url != "") {
 			fr.miage.toulouse.dev.LireFich.LireFichierAchats(url);
 			fr.miage.toulouse.dev.LireFich.LireFichierVentes(url);
-		}else {
+		} else {
 			System.out.println("cherchez un fichier à charger");
 		}
 	}

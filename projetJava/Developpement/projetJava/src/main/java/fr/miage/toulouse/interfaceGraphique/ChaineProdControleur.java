@@ -17,6 +17,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
+/**
+ * Classe controleur de l'écran des chaines de productions
+ * 
+ * @author MARTRES Robin
+ *
+ */
 public class ChaineProdControleur {
 
 	@FXML
@@ -39,28 +45,31 @@ public class ChaineProdControleur {
 
 	@FXML
 	public void initialize() {
+		// Affecte les informations des chaines de prod au tableau
 		tableCdp.setItems(getChainesDeProd());
 	}
 
-	/**getChainesDeProd
+	/**
+	 * getChainesDeProd
 	 * 
 	 * 
 	 * @return la liste des Chaines de production à afficher
 	 */
 	private ObservableList<ChaineDeProd> getChainesDeProd() {
-		
-		//Récupère la liste des Elements chargés depuis le CSV
+
+		// Récupère la liste des Elements chargés depuis le CSV
 		ArrayList<ChaineDeProd> listChdP = LireFich.getListChdP();
 		ObservableList<ChaineDeProd> ChDP = FXCollections.observableArrayList();
-		
-		for(ChaineDeProd c : listChdP) {
+
+		for (ChaineDeProd c : listChdP) {
 			ChDP.add(c);
 		}
 		return ChDP;
 	}
 
-	/**Méthode appelée lors d'un clic sur le bouton retour
-	 * qui fait revenir au menu principal
+	/**
+	 * Méthode appelée lors d'un clic sur le bouton retour qui fait revenir au menu
+	 * principal
 	 * 
 	 * @param e event du clic
 	 * @throws IOException Exception levée
@@ -86,6 +95,17 @@ public class ChaineProdControleur {
 		newFen.show();
 		newFen.centerOnScreen();
 
+	}
+
+	/**changementEtat
+	 * 
+	 * Lors de la modification de l'état d'une chaine de prod
+	 * affecte le nouvel etat
+	 * 
+	 * @param e Evênement
+	 */
+	public void changementEtat(ActionEvent e) {
+		System.out.println("MODIFICATION");
 	}
 
 }
