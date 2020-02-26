@@ -216,7 +216,10 @@ public class LireFich {
 				info = info + key + "*" + cdp.sortie.get(key) + " ";
 			}
 			listChdP.add(cdp);
-			System.out.println(info);
+			if(i==1) {
+				System.out.println(cdp.coutCdP("C:\\Users\\Elias\\Documents\\GitHub\\Classes\\projetJava\\Developpement\\projetJava\\prix.csv", "C:\\Users\\Elias\\Documents\\GitHub\\Classes\\projetJava\\Developpement\\projetJava\\elements.csv", 500));;
+			}
+			//System.out.println(info);
 
 		}
 	}
@@ -228,4 +231,10 @@ public class LireFich {
 	public static ArrayList<ChaineDeProd> getListChdP() {
 		return LireFich.listChdP;
 	}
+
+
+	public static void main (String[] args){
+		LireFichierChaineProd("C:\\Users\\Elias\\Documents\\GitHub\\Classes\\projetJava\\Developpement\\projetJava\\chaines.csv");
+	}
 }
+	
