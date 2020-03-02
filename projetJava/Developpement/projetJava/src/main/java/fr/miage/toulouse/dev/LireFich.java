@@ -216,9 +216,9 @@ public class LireFich {
 				info = info + key + "*" + cdp.sortie.get(key) + " ";
 			}
 			listChdP.add(cdp);
-			if(i==1) {
-				System.out.println(cdp.coutCdP("C:\\Users\\Elias\\Documents\\GitHub\\Classes\\projetJava\\Developpement\\projetJava\\prix.csv", "C:\\Users\\Elias\\Documents\\GitHub\\Classes\\projetJava\\Developpement\\projetJava\\elements.csv", 500));;
-			}
+			//if(i==1) {
+			//	System.out.println(cdp.coutCdP("C:\\Users\\Elias\\Documents\\GitHub\\Classes\\projetJava\\Developpement\\projetJava\\prix.csv", "C:\\Users\\Elias\\Documents\\GitHub\\Classes\\projetJava\\Developpement\\projetJava\\elements.csv", 500));;
+			//}
 			//System.out.println(info);
 
 		}
