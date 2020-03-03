@@ -8,14 +8,19 @@ import fr.miage.toulouse.dev.LireFich;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 
 /**
  * Classe controleur de l'écran des chaines de productions
@@ -38,17 +43,32 @@ public class ChaineProdControleur {
 	private TableColumn<ChaineDeProd, Integer> colEtat;
 
 	@FXML
-	private TableColumn<?, ?> colDetail;
+	private TableColumn<ChaineDeProd, Double> colDetail;
 
 	@FXML
 	private Button btnRetour;
+
+	
+	
 
 	@FXML
 	public void initialize() {
 		// Affecte les informations des chaines de prod au tableau
 		tableCdp.setItems(getChainesDeProd());
-	}
+		tableCdp.setEditable(true);
 
+		colEtat.setCellFactory(TextFieldTableCell.<ChaineDeProd, Integer>forTableColumn(new IntegerStringConverter()));
+		
+	}
+	
+	public void EditEtat(TableColumn.CellEditEvent<ChaineDeProd, Integer> etatEdited) {
+		ChaineDeProd Cdp = tableCdp.getSelectionModel().getSelectedItem();
+		Cdp.setActivation(etatEdited.getNewValue());
+		double cout = Cdp.coutCdP(LireFich.getListAchats(), LireFich.getListElem(), etatEdited.getNewValue());
+		System.out.println(cout);
+		Cdp.setCout(cout);
+		initialize();
+	}
 	/**
 	 * getChainesDeProd
 	 * 
@@ -56,13 +76,14 @@ public class ChaineProdControleur {
 	 * @return la liste des Chaines de production à afficher
 	 */
 	private ObservableList<ChaineDeProd> getChainesDeProd() {
-
+		
 		// Récupère la liste des Elements chargés depuis le CSV
 		ArrayList<ChaineDeProd> listChdP = LireFich.getListChdP();
 		ObservableList<ChaineDeProd> ChDP = FXCollections.observableArrayList();
 
 		for (ChaineDeProd c : listChdP) {
 			ChDP.add(c);
+			c.getActivation();
 		}
 		return ChDP;
 	}

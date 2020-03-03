@@ -46,13 +46,16 @@
 
 						</TableColumn>
 
-						<TableColumn fx:id="colEtat" onEditCommit="#changementEtat" prefWidth="159.0" text="Etat">
+						<TableColumn fx:id="colEtat" editable="true" onEditCommit="#EditEtat" prefWidth="159.0" text="Etat">
 							<cellValueFactory>
 								<PropertyValueFactory property="activation" />
 							</cellValueFactory>
 						</TableColumn>
 
-						<TableColumn fx:id="colDetail" editable="false" minWidth="0.0" prefWidth="228.0" sortable="false" text="Détails">
+						<TableColumn fx:id="colDetail" editable="false" minWidth="0.0" prefWidth="228.0" sortable="false" text="Coût de la chaîne">
+							<cellValueFactory>
+								<PropertyValueFactory property="cout" />
+							</cellValueFactory>
 						</TableColumn>
 					</columns>
 					<columnResizePolicy>

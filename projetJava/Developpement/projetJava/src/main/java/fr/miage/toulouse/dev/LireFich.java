@@ -17,8 +17,14 @@ public class LireFich {
 	// Liste de tous les Eléments chargés
 	private static ArrayList<Element> listElem = new ArrayList<Element>();
 
-	// Liste de tous les Eléments chargés
+	// Liste de toutes les chaines chargés
 	private static ArrayList<ChaineDeProd> listChdP = new ArrayList<ChaineDeProd>();
+	
+	// Liste de tous les prix d'achats chargés
+		private static ArrayList<Achats> listAchats = new ArrayList<Achats>();
+	
+	// Liste de tous les prix de ventes chargés
+	private static ArrayList<Ventes> listVentes = new ArrayList<Ventes>();	
 
 	public static Boolean[] LireFichier(String URL) {
 		Boolean[] result = { false, false, false };
@@ -89,6 +95,7 @@ public class LireFich {
 			}
 
 		}
+		listAchats.add(ach);
 		Set listKeys = ach.qte.keySet(); // Obtenir la liste des clés
 		Iterator iterateur = listKeys.iterator();
 		// Parcourir les clés et afficher les entrées de chaque clé;
@@ -125,6 +132,7 @@ public class LireFich {
 			}
 
 		}
+		listVentes.add(vte);
 		Set listKeys = vte.qte.keySet(); // Obtenir la liste des clés
 		Iterator iterateur = listKeys.iterator();
 		// Parcourir les clés et afficher les entrées de chaque clé;
@@ -226,6 +234,14 @@ public class LireFich {
 
 	public static ArrayList<Element> getListElem() {
 		return LireFich.listElem;
+	}
+	
+	public static ArrayList<Achats> getListAchats() {
+		return LireFich.listAchats;
+	}
+	
+	public static ArrayList<Ventes> getListVentes() {
+		return LireFich.listVentes;
 	}
 
 	public static ArrayList<ChaineDeProd> getListChdP() {

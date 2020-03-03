@@ -17,7 +17,14 @@ public class Achats extends Commandes {
 		this.prix = new HashMap <String, String>();
 		this.qte = new HashMap <String, Double>();
 	}
-			
-	 
+	
+
+	public HashMap<String, String> getPrix() {
+		return prix;
+	}
+
+	public HashMap<String, Double> getQte() {
+		return qte;
+	}
 	 
 }
