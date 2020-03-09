@@ -8,23 +8,24 @@ import java.util.List;
 import java.util.*;
 
 public class Achats extends Commandes {
-	protected HashMap <String, String> prix ;
-	protected HashMap <String, Double> qte;
+	private String id;
+	private String prix;
+	
+
 
 	
 	
-	public Achats () {
-		this.prix = new HashMap <String, String>();
-		this.qte = new HashMap <String, Double>();
+	public Achats (String id, String prix) {
+		this.id = id;
+		this.prix = prix;
 	}
 	
-
-	public HashMap<String, String> getPrix() {
+	public String getID() {
+		return id;
+	}
+	public String getPrix() {
 		return prix;
 	}
 
-	public HashMap<String, Double> getQte() {
-		return qte;
-	}
 	 
 }

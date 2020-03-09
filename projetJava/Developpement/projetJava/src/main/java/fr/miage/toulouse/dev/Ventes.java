@@ -11,6 +11,19 @@ public class Ventes extends Commandes {
 		this.prix = new HashMap <String, String>();
 		this.qte = new HashMap <String, Double>();
 	}
+
+
+
+	public HashMap<String, String> getPrix() {
+		return prix;
+	}
+
+
+
+	public void setPrix(HashMap<String, String> prix) {
+		this.prix = prix;
+	}
+	
 	
 	
 }

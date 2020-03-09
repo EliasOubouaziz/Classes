@@ -35,7 +35,7 @@ public class ChaineDeProd {
 	
 	
 	
-	public double coutCdP(ArrayList<Achats> ListAchats, ArrayList<Element> ListElem, int NvActiv) {
+	public double coutCdP(ArrayList<Ventes> ListVentes, ArrayList<Achats> ListAchats, ArrayList<Element> ListElem, int NvActiv) {
 		double qteBesoin;
 		double qtePossede;
 		double somme=0;
@@ -48,25 +48,28 @@ public class ChaineDeProd {
 			// Parcours les elements de la chaine de prod
 			Set listKeys = this.entree.keySet(); 
 			Iterator iterateur = listKeys.iterator(); 
+			for (Ventes vte : ListVentes) {
+				System.out.println(vte.getPrix().values().toString().substring(1,5));
+			}
+			
 			while (iterateur.hasNext()) {
 				Object key = iterateur.next();
-				qteBesoin = this.entree.get(key)*NvActiv;
-				
+				qteBesoin = NvActiv;
 						for(Element elem : ListElem) {
 							for (Achats ach : ListAchats) {
 								//si les 3 éléments correspondent
-								if (ach.getPrix().keySet().toString().substring(1,5).equals(key.toString()) && elem.getId().toString().equals(key.toString())) {
+								if (ach.getID().equals(key.toString()) && elem.getId().toString().equals(key.toString())) {
+									
 									// et que la quantité en stock est insuffisante
-									System.out.println(qteBesoin+" "+elem.getQte());
 									if(elem.getQte()<qteBesoin) {
-										somme = somme + (qteBesoin-elem.getQte()) * Double.parseDouble(ach.getPrix().values().toString().substring(1, ach.getPrix().values().toString().length()-1));
+										somme = somme - (qteBesoin-elem.getQte()) * Double.parseDouble(ach.getPrix());
 									}	
 								}
 							}
 						}						
 				}
 			}
-			return somme*NvActiv;
+			return somme;
 		}
 	public String getId() {
 		return id;

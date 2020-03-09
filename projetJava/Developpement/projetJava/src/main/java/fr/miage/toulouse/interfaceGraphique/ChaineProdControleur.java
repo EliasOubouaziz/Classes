@@ -63,11 +63,17 @@ public class ChaineProdControleur {
 	
 	public void EditEtat(TableColumn.CellEditEvent<ChaineDeProd, Integer> etatEdited) {
 		ChaineDeProd Cdp = tableCdp.getSelectionModel().getSelectedItem();
-		Cdp.setActivation(etatEdited.getNewValue());
-		double cout = Cdp.coutCdP(LireFich.getListAchats(), LireFich.getListElem(), etatEdited.getNewValue());
-		System.out.println(cout);
-		Cdp.setCout(cout);
-		initialize();
+		if(etatEdited.getNewValue() >= 0) {		
+			Cdp.setActivation(etatEdited.getNewValue());
+			double cout = Cdp.coutCdP(LireFich.getListVentes(),LireFich.getListAchats(), LireFich.getListElem(), etatEdited.getNewValue());
+			System.out.println(cout);
+			Cdp.setCout(cout);
+			initialize();
+		}
+		else {
+			Cdp.setActivation(0);
+			initialize();
+		}
 	}
 	/**
 	 * getChainesDeProd

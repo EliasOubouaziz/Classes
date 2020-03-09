@@ -69,7 +69,7 @@ public class LireFich {
 	}
 
 	public static void LireFichierAchats(String URL) {
-		Achats ach = new Achats();
+		
 		Path orderPath = Paths.get(URL);
 		List<String> lines = null; // null mean no value by default
 		try {
@@ -85,24 +85,15 @@ public class LireFich {
 		for (int i = 1; i < lines.size(); i++) {
 			String[] split = lines.get(i).split(";");
 			String idE = String.valueOf(split[0]);
-			String prixE = String.valueOf(split[1]);
-			double qteE = Double.valueOf(split[3]);
+			String prixE = String.valueOf(split[1]);	
 			if (prixE.lastIndexOf("NA") == -1) {
-				if (qteE > 0) {
-					ach.prix.put(idE, prixE);
-					ach.qte.put(idE, qteE);
+					Achats ach = new Achats(idE, prixE);
+					listAchats.add(ach);
+					System.out.println(idE + "=>" + prixE + "€ ");
 				}
-			}
 
 		}
-		listAchats.add(ach);
-		Set listKeys = ach.qte.keySet(); // Obtenir la liste des clés
-		Iterator iterateur = listKeys.iterator();
-		// Parcourir les clés et afficher les entrées de chaque clé;
-		while (iterateur.hasNext()) {
-			Object key = iterateur.next();
-			System.out.println(key + "=>" + ach.prix.get(key) + "€ x " + ach.qte.get(key));
-		}
+		
 	}
 
 	public static void LireFichierVentes(String URL) {
