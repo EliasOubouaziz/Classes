@@ -24,6 +24,8 @@ public class ChaineDeProd {
 	private int activation;
 	private double cout;
 	
+	private static ArrayList<Commandes> listCommandes = new ArrayList<Commandes>();
+	
 	public ChaineDeProd(String id,String nom) {
 		this.id = id;
 		this.nom = nom;
@@ -60,6 +62,21 @@ public class ChaineDeProd {
 									// et que la quantité en stock est insuffisante
 									if(elem.getQte()<qteBesoin*this.entree.get(key)) {
 										somme = somme - ((qteBesoin*this.entree.get(key)-elem.getQte()) * Double.parseDouble(ach.getPrix()));
+										
+										boolean présent = false;
+										for(Commandes cmd : listCommandes) {
+											if(cmd.getId().equals(key)) {
+												présent = true;
+												cmd.setQte(cmd.getQte()+(qteBesoin*this.entree.get(key)-elem.getQte()));
+											}
+										}
+										if(!présent) {
+											Commandes cmd = new Commandes(key.toString(),elem.getNom(),Double.parseDouble(ach.getPrix()),(qteBesoin*this.entree.get(key)-elem.getQte()));
+											listCommandes.add(cmd);
+										}
+									
+									
+									
 									}	
 								}
 							}
@@ -113,5 +130,9 @@ public class ChaineDeProd {
 
 	public void setActivation(int activation) {
 		this.activation = activation;
+	}
+	
+	public static ArrayList<Commandes> getlistCommandes(){
+		return listCommandes;
 	}
 } 

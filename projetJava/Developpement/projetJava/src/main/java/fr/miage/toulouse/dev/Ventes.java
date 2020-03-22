@@ -1,7 +1,7 @@
 package fr.miage.toulouse.dev;
 import java.util.HashMap;
 
-public class Ventes extends Commandes {
+public class Ventes{
 	protected HashMap <String, Double> prix ;
 	protected HashMap <String, Double> qte;
 

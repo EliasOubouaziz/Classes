@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.*;
 
-public class Achats extends Commandes {
+public class Achats {
 	private String id;
 	private String prix;
 	

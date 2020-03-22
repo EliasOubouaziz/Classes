@@ -26,33 +26,40 @@
 						</Label>
 						<Button fx:id="btnRetour" layoutX="14.0" layoutY="18.0"
 							mnemonicParsing="false" onAction="#retourMenu" text="Retour" />
-						<RadioButton layoutX="252.0" layoutY="68.0"
-							mnemonicParsing="false" text="Achat">
-							<toggleGroup>
-								<ToggleGroup fx:id="commande" />
-							</toggleGroup>
-						</RadioButton>
-						<RadioButton layoutX="353.0" layoutY="68.0"
-							mnemonicParsing="false" text="Vente" toggleGroup="$commande" />
+
 						<Button fx:id="btnValiderCommande" layoutX="593.0"
 							layoutY="18.0" mnemonicParsing="false" text="Valider" />
 					</children>
 				</Pane>
 			</top>
 			<center>
-				<TableView prefHeight="200.0" prefWidth="200.0"
-					BorderPane.alignment="CENTER">
+				<TableView fx:id="tableComm" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 					<columns>
-						<TableColumn fx:id="colCode" prefWidth="113.0"
-							text="Code" />
-						<TableColumn fx:id="colNom" prefWidth="181.0"
-							text="Nom" />
-						<TableColumn fx:id="colPU" prefWidth="132.0"
-							text="Prix Unitaire" />
-						<TableColumn fx:id="colQte" prefWidth="129.0"
-							text="Quantité" />
-						<TableColumn fx:id="colPrixTot" prefWidth="129.0"
-							text="Prix Total" />
+						<TableColumn fx:id="colCode" prefWidth="113.0" text="Code" >
+							<cellValueFactory>
+								<PropertyValueFactory property="id" />
+							</cellValueFactory>
+						</TableColumn>
+						<TableColumn fx:id="colNom" prefWidth="181.0" text="Nom" >
+							<cellValueFactory>
+								<PropertyValueFactory property="nom" />
+							</cellValueFactory>
+						</TableColumn>
+						<TableColumn fx:id="colPU" prefWidth="132.0" text="Prix Unitaire" >
+							<cellValueFactory>
+								<PropertyValueFactory property="PrixUnit" />
+							</cellValueFactory>
+						</TableColumn>
+						<TableColumn fx:id="colQte" prefWidth="129.0" text="Quantité" >
+							<cellValueFactory>
+								<PropertyValueFactory property="Qte" />
+							</cellValueFactory>
+						</TableColumn>
+						<TableColumn fx:id="colPrixTot" prefWidth="129.0" text="Prix Total" >
+							<cellValueFactory>
+								<PropertyValueFactory property="PrixTotal" />
+							</cellValueFactory>
+						</TableColumn>
 					</columns>
 				</TableView>
 			</center>

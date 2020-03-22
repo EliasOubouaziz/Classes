@@ -21,7 +21,7 @@ public class LireFich {
 	private static ArrayList<ChaineDeProd> listChdP = new ArrayList<ChaineDeProd>();
 	
 	// Liste de tous les prix d'achats chargés
-		private static ArrayList<Achats> listAchats = new ArrayList<Achats>();
+	private static ArrayList<Achats> listAchats = new ArrayList<Achats>();
 	
 	// Liste de tous les prix de ventes chargés
 	private static ArrayList<Ventes> listVentes = new ArrayList<Ventes>();	

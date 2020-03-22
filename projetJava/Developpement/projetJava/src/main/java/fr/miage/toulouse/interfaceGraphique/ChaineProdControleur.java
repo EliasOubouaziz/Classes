@@ -105,7 +105,7 @@ public class ChaineProdControleur {
 	private void sommeCout() {
 		double somme=0;
 		for (ChaineDeProd c : tableCdp.getItems()) {
-			System.out.println(c.getId());
+
 			somme = somme + c.getCout();
 		}
 		total.setText(""+somme);
