@@ -184,7 +184,10 @@ public class LireFich {
 			String[] split = lines.get(i).split(";");
 			String id = String.valueOf(split[0]);
 			String nom = String.valueOf(split[1]);
-			ChaineDeProd cdp = new ChaineDeProd(id, nom);
+			int temps = Integer.valueOf(split[4]);
+			int persNonQualifie = Integer.valueOf(split[5]);
+			int persQualifie = Integer.valueOf(split[6]);
+			ChaineDeProd cdp = new ChaineDeProd(id, nom, temps,persNonQualifie,persQualifie);
 
 			String[] splitEntree = split[2].split("/");
 			for (int j = 0; j < splitEntree.length; j++) {

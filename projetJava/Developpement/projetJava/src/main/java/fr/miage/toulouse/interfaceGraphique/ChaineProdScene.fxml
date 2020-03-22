@@ -71,6 +71,27 @@
 								<PropertyValueFactory property="cout" />
 							</cellValueFactory>
 						</TableColumn>
+						<TableColumn fx:id="colTemps" editable="false"
+							minWidth="0.0" prefWidth="228.0" sortable="false"
+							text="Temps prod en H">
+							<cellValueFactory>
+								<PropertyValueFactory property="temps" />
+							</cellValueFactory>
+						</TableColumn>
+						<TableColumn fx:id="colNonQualif" editable="false"
+							minWidth="0.0" prefWidth="228.0" sortable="false"
+							text="Personnel Non Qualifié">
+							<cellValueFactory>
+								<PropertyValueFactory property="persNonQualifie" />
+							</cellValueFactory>
+						</TableColumn>
+						<TableColumn fx:id="colQualif" editable="false"
+							minWidth="0.0" prefWidth="228.0" sortable="false"
+							text="Personnel Qualifié">
+							<cellValueFactory>
+								<PropertyValueFactory property="persQualifie" />
+							</cellValueFactory>
+						</TableColumn>
 					</columns>
 					<columnResizePolicy>
 						<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

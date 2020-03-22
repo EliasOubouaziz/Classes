@@ -49,6 +49,12 @@ public class ChaineProdControleur {
 	private TableColumn<ChaineDeProd, Double> colDetail;
 
 	@FXML
+	private TableColumn<ChaineDeProd, Integer> colTemps;
+	@FXML
+	private TableColumn<ChaineDeProd, Integer> colNonQualif;
+	@FXML
+	private TableColumn<ChaineDeProd, Integer> colQualif;
+	@FXML
 	private Button btnRetour;
 
 	@FXML
@@ -79,9 +85,16 @@ public class ChaineProdControleur {
 					etatEdited.getNewValue());
 			System.out.println(cout);
 			Cdp.setCout(cout);
+			Cdp.setPersNonQualifie(Cdp.getPersNonQualifieinit()*etatEdited.getNewValue());
+			Cdp.setPersQualifie(Cdp.getPersQualifieinit()*etatEdited.getNewValue());
+			Cdp.setTemps(Cdp.getTempsinit()*etatEdited.getNewValue());
+			
 			initialize();
 		} else {
 			Cdp.setActivation(0);
+			Cdp.setTemps(Cdp.getTempsinit());
+			Cdp.setPersNonQualifie(Cdp.getPersNonQualifieinit());
+			Cdp.setPersQualifie(Cdp.getPersQualifieinit());
 			initialize();
 		}
 	}

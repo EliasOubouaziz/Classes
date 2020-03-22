@@ -25,20 +25,36 @@ public class ChaineDeProd {
 	protected HashMap <String, Double> sortie;
 	private int activation;
 	private double cout;
+	private int tempsinit;
+	private int persNonQualifieinit;
+	private int persQualifieinit;
+	private int temps;
+	private int persNonQualifie;
+	private int persQualifie;
 	
 	private static ArrayList<Commandes> listCommandes = new ArrayList<Commandes>();
 	
-	public ChaineDeProd(String id,String nom) {
+	public ChaineDeProd(String id,String nom, int temps, int persNonQualifie, int persQualifie) {
 		this.id = id;
 		this.nom = nom;
 		this.entree = new HashMap <String, Double>();
 		this.sortie = new HashMap <String, Double>();
 		this.activation = 0;
 		this.cout = 0;
+		this.temps = temps;
+		this.persNonQualifie = persNonQualifie;
+		this.persQualifie = persQualifie;
+		this.tempsinit = temps;
+		this.persNonQualifieinit = persNonQualifie;
+		this.persQualifieinit = persQualifie;
 	}
 	
 	
 	
+	
+
+
+
 	public double coutCdP(ArrayList<Ventes> ListVentes, ArrayList<Achats> ListAchats, ArrayList<Element> ListElem, int NvActiv) {
 		double qteBesoin;
 		double qtePossede;
@@ -184,4 +200,48 @@ public class ChaineDeProd {
 	public static ArrayList<Commandes> getlistCommandes(){
 		return listCommandes;
 	}
+	
+	
+	public int getTemps() {
+		return temps;
+	}
+
+
+
+	public void setTemps(int temps) {
+		this.temps = temps;
+	}
+
+
+
+	public int getPersNonQualifie() {
+		return persNonQualifie;
+	}
+
+
+
+	public void setPersNonQualifie(int persNonQualifie) {
+		this.persNonQualifie = persNonQualifie;
+	}
+
+	public int getPersQualifie() {
+		return persQualifie;
+	}
+
+	public void setPersQualifie(int persQualifie) {
+		this.persQualifie = persQualifie;
+	}
+
+	public int getTempsinit() {
+		return tempsinit;
+	}
+
+	public int getPersNonQualifieinit() {
+		return persNonQualifieinit;
+	}
+
+	public int getPersQualifieinit() {
+		return persQualifieinit;
+	}
+	
 } 
