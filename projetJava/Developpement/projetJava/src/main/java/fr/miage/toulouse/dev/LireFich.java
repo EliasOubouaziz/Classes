@@ -116,14 +116,19 @@ public class LireFich {
 			String prixE = String.valueOf(split[2]);
 			double qteE = Double.valueOf(split[3]);
 			if (prixE.lastIndexOf("NA") == -1) {
-				if (qteE > 0) {
-					vte.prix.put(idE, prixE);
+				if (qteE >= 0) {
+					double prixEdouble = Double.parseDouble(prixE);
+					vte.prix.put(idE, prixEdouble);
 					vte.qte.put(idE, qteE);
+					Ventes listevte = new Ventes();
+					listevte.prix.put(idE, prixEdouble);
+					listevte.qte.put(idE, qteE);
+					listVentes.add(listevte);
 				}
 			}
-
+			
 		}
-		listVentes.add(vte);
+		
 		Set listKeys = vte.qte.keySet(); // Obtenir la liste des clés
 		Iterator iterateur = listKeys.iterator();
 		// Parcourir les clés et afficher les entrées de chaque clé;
@@ -240,8 +245,5 @@ public class LireFich {
 	}
 
 
-	public static void main (String[] args){
-		LireFichierChaineProd("C:\\Users\\Elias\\Documents\\GitHub\\Classes\\projetJava\\Developpement\\projetJava\\chaines.csv");
-	}
 }
 	

@@ -48,10 +48,7 @@ public class ChaineDeProd {
 			// Parcours les elements de la chaine de prod
 			Set listKeys = this.entree.keySet(); 
 			Iterator iterateur = listKeys.iterator(); 
-			for (Ventes vte : ListVentes) {
-				System.out.println(vte.getPrix().values().toString().substring(1,5));
-			}
-			
+
 			while (iterateur.hasNext()) {
 				Object key = iterateur.next();
 				qteBesoin = NvActiv;
@@ -61,12 +58,27 @@ public class ChaineDeProd {
 								if (ach.getID().equals(key.toString()) && elem.getId().toString().equals(key.toString())) {
 									
 									// et que la quantité en stock est insuffisante
-									if(elem.getQte()<qteBesoin) {
-										somme = somme - (qteBesoin-elem.getQte()) * Double.parseDouble(ach.getPrix());
+									if(elem.getQte()<qteBesoin*this.entree.get(key)) {
+										somme = somme - ((qteBesoin*this.entree.get(key)-elem.getQte()) * Double.parseDouble(ach.getPrix()));
 									}	
 								}
 							}
 						}						
+				}
+			
+				Set listKeys1 = this.sortie.keySet();
+				Iterator iterateur1 = listKeys1.iterator(); 
+				while (iterateur1.hasNext()) {
+					Object key1 = iterateur1.next();
+					for (Ventes vte : ListVentes) {
+
+						if (vte.prix.keySet().toString().substring(1,5).equals(key1.toString())) {
+							double prix = Double.parseDouble(vte.prix.values().toString().substring(1,vte.prix.values().toString().length()-1));
+							somme = somme + (prix*this.sortie.get(key1)*NvActiv);
+						}
+						
+					}
+			
 				}
 			}
 			return somme;

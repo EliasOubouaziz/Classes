@@ -2,25 +2,25 @@ package fr.miage.toulouse.dev;
 import java.util.HashMap;
 
 public class Ventes extends Commandes {
-	protected HashMap <String, String> prix ;
+	protected HashMap <String, Double> prix ;
 	protected HashMap <String, Double> qte;
 
 	
 	
 	public Ventes () {
-		this.prix = new HashMap <String, String>();
+		this.prix = new HashMap <String, Double>();
 		this.qte = new HashMap <String, Double>();
 	}
 
 
 
-	public HashMap<String, String> getPrix() {
+	public HashMap<String, Double> getPrix() {
 		return prix;
 	}
 
 
 
-	public void setPrix(HashMap<String, String> prix) {
+	public void setPrix(HashMap<String, Double> prix) {
 		this.prix = prix;
 	}
 	

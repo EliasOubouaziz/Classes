@@ -2,6 +2,9 @@ package fr.miage.toulouse.interfaceGraphique;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 import fr.miage.toulouse.dev.ChaineDeProd;
 import fr.miage.toulouse.dev.LireFich;
@@ -18,6 +21,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
@@ -29,6 +33,9 @@ import javafx.util.converter.IntegerStringConverter;
  *
  */
 public class ChaineProdControleur {
+	
+	@FXML
+	private TextField total;
 
 	@FXML
 	private TableView<ChaineDeProd> tableCdp;
@@ -58,7 +65,7 @@ public class ChaineProdControleur {
 		tableCdp.setEditable(true);
 
 		colEtat.setCellFactory(TextFieldTableCell.<ChaineDeProd, Integer>forTableColumn(new IntegerStringConverter()));
-		
+		sommeCout();
 	}
 	
 	public void EditEtat(TableColumn.CellEditEvent<ChaineDeProd, Integer> etatEdited) {
@@ -91,7 +98,18 @@ public class ChaineProdControleur {
 			ChDP.add(c);
 			c.getActivation();
 		}
+		
 		return ChDP;
+	}
+	
+	private void sommeCout() {
+		double somme=0;
+		for (ChaineDeProd c : tableCdp.getItems()) {
+			System.out.println(c.getId());
+			somme = somme + c.getCout();
+		}
+		total.setText(""+somme);
+		
 	}
 
 	/**

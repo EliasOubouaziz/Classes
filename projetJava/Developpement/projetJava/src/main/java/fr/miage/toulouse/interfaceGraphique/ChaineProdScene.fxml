@@ -9,6 +9,7 @@
 <?import javafx.scene.control.cell.*?>
 <?import javafx.collections.*?>
 <?import fxmltableview.*?>
+<?import javafx.scene.control.TextField?>
 
 <AnchorPane prefHeight="624.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.miage.toulouse.interfaceGraphique.ChaineProdControleur">
 	<children>
@@ -63,6 +64,21 @@
 					</columnResizePolicy>
 				</TableView>
 			</center>
+			<bottom>
+			<Pane prefHeight="40.0" prefWidth="775.0" BorderPane.alignment="CENTER">
+				<Label textAlignment="CENTER" layoutX="450.0" layoutY="5.0" text="Somme des côuts :">
+					<font>
+						<Font name="System Bold" size="14.0" />
+					</font>
+				</Label>
+				<TextField fx:id="total" layoutX="575.0" editable="false" >
+					<font>
+						<Font name="System Bold" size="14.0" />
+					</font>
+				</TextField>
+			</Pane>
+			</bottom>
+			
 		</BorderPane>
 	</children>
 </AnchorPane>
