@@ -70,6 +70,7 @@ public class ChaineProdControleur {
 	public void EditEtat(TableColumn.CellEditEvent<ChaineDeProd, Integer> etatEdited) {
 		ChaineDeProd Cdp = tableCdp.getSelectionModel().getSelectedItem();
 		if (etatEdited.getNewValue() >= 0) {
+			Cdp.CommandeSup(LireFich.getListAchats(), LireFich.getListElem(), etatEdited.getOldValue());
 			Cdp.setActivation(etatEdited.getNewValue());
 			double cout = Cdp.coutCdP(LireFich.getListVentes(), LireFich.getListAchats(), LireFich.getListElem(),
 					etatEdited.getNewValue());

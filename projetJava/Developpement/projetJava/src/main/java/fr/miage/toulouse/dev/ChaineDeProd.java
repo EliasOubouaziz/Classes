@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang.ArrayUtils;
+
 import javafx.beans.property.SimpleIntegerProperty;
 
 import java.io.IOException;
@@ -65,7 +67,7 @@ public class ChaineDeProd {
 										
 										boolean présent = false;
 										for(Commandes cmd : listCommandes) {
-											if(cmd.getId().equals(key)) {
+											if(cmd.getId().equals(key.toString())) {
 												présent = true;
 												cmd.setQte(cmd.getQte()+(qteBesoin*this.entree.get(key)-elem.getQte()));
 											}
@@ -100,6 +102,53 @@ public class ChaineDeProd {
 			}
 			return somme;
 		}
+	
+	
+	
+	
+	
+	
+	
+	
+	public void CommandeSup( ArrayList<Achats> ListAchats, ArrayList<Element> ListElem, int NvActiv) {
+		double qteBesoin;
+		double qtePossede;
+		double somme=0;
+		if(NvActiv>0) {
+			// Parcours les elements de la chaine de prod
+			Set listKeys = this.entree.keySet(); 
+			Iterator iterateur = listKeys.iterator(); 
+
+			while (iterateur.hasNext()) {
+				Object key = iterateur.next();
+				qteBesoin = NvActiv;
+						for(Element elem : ListElem) {
+							for (Achats ach : ListAchats) {
+								//si les 3 éléments correspondent
+								if (ach.getID().equals(key.toString()) && elem.getId().toString().equals(key.toString())) {
+										Commandes elemsup = null;
+										for(Commandes cmd : listCommandes) {
+											System.out.println(key.toString());
+											if(cmd.getId().equals(key.toString())) {
+												
+												cmd.setQte(cmd.getQte()-(qteBesoin*this.entree.get(key)-elem.getQte()));
+												
+												if(cmd.getQte()==0) {
+													elemsup=cmd;
+												}
+											}	
+										}
+										if(elemsup!=null) {
+											listCommandes.remove(listCommandes.indexOf(elemsup));
+											System.out.println("sup");
+										}
+
+								}
+							}
+						}						
+				}
+			}
+	}
 	public String getId() {
 		return id;
 	}
