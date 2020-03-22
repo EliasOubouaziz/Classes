@@ -4,27 +4,21 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-
 import fr.miage.toulouse.dev.ChaineDeProd;
 import fr.miage.toulouse.dev.LireFich;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 
@@ -35,7 +29,7 @@ import javafx.util.converter.IntegerStringConverter;
  *
  */
 public class ChaineProdControleur {
-	
+
 	@FXML
 	private TextField total;
 
@@ -56,12 +50,12 @@ public class ChaineProdControleur {
 
 	@FXML
 	private Button btnRetour;
-	
+
 	@FXML
 	private Button btnSave;
-	
-	
-	
+
+	// Sélecteur de fichier
+	final FileChooser fileChooser = new FileChooser();
 
 	@FXML
 	public void initialize() {
@@ -72,21 +66,22 @@ public class ChaineProdControleur {
 		colEtat.setCellFactory(TextFieldTableCell.<ChaineDeProd, Integer>forTableColumn(new IntegerStringConverter()));
 		sommeCout();
 	}
-	
+
 	public void EditEtat(TableColumn.CellEditEvent<ChaineDeProd, Integer> etatEdited) {
 		ChaineDeProd Cdp = tableCdp.getSelectionModel().getSelectedItem();
-		if(etatEdited.getNewValue() >= 0) {		
+		if (etatEdited.getNewValue() >= 0) {
 			Cdp.setActivation(etatEdited.getNewValue());
-			double cout = Cdp.coutCdP(LireFich.getListVentes(),LireFich.getListAchats(), LireFich.getListElem(), etatEdited.getNewValue());
+			double cout = Cdp.coutCdP(LireFich.getListVentes(), LireFich.getListAchats(), LireFich.getListElem(),
+					etatEdited.getNewValue());
 			System.out.println(cout);
 			Cdp.setCout(cout);
 			initialize();
-		}
-		else {
+		} else {
 			Cdp.setActivation(0);
 			initialize();
 		}
 	}
+
 	/**
 	 * getChainesDeProd
 	 * 
@@ -94,7 +89,7 @@ public class ChaineProdControleur {
 	 * @return la liste des Chaines de production à afficher
 	 */
 	private ObservableList<ChaineDeProd> getChainesDeProd() {
-		
+
 		// Récupère la liste des Elements chargés depuis le CSV
 		ArrayList<ChaineDeProd> listChdP = LireFich.getListChdP();
 		ObservableList<ChaineDeProd> ChDP = FXCollections.observableArrayList();
@@ -103,18 +98,18 @@ public class ChaineProdControleur {
 			ChDP.add(c);
 			c.getActivation();
 		}
-		
+
 		return ChDP;
 	}
-	
+
 	private void sommeCout() {
-		double somme=0;
+		double somme = 0;
 		for (ChaineDeProd c : tableCdp.getItems()) {
 
 			somme = somme + c.getCout();
 		}
-		total.setText(""+somme);
-		
+		total.setText("" + somme);
+
 	}
 
 	/**
@@ -147,67 +142,59 @@ public class ChaineProdControleur {
 
 	}
 
-	/**changementEtat
+	/**
+	 * changementEtat
 	 * 
-	 * Lors de la modification de l'état d'une chaine de prod
-	 * affecte le nouvel etat
+	 * Lors de la modification de l'état d'une chaine de prod affecte le nouvel etat
 	 * 
 	 * @param e Evênement
 	 */
 	public void changementEtat(ActionEvent e) {
 		System.out.println("MODIFICATION");
 	}
-	
+
 	public void sauvegarde(ActionEvent e) {
 		System.out.println("ChaineProd - clic sur btnSave");
-		
+
 		// Set extension filter for text files
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV Files (*.csv)", "*.csv");
-        fileChooser.getExtensionFilters().add(extFilter);
+		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV Files (*.csv)", "*.csv");
+		fileChooser.getExtensionFilters().add(extFilter);
 
- 
+		// Sélection du fichier à enregistrer
+		File file = fileChooser.showSaveDialog((Stage) btnSave.getScene().getWindow());
 
-        // Sélection du fichier à enregistrer
-        File file = fileChooser.showSaveDialog((Stage) btnSave.getScene().getWindow());
+		// S'il n'est pas null, enregistre
+		if (file != null) {
 
- 
+			String url = file.getAbsolutePath();
+			
+			// récupère la liste des chaines de production
+			ObservableList<ChaineDeProd> listChdP = this.getChainesDeProd();
 
-        // S'il n'est pas null, enregistre
-        if (file != null) {
+			
+			File file2 = new File(url);
+			FileWriter fw;
 
- 
+			try {
 
-            String url = file.getAbsolutePath();
-        }
-		
-		//récupère la liste des chaines de production
-		ObservableList<ChaineDeProd> listChdP = this.getChainesDeProd();
-		
-		String fileName="test";
-		File file2 = new File(fileName+".csv");
-	    FileWriter fw;
-	    
-	    
-	    try {
-	    	
-			fw = new FileWriter(file2);
-			fw.write("Code;Nom;Entree code,qte;Sortie code,qte, Niveau activation\n");
-			for (ChaineDeProd cdp : listChdP) {
-				fw.write(cdp.getId()+";");
-				fw.write(cdp.getNom()+";");
-				fw.write(cdp.getEntree()+";");
-				fw.write(cdp.getSortie()+";");
-				fw.write(cdp.getActivation());
+				fw = new FileWriter(file2);
+				fw.write("Code;Nom;Entree code,qte;Sortie code,qte, Niveau activation\n");
+				for (ChaineDeProd cdp : listChdP) {
+					fw.write(cdp.getId() + ";");
+					fw.write(cdp.getNom() + ";");
+					fw.write(cdp.getEntree() + ";");
+					fw.write(cdp.getSortie() + ";");
+					fw.write(cdp.getActivation());
+				}
+
+				fw.close();
+
+			} catch (IOException e1) {
+
+				e1.printStackTrace();
 			}
-			
-			fw.close();
-			
-		} catch (IOException e1) {
-			
-			e1.printStackTrace();
 		}
-		
-		
+
 	}
 
 }
