@@ -1,5 +1,7 @@
 package fr.miage.toulouse.interfaceGraphique;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,7 +59,7 @@ public class ChaineProdControleur {
 	
 	@FXML
 	private Button btnSave;
-
+	
 	
 	
 
@@ -159,8 +161,51 @@ public class ChaineProdControleur {
 	public void sauvegarde(ActionEvent e) {
 		System.out.println("ChaineProd - clic sur btnSave");
 		
+		// Set extension filter for text files
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV Files (*.csv)", "*.csv");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+ 
+
+        // Sélection du fichier à enregistrer
+        File file = fileChooser.showSaveDialog((Stage) btnSave.getScene().getWindow());
+
+ 
+
+        // S'il n'est pas null, enregistre
+        if (file != null) {
+
+ 
+
+            String url = file.getAbsolutePath();
+        }
+		
 		//récupère la liste des chaines de production
 		ObservableList<ChaineDeProd> listChdP = this.getChainesDeProd();
+		
+		String fileName="test";
+		File file2 = new File(fileName+".csv");
+	    FileWriter fw;
+	    
+	    
+	    try {
+	    	
+			fw = new FileWriter(file2);
+			fw.write("Code;Nom;Entree code,qte;Sortie code,qte, Niveau activation\n");
+			for (ChaineDeProd cdp : listChdP) {
+				fw.write(cdp.getId()+";");
+				fw.write(cdp.getNom()+";");
+				fw.write(cdp.getEntree()+";");
+				fw.write(cdp.getSortie()+";");
+				fw.write(cdp.getActivation());
+			}
+			
+			fw.close();
+			
+		} catch (IOException e1) {
+			
+			e1.printStackTrace();
+		}
 		
 		
 	}
