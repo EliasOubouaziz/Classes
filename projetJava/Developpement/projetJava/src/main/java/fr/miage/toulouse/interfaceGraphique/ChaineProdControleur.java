@@ -178,13 +178,13 @@ public class ChaineProdControleur {
 			try {
 
 				fw = new FileWriter(file2);
-				fw.write("Code;Nom;Entree code,qte;Sortie code,qte, Niveau activation\n");
+				fw.write("Code;Nom;Entree code,qte;Sortie code,qte;Niveau activation\n");
 				for (ChaineDeProd cdp : listChdP) {
 					fw.write(cdp.getId() + ";");
 					fw.write(cdp.getNom() + ";");
 					fw.write(cdp.getEntree() + ";");
 					fw.write(cdp.getSortie() + ";");
-					fw.write(cdp.getActivation());
+					fw.write(cdp.getActivation()+"\n");
 				}
 
 				fw.close();
