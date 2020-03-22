@@ -11,27 +11,36 @@
 <?import fxmltableview.*?>
 <?import javafx.scene.control.TextField?>
 
-<AnchorPane prefHeight="624.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.miage.toulouse.interfaceGraphique.ChaineProdControleur">
+<AnchorPane prefHeight="624.0" prefWidth="775.0"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="fr.miage.toulouse.interfaceGraphique.ChaineProdControleur">
 	<children>
-		<BorderPane prefHeight="624.0" prefWidth="775.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+		<BorderPane prefHeight="624.0" prefWidth="775.0"
+			AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+			AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 			<top>
-				<Pane prefHeight="89.0" prefWidth="775.0" BorderPane.alignment="CENTER">
+				<Pane prefHeight="89.0" prefWidth="775.0"
+					BorderPane.alignment="CENTER">
 					<children>
-						<Label alignment="CENTER" layoutX="224.0" layoutY="22.0" text="Gestion des Chaines de production" textAlignment="CENTER">
+						<Label alignment="CENTER" layoutX="224.0" layoutY="22.0"
+							text="Gestion des Chaines de production" textAlignment="CENTER">
 							<font>
 								<Font name="System Bold" size="20.0" />
 							</font>
 						</Label>
-						<Button fx:id="btnRetour" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" onAction="#retourMenu" text="Retour" />
+						<Button fx:id="btnRetour" layoutX="14.0" layoutY="18.0"
+							mnemonicParsing="false" onAction="#retourMenu" text="Retour" />
 					</children>
 				</Pane>
 			</top>
 			<center>
-				<TableView fx:id="tableCdp" editable="true" prefHeight="457.0" prefWidth="775.0" BorderPane.alignment="CENTER">
+				<TableView fx:id="tableCdp" editable="true"
+					prefHeight="457.0" prefWidth="775.0" BorderPane.alignment="CENTER">
 					<columns>
 
 
-						<TableColumn fx:id="colID" editable="false" prefWidth="118.0" text="Id">
+						<TableColumn fx:id="colID" editable="false"
+							prefWidth="118.0" text="Id">
 
 							<cellValueFactory>
 								<PropertyValueFactory property="id" />
@@ -39,7 +48,8 @@
 
 						</TableColumn>
 
-						<TableColumn fx:id="colNomC" editable="false" prefWidth="306.0" text="Nom Chaine">
+						<TableColumn fx:id="colNomC" editable="false"
+							prefWidth="306.0" text="Nom Chaine">
 
 							<cellValueFactory>
 								<PropertyValueFactory property="nom" />
@@ -47,13 +57,16 @@
 
 						</TableColumn>
 
-						<TableColumn fx:id="colEtat" editable="true" onEditCommit="#EditEtat" prefWidth="159.0" text="Etat">
+						<TableColumn fx:id="colEtat" editable="true"
+							onEditCommit="#EditEtat" prefWidth="159.0" text="Etat">
 							<cellValueFactory>
 								<PropertyValueFactory property="activation" />
 							</cellValueFactory>
 						</TableColumn>
 
-						<TableColumn fx:id="colDetail" editable="false" minWidth="0.0" prefWidth="228.0" sortable="false" text="Coût de la chaîne">
+						<TableColumn fx:id="colDetail" editable="false"
+							minWidth="0.0" prefWidth="228.0" sortable="false"
+							text="Coût de la chaîne">
 							<cellValueFactory>
 								<PropertyValueFactory property="cout" />
 							</cellValueFactory>
@@ -65,9 +78,11 @@
 				</TableView>
 			</center>
 			<bottom>
-				<Pane prefHeight="66.0" prefWidth="775.0" BorderPane.alignment="CENTER">
+				<Pane prefHeight="66.0" prefWidth="775.0"
+					BorderPane.alignment="CENTER">
 					<children>
-						<Label layoutX="441.0" layoutY="23.0" text="Somme des côuts :" textAlignment="CENTER">
+						<Label layoutX="441.0" layoutY="23.0"
+							text="Somme des côuts :" textAlignment="CENTER">
 							<font>
 								<Font name="System Bold" size="14.0" />
 							</font>
@@ -75,7 +90,8 @@
 								<Insets />
 							</opaqueInsets>
 						</Label>
-						<TextField fx:id="total" editable="false" layoutX="582.0" layoutY="18.0">
+						<TextField fx:id="total" editable="false"
+							layoutX="582.0" layoutY="18.0">
 							<font>
 								<Font name="System Bold" size="14.0" />
 							</font>
@@ -84,8 +100,11 @@
 							</opaqueInsets>
 						</TextField>
 						<Button fx:id="btnSave" layoutX="14.0" layoutY="14.0"
-	mnemonicParsing="false" onAction="#sauvegarde" prefHeight="21.0"
-	prefWidth="147.0" text="Sauvegarder" />
+							mnemonicParsing="false" onAction="#sauvegarde" prefHeight="21.0"
+							prefWidth="147.0" text="Sauvegarder" />
+						<Button fx:id="btnCharger" layoutX="207.0" layoutY="14.0"
+							mnemonicParsing="false" onAction="#versChargement"
+							prefHeight="39.0" prefWidth="157.0" text="Charger" />
 					</children>
 				</Pane>
 			</bottom>

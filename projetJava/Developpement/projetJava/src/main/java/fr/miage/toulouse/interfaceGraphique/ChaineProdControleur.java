@@ -54,6 +54,9 @@ public class ChaineProdControleur {
 	@FXML
 	private Button btnSave;
 
+	@FXML
+	private Button btnCharger;
+
 	// Sélecteur de fichier
 	final FileChooser fileChooser = new FileChooser();
 
@@ -168,11 +171,10 @@ public class ChaineProdControleur {
 		if (file != null) {
 
 			String url = file.getAbsolutePath();
-			
+
 			// récupère la liste des chaines de production
 			ObservableList<ChaineDeProd> listChdP = this.getChainesDeProd();
 
-			
 			File file2 = new File(url);
 			FileWriter fw;
 
@@ -185,7 +187,7 @@ public class ChaineProdControleur {
 					fw.write(cdp.getNom() + ";");
 					fw.write(cdp.getEntree() + ";");
 					fw.write(cdp.getSortie() + ";");
-					fw.write(cdp.getActivation()+"\n");
+					fw.write(cdp.getActivation() + "\n");
 				}
 
 				fw.close();
@@ -195,6 +197,29 @@ public class ChaineProdControleur {
 				e1.printStackTrace();
 			}
 		}
+
+	}
+
+	public void versChargement(ActionEvent e) throws IOException {
+		System.out.println("ChaineProd - clic sur btnCharger");
+
+		// Fermeture de la fenetre
+		Stage fen = (Stage) btnCharger.getScene().getWindow();
+
+		fen.close();
+
+		// Chargement de la scène suivante
+		FXMLLoader fxmlLoader = new FXMLLoader(
+				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/ComparaisonScene.fxml"));
+		Parent root1 = (Parent) fxmlLoader.load();
+
+		// Création de la nouvelle fenêtre
+		Stage newFen = new Stage();
+		newFen.setTitle("Comparaison");
+		newFen.setScene(new Scene(root1));
+		newFen.setResizable(false);
+		newFen.show();
+		newFen.centerOnScreen();
 
 	}
 
