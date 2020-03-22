@@ -54,6 +54,9 @@ public class ChaineProdControleur {
 
 	@FXML
 	private Button btnRetour;
+	
+	@FXML
+	private Button btnSave;
 
 	
 	
@@ -151,6 +154,15 @@ public class ChaineProdControleur {
 	 */
 	public void changementEtat(ActionEvent e) {
 		System.out.println("MODIFICATION");
+	}
+	
+	public void sauvegarde(ActionEvent e) {
+		System.out.println("ChaineProd - clic sur btnSave");
+		
+		//récupère la liste des chaines de production
+		ObservableList<ChaineDeProd> listChdP = this.getChainesDeProd();
+		
+		
 	}
 
 }

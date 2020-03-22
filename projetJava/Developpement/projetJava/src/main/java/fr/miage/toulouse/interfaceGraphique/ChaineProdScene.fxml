@@ -65,20 +65,31 @@
 				</TableView>
 			</center>
 			<bottom>
-			<Pane prefHeight="40.0" prefWidth="775.0" BorderPane.alignment="CENTER">
-				<Label textAlignment="CENTER" layoutX="450.0" layoutY="5.0" text="Somme des côuts :">
-					<font>
-						<Font name="System Bold" size="14.0" />
-					</font>
-				</Label>
-				<TextField fx:id="total" layoutX="575.0" editable="false" >
-					<font>
-						<Font name="System Bold" size="14.0" />
-					</font>
-				</TextField>
-			</Pane>
+				<Pane prefHeight="66.0" prefWidth="775.0" BorderPane.alignment="CENTER">
+					<children>
+						<Label layoutX="441.0" layoutY="23.0" text="Somme des côuts :" textAlignment="CENTER">
+							<font>
+								<Font name="System Bold" size="14.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<TextField fx:id="total" editable="false" layoutX="582.0" layoutY="18.0">
+							<font>
+								<Font name="System Bold" size="14.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</TextField>
+						<Button fx:id="btnSave" layoutX="14.0" layoutY="14.0"
+	mnemonicParsing="false" onAction="#sauvegarde" prefHeight="21.0"
+	prefWidth="147.0" text="Sauvegarder" />
+					</children>
+				</Pane>
 			</bottom>
-			
+
 		</BorderPane>
 	</children>
 </AnchorPane>
