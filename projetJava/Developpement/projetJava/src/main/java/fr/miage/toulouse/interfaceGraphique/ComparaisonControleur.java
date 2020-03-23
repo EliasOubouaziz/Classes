@@ -79,9 +79,9 @@ public class ComparaisonControleur {
 	// Sélecteur de fichier
 	final FileChooser fileChooser = new FileChooser();
 	
-	private static ArrayList<ChaineDeProd> listeGauche;
+	private static ArrayList<ChaineDeProd> listeGauche = new ArrayList<ChaineDeProd>();
 	
-	private static ArrayList<ChaineDeProd> listeDroite;
+	private static ArrayList<ChaineDeProd> listeDroite = new ArrayList<ChaineDeProd>();
 	
 	public static ArrayList<ChaineDeProd> getListeGauche() {
 		return listeGauche;
@@ -159,7 +159,7 @@ public class ComparaisonControleur {
 			ObservableList<ChaineDeProd> listCG = lireSave(url);
 
 			for (ChaineDeProd c : listCG) {
-				this.listeGauche.add(c);
+				ComparaisonControleur.listeGauche.add(c);
 				c.getActivation();
 			}
 			
@@ -178,7 +178,7 @@ public class ComparaisonControleur {
 			ObservableList<ChaineDeProd> listCD = lireSave(url);
 			
 			for (ChaineDeProd c : listCD) {
-				this.listeDroite.add(c);
+				ComparaisonControleur.listeDroite.add(c);
 				c.getActivation();
 			}
 
