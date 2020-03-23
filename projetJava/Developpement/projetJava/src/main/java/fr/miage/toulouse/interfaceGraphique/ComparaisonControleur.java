@@ -6,8 +6,12 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+
 import fr.miage.toulouse.dev.ChaineDeProd;
+import fr.miage.toulouse.dev.LireFich;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -114,6 +118,7 @@ public class ComparaisonControleur {
 			ObservableList<ChaineDeProd> listCG = lireSave(url);
 
 			tableCdpG.setItems(listCG);
+			sommeCout();
 		}
 	}
 
@@ -143,11 +148,63 @@ public class ComparaisonControleur {
 			ChaineDeProd cdp = new ChaineDeProd(id, nom, 0, 0, 0);
 			cdp.setActivation(activation);
 
+			String colEntree = split[2];
+			colEntree = colEntree.substring(1, colEntree.length() - 1);
+
+			String[] splitEntree = colEntree.split(", ");
+			for (int j = 0; j < splitEntree.length; j++) {
+				String[] splitElemEntree = splitEntree[j].split("=");
+				String idE = String.valueOf(splitElemEntree[0]);
+				double qteE = Double.valueOf(splitElemEntree[1]);
+				cdp.getEntree().put(idE, qteE);
+			}
+
+			String colSortie = split[3];
+			colSortie = colSortie.substring(1, colSortie.length() - 1);
+			System.out.println(colSortie);
+
+			String[] splitSortie = colSortie.split(", ");
+			for (int j = 0; j < splitSortie.length; j++) {
+				String[] splitElemSortie = splitSortie[j].split("=");
+				String idE = String.valueOf(splitElemSortie[0]);
+				double qteE = Double.valueOf(splitElemSortie[1]);
+				cdp.getSortie().put(idE, qteE);
+			}
+
+			Set<String> listKeys = cdp.getEntree().keySet();
+			Iterator<String> iterateur = listKeys.iterator();
+			while (iterateur.hasNext()) {
+				Object key = iterateur.next();
+			}
+
+			Set<String> listKeys2 = cdp.getSortie().keySet();
+			Iterator<String> iterateur2 = listKeys2.iterator();
+			while (iterateur2.hasNext()) {
+				Object key = iterateur2.next();
+			}
+
+			double cout = cdp.coutCdP(LireFich.getListVentes(), LireFich.getListAchats(), LireFich.getListElem(),
+					activation);
+			cdp.setCout(cout);
+			System.out.println("COUT : " + cdp.getCout());
+			
+			System.out.println(cdp.getEntree().toString());
+
 			listChdp.add(cdp);
 
 		}
 
 		return listChdp;
+	}
+	
+	private void sommeCout() {
+		double somme = 0;
+		for (ChaineDeProd c : tableCdpG.getItems()) {
+
+			somme = somme + c.getCout();
+		}
+		totalGauche.setText("" + somme);
+
 	}
 
 }
