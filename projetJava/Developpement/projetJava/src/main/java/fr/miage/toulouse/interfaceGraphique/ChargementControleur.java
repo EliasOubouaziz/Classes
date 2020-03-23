@@ -45,12 +45,14 @@ public class ChargementControleur {
 	@FXML
 	private Button btnRetour;
 
-	//Sélecteur de fichier
+	// Sélecteur de fichier
 	final FileChooser fileChooser = new FileChooser();
 
-	/**Méthode retourMenu : 
+	/**
+	 * Méthode retourMenu :
 	 * 
-	 * Lors d'un clic sur le bouton retour, renvoie à la page de chargement principale
+	 * Lors d'un clic sur le bouton retour, renvoie à la page de chargement
+	 * principale
 	 * 
 	 * @param e Event clic sur btnRetour
 	 * @throws IOException Exception
@@ -72,35 +74,38 @@ public class ChargementControleur {
 		newFen.setTitle("Menu");
 		newFen.setScene(new Scene(root1));
 		newFen.setResizable(false);
-		
-		//Affichage de la fenêtre
+
+		// Affichage de la fenêtre
 		newFen.show();
 		newFen.centerOnScreen();
 
 	}
 
-	/**Méthode parcourirElement : 
+	/**
+	 * Méthode parcourirElement :
 	 * 
 	 * Lors d'un clic sur le bouton parcourir (...) affiche l'url du fichier choisi
 	 * 
 	 * @param e Event clic sur bouton
 	 */
 	public void parcourirElement(ActionEvent e) {
-		//Vide le champ texte
+		// Vide le champ texte
 		tfElem.clear();
-		
-		//Sélection du fichier à charger
+
+		// Sélection du fichier à charger
 		File file = fileChooser.showOpenDialog((Stage) btnParcoursElem.getScene().getWindow());
-		//S'il n'est pas null, récupére son url et l'affiche dans le champ texte
+		// S'il n'est pas null, récupére son url et l'affiche dans le champ texte
 		if (file != null) {
 			String url = file.getAbsolutePath();
 			tfElem.setText(url);
 		}
 	}
 
-	/**Méthode parcourirChaine : 
+	/**
+	 * Méthode parcourirChaine :
 	 * 
-	 * Lors d'un clic sur le bouton parcourir chaine de prod (...) affiche l'url du fichier choisi
+	 * Lors d'un clic sur le bouton parcourir chaine de prod (...) affiche l'url du
+	 * fichier choisi
 	 * 
 	 * @param e
 	 */
@@ -115,6 +120,11 @@ public class ChargementControleur {
 		}
 	}
 
+	/**
+	 * Méthode permettant d'aller chercher le fichier csv des commandes
+	 * 
+	 * @param e action lors du clic sur le bouton parcourrir
+	 */
 	public void parcourirCommande(ActionEvent e) {
 		tfCommande.clear();
 		File file = fileChooser.showOpenDialog((Stage) btnParcoursComm.getScene().getWindow());
@@ -124,6 +134,12 @@ public class ChargementControleur {
 		}
 	}
 
+	/**
+	 * Méthode chargerElements qui charge dans l'application les élements depuis le
+	 * fichier csv
+	 * 
+	 * @param e action lors du clic sur le bouton parcourrir
+	 */
 	public void chargerElements(ActionEvent e) {
 		System.out.println("Chargement - clic sur btnChargerElem");
 		String url = "";
