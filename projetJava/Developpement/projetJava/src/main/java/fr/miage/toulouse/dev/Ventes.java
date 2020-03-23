@@ -2,7 +2,13 @@ package fr.miage.toulouse.dev;
 import java.util.HashMap;
 
 public class Ventes{
+	/**
+	 * Le prix de vente d'un élément
+	 */
 	protected HashMap <String, Double> prix ;
+	/**
+	 * 
+	 */
 	protected HashMap <String, Double> qte;
 
 	

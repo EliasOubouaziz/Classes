@@ -14,18 +14,35 @@ import java.io.FilenameFilter;
 
 public class LireFich {
 
-	// Liste de tous les Eléments chargés
+	/**
+	 * Liste tous les elements chargés
+	 */
 	private static ArrayList<Element> listElem = new ArrayList<Element>();
 
-	// Liste de toutes les chaines chargés
+	/**
+	 * Liste toutes les chaines chargées
+	 */
 	private static ArrayList<ChaineDeProd> listChdP = new ArrayList<ChaineDeProd>();
 	
-	// Liste de tous les prix d'achats chargés
+	/**
+	 * Liste de tous les prix d'achats chargés
+	 */
 	private static ArrayList<Achats> listAchats = new ArrayList<Achats>();
 	
-	// Liste de tous les prix de ventes chargés
+	
+	/**
+	 * Liste de tous les prix de ventes chargés 
+	 */
 	private static ArrayList<Ventes> listVentes = new ArrayList<Ventes>();	
 
+	/**
+	 * 
+	 * Permet la lecture d'un fichier
+	 * Appelle la méthode de lecture correspondante selon le nom du fichier
+	 * 
+	 * @param URL l'URL du fichier à lire
+	 * @return
+	 */
 	public static Boolean[] LireFichier(String URL) {
 		Boolean[] result = { false, false, false };
 		Path fich = Paths.get(URL);
@@ -68,6 +85,12 @@ public class LireFich {
 		return result;
 	}
 
+	/**
+	 * 
+	 * Lis le fichier prix.csv et récupère les éléments qui ont un prix d'achat
+	 * 
+	 * @param URL l'URL du fichier à lire
+	 */
 	public static void LireFichierAchats(String URL) {
 		
 		Path orderPath = Paths.get(URL);
@@ -96,6 +119,12 @@ public class LireFich {
 		
 	}
 
+	/**
+	 * 
+	 * lis le fichier prix.csv et récupère les élements qui ont un prix de vente
+	 * 
+	 * @param URL l'URL du fichier à lire
+	 */
 	public static void LireFichierVentes(String URL) {
 		Ventes vte = new Ventes();
 		Path orderPath = Paths.get(URL);
@@ -138,6 +167,13 @@ public class LireFich {
 		}
 	}
 
+	
+	/**
+	 * 
+	 * Lis et récupère tous les éléments du fichier elements.csv 
+	 * 
+	 * @param URL l'URL du fichier à lire
+	 */
 	public static void LireFichierElements(String URL) {
 		Charset charset = Charset.forName("ISO-8859-1");
 		Path orderPath = Paths.get(URL);
@@ -164,6 +200,12 @@ public class LireFich {
 		}
 	}
 
+	/**
+	 * 
+	 * Lis et récupère tous les éléments du fichier chaines.csv
+	 * 
+	 * @param URL l'URL du fichier à lire
+	 */
 	public static void LireFichierChaineProd(String URL) {
 		Charset charset = Charset.forName("ISO-8859-1");
 		Path orderPath = Paths.get(URL);
@@ -231,18 +273,32 @@ public class LireFich {
 		}
 	}
 
+	/**
+	 * @return la liste de tous les elements du fichier elements.csv
+	 */
 	public static ArrayList<Element> getListElem() {
 		return LireFich.listElem;
 	}
 	
+	/**
+	 * @return la liste de tous les éléments du fichier prix.csv
+	 * ayant un prix d'achat
+	 */
 	public static ArrayList<Achats> getListAchats() {
 		return LireFich.listAchats;
 	}
 	
+	/**
+	 * @return la liste de tous les éléments du fichier prix.csv
+	 * ayant un prix de vente
+	 */
 	public static ArrayList<Ventes> getListVentes() {
 		return LireFich.listVentes;
 	}
 
+	/**
+	 * @return la liste de tous les éléments du fichier chaines.csv
+	 */
 	public static ArrayList<ChaineDeProd> getListChdP() {
 		return LireFich.listChdP;
 	}

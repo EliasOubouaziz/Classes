@@ -8,13 +8,20 @@ import java.util.List;
 import java.util.*;
 
 public class Achats {
+	/**
+	 * L'ID d'un element
+	 */
 	private String id;
+	/**
+	 * Le prix d'achat d'un élément
+	 */
 	private String prix;
 	
 
 
 	
 	
+
 	public Achats (String id, String prix) {
 		this.id = id;
 		this.prix = prix;

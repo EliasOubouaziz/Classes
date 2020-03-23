@@ -5,10 +5,25 @@ import java.util.HashMap;
 public class Commandes {
 	
 	
+	/**
+	 * L'ID d'une commande
+	 */
 	private String id;
+	/**
+	 * Le nom d'une commande
+	 */
 	private String nom;
+	/**
+	 * Le prix unitaire d'une commande
+	 */
 	private double PrixUnit;
+	/**
+	 * La quantité commandée
+	 */
 	private double Qte;
+	/**
+	 * Le prix total de la commande
+	 */
 	private double PrixTotal;
 	
 	

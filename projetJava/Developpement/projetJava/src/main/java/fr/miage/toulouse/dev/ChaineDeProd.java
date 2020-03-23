@@ -19,19 +19,61 @@ import java.util.ArrayList;
 
 public class ChaineDeProd {
 
+	/**
+	 * l'ID d'une chaine de prod
+	 */
 	private String id;
+	/**
+	 * Le nom d'une chaine de prod
+	 */
 	private String nom;
+	/**
+	 * Les elements et leur quantite necessaire à la fabrication
+	 */
 	protected HashMap <String, Double> entree;
+	/**
+	 * Les elements et leur quantite produits 
+	 */
 	protected HashMap <String, Double> sortie;
+	/**
+	 * Le nombre de fois ou la production de la chaine va être effectuée
+	 */
 	private int activation;
+	/**
+	 * Le cout d'une chaine de production
+	 */
 	private double cout;
+	/**
+	 * temps necessaire à la production de la chaine
+	 */
 	private int tempsinit;
+	/**
+	 * Nombre de personnes non qualifiées necessaire a la production
+	 */
 	private int persNonQualifieinit;
+	/**
+	 * Nombre de personnes qualifiées necessaire a la production
+	 */
 	private int persQualifieinit;
+	/**
+	 * temps necessaire à la production de la chaine d'activation 
+	 * selon le niveau d'activation
+	 */
 	private int temps;
+	/**
+	 * Nombre de personnes non qualifiées necessaire a la production
+	 * selon le niveau d'activation
+	 */
 	private int persNonQualifie;
+	/**
+	 * Nombre de personnes qualifiées necessaire a la production
+	 * selon le niveau d'activation
+	 */
 	private int persQualifie;
 	
+	/**
+	 * Liste les commandes enregistrées
+	 */
 	private static ArrayList<Commandes> listCommandes = new ArrayList<Commandes>();
 	
 	public ChaineDeProd(String id,String nom, int temps, int persNonQualifie, int persQualifie) {
@@ -55,6 +97,15 @@ public class ChaineDeProd {
 
 
 
+	/**
+	 * Calcule le cout de production pour une chaine de production
+	 * 
+	 * @param ListVentes la liste des élèments avec leur prix de vente
+	 * @param ListAchats la liste des élèments avec leur prix d'achat
+	 * @param ListElem  la liste de tous les éléments
+	 * @param NvActiv le niveau d'activation désiré pour une chaine de production
+	 * @return le cout de production pour une chaine de production
+	 */
 	public double coutCdP(ArrayList<Ventes> ListVentes, ArrayList<Achats> ListAchats, ArrayList<Element> ListElem, int NvActiv) {
 		double qteBesoin;
 		double qtePossede;
@@ -126,6 +177,15 @@ public class ChaineDeProd {
 	
 	
 	
+	/**
+	 * 
+	 * Supprime les commandes qui sont liées à une chaine de prod quand 
+	 * le niveau d'activation change
+	 * 
+	 * @param ListAchats la liste des élèments avec leur prix d'achat
+	 * @param ListElem  la liste de tous les éléments
+	 * @param NvActiv le niveau d'activation désiré pour une chaine de production
+	 */
 	public void CommandeSup( ArrayList<Achats> ListAchats, ArrayList<Element> ListElem, int NvActiv) {
 		double qteBesoin;
 		double qtePossede;
