@@ -24,10 +24,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.converter.IntegerStringConverter;
 
 public class ComparaisonControleur {
 
@@ -81,6 +79,18 @@ public class ComparaisonControleur {
 	// Sélecteur de fichier
 	final FileChooser fileChooser = new FileChooser();
 	
+	private ArrayList<ChaineDeProd> listeGauche;
+	
+	private ArrayList<ChaineDeProd> listeDroite;
+	
+	public ArrayList<ChaineDeProd> getListeGauche() {
+		return listeGauche;
+	}
+
+	public ArrayList<ChaineDeProd> getListeDroite() {
+		return listeDroite;
+	}
+
 	@FXML
 	public void initialize() {
 		// Affecte les informations des chaines de prod au tableau
@@ -147,6 +157,12 @@ public class ComparaisonControleur {
 			String url = file.getAbsolutePath();
 			ObservableList<ChaineDeProd> listCG = lireSave(url);
 
+			for (ChaineDeProd c : listCG) {
+				this.listeGauche.add(c);
+				c.getActivation();
+			}
+			
+
 			tableCdpG.setItems(listCG);
 			sommeCout(true);
 		}
@@ -158,9 +174,14 @@ public class ComparaisonControleur {
 		File file = fileChooser.showOpenDialog((Stage) btnChargerD.getScene().getWindow());
 		if (file != null) {
 			String url = file.getAbsolutePath();
-			ObservableList<ChaineDeProd> listCG = lireSave(url);
+			ObservableList<ChaineDeProd> listCD = lireSave(url);
+			
+			for (ChaineDeProd c : listCD) {
+				this.listeDroite.add(c);
+				c.getActivation();
+			}
 
-			tableCdpD.setItems(listCG);
+			tableCdpD.setItems(listCD);
 			sommeCout(false);
 		}
 	}
