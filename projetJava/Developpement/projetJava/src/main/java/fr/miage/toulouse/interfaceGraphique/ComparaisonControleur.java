@@ -6,6 +6,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -23,8 +24,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 
 public class ComparaisonControleur {
 
@@ -77,6 +80,33 @@ public class ComparaisonControleur {
 
 	// Sélecteur de fichier
 	final FileChooser fileChooser = new FileChooser();
+	
+	@FXML
+	public void initialize() {
+		// Affecte les informations des chaines de prod au tableau
+		tableCdpG.setItems(getChainesDeProd());
+		sommeCout(true);
+	}
+	
+	/**
+	 * getChainesDeProd
+	 * 
+	 * 
+	 * @return la liste des Chaines de production à afficher
+	 */
+	private ObservableList<ChaineDeProd> getChainesDeProd() {
+
+		// Récupère la liste des Elements chargés depuis le CSV
+		ArrayList<ChaineDeProd> listChdP = LireFich.getListChdP();
+		ObservableList<ChaineDeProd> ChDP = FXCollections.observableArrayList();
+
+		for (ChaineDeProd c : listChdP) {
+			ChDP.add(c);
+			c.getActivation();
+		}
+
+		return ChDP;
+	}
 
 	/**
 	 * Méthode appelée lors d'un clic sur le bouton retour qui fait revenir au menu

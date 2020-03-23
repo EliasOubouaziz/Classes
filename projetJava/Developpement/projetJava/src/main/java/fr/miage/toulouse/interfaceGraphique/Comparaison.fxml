@@ -8,19 +8,13 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="624.0" prefWidth="1215.0"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="fr.miage.toulouse.interfaceGraphique.ComparaisonControleur">
+<AnchorPane prefHeight="624.0" prefWidth="1215.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.miage.toulouse.interfaceGraphique.ComparaisonControleur">
 	<children>
-		<BorderPane prefHeight="624.0" prefWidth="775.0"
-			AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-			AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+		<BorderPane prefHeight="624.0" prefWidth="775.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
 			<bottom>
-				<Pane prefHeight="66.0" prefWidth="775.0"
-					BorderPane.alignment="CENTER">
+				<Pane prefHeight="66.0" prefWidth="775.0" BorderPane.alignment="CENTER">
 					<children>
-						<Label layoutX="272.0" layoutY="23.0"
-							text="Somme des côuts :" textAlignment="CENTER">
+						<Label layoutX="272.0" layoutY="23.0" text="Somme des côuts :" textAlignment="CENTER">
 							<font>
 								<Font name="System Bold" size="14.0" />
 							</font>
@@ -28,8 +22,7 @@
 								<Insets />
 							</opaqueInsets>
 						</Label>
-						<TextField fx:id="totalGauche" editable="false"
-							layoutX="413.0" layoutY="18.0">
+						<TextField fx:id="totalGauche" editable="false" layoutX="413.0" layoutY="18.0">
 							<font>
 								<Font name="System Bold" size="14.0" />
 							</font>
@@ -37,8 +30,7 @@
 								<Insets />
 							</opaqueInsets>
 						</TextField>
-						<TextField fx:id="totalDroite" editable="false"
-							layoutX="1014.0" layoutY="18.0">
+						<TextField fx:id="totalDroite" editable="false" layoutX="1014.0" layoutY="18.0">
 							<font>
 								<Font name="System Bold" size="14.0" />
 							</font>
@@ -46,8 +38,7 @@
 								<Insets />
 							</opaqueInsets>
 						</TextField>
-						<Label layoutX="873.0" layoutY="23.0"
-							text="Somme des côuts :" textAlignment="CENTER">
+						<Label layoutX="873.0" layoutY="23.0" text="Somme des côuts :" textAlignment="CENTER">
 							<font>
 								<Font name="System Bold" size="14.0" />
 							</font>
@@ -55,49 +46,36 @@
 								<Insets />
 							</opaqueInsets>
 						</Label>
-						<Button fx:id="btnChargerG" layoutX="64.0" layoutY="14.0"
-							mnemonicParsing="false" onAction="#chargementGauche"
-							prefHeight="34.0" prefWidth="135.0" text="Charger" />
-						<Button fx:id="btnChargerD" layoutX="668.0" layoutY="14.0"
-							mnemonicParsing="false" onAction="#chargementDroite"
-							prefHeight="34.0" prefWidth="135.0" text="Charger" />
+						<Button fx:id="btnChargerG" layoutX="64.0" layoutY="14.0" mnemonicParsing="false" onAction="#chargementGauche" prefHeight="34.0" prefWidth="135.0" text="Charger" />
+						<Button fx:id="btnChargerD" layoutX="668.0" layoutY="14.0" mnemonicParsing="false" onAction="#chargementDroite" prefHeight="34.0" prefWidth="135.0" text="Charger" />
 					</children>
 				</Pane>
 			</bottom>
 			<top>
-				<Pane prefHeight="89.0" prefWidth="775.0"
-					BorderPane.alignment="CENTER">
+				<Pane prefHeight="89.0" prefWidth="775.0" BorderPane.alignment="CENTER">
 					<children>
-						<Label alignment="CENTER" layoutX="444.0" layoutY="23.0"
-							text="Comparaison de Chaines de production"
-							textAlignment="CENTER">
+						<Label alignment="CENTER" layoutX="444.0" layoutY="23.0" text="Comparaison de Chaines de production" textAlignment="CENTER">
 							<font>
 								<Font name="System Bold" size="20.0" />
 							</font>
 						</Label>
-						<Button fx:id="btnRetour" layoutX="14.0" layoutY="18.0"
-							mnemonicParsing="false" onAction="#retourMenu" text="Retour" />
+						<Button fx:id="btnRetour" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" onAction="#retourMenu" text="Retour" />
 					</children>
 				</Pane>
 			</top>
 			<center>
 				<GridPane BorderPane.alignment="CENTER">
 					<columnConstraints>
-						<ColumnConstraints hgrow="SOMETIMES"
-							minWidth="10.0" prefWidth="100.0" />
-						<ColumnConstraints hgrow="SOMETIMES"
-							minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
 					</columnConstraints>
 					<rowConstraints>
-						<RowConstraints minHeight="10.0" prefHeight="30.0"
-							vgrow="SOMETIMES" />
+						<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 					</rowConstraints>
 					<children>
-						<TableView fx:id="tableCdpG" editable="true"
-							prefHeight="200.0" prefWidth="200.0">
+						<TableView fx:id="tableCdpG" editable="true" prefHeight="200.0" prefWidth="200.0">
 							<columns>
-								<TableColumn fx:id="colIdG" prefWidth="75.0"
-									text="ID">
+								<TableColumn fx:id="colIdG" prefWidth="76.0" text="ID">
 
 									<cellValueFactory>
 										<PropertyValueFactory property="id" />
@@ -105,8 +83,7 @@
 
 								</TableColumn>
 
-								<TableColumn fx:id="colNomG" prefWidth="289.0"
-									text="Nom">
+								<TableColumn fx:id="colNomG" prefWidth="304.0" text="Nom">
 
 									<cellValueFactory>
 										<PropertyValueFactory property="nom" />
@@ -115,17 +92,14 @@
 								</TableColumn>
 
 
-								<TableColumn fx:id="colEtatG" prefWidth="104.0"
-									text="Etat">
+								<TableColumn fx:id="colEtatG" prefWidth="76.0" text="Etat">
 
 									<cellValueFactory>
-										<PropertyValueFactory
-											property="activation" />
+										<PropertyValueFactory property="activation" />
 									</cellValueFactory>
 
 								</TableColumn>
-								<TableColumn fx:id="colCoutG" minWidth="2.0"
-									prefWidth="139.0" text="Coût">
+								<TableColumn fx:id="colCoutG" minWidth="2.0" prefWidth="151.0" text="Coût">
 
 									<cellValueFactory>
 										<PropertyValueFactory property="cout" />
@@ -137,11 +111,9 @@
 								<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
 							</columnResizePolicy>
 						</TableView>
-						<TableView fx:id="tableCdpD" prefHeight="200.0"
-							prefWidth="200.0" GridPane.columnIndex="1">
+						<TableView fx:id="tableCdpD" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
 							<columns>
-								<TableColumn fx:id="colIdD" prefWidth="75.0"
-									text="ID">
+								<TableColumn fx:id="colIdD" prefWidth="76.0" text="ID">
 
 									<cellValueFactory>
 										<PropertyValueFactory property="id" />
@@ -149,8 +121,7 @@
 
 								</TableColumn>
 
-								<TableColumn fx:id="colNomD" prefWidth="283.0"
-									text="Nom">
+								<TableColumn fx:id="colNomD" prefWidth="304.0" text="Nom">
 
 									<cellValueFactory>
 										<PropertyValueFactory property="nom" />
@@ -158,18 +129,15 @@
 
 								</TableColumn>
 
-								<TableColumn fx:id="colEtatD" prefWidth="106.0"
-									text="Etat">
+								<TableColumn fx:id="colEtatD" prefWidth="76.0" text="Etat">
 
 									<cellValueFactory>
-										<PropertyValueFactory
-											property="activation" />
+										<PropertyValueFactory property="activation" />
 									</cellValueFactory>
 
 								</TableColumn>
 
-								<TableColumn fx:id="colCoutD" prefWidth="142.0"
-									text="Coût">
+								<TableColumn fx:id="colCoutD" prefWidth="151.0" text="Coût">
 
 									<cellValueFactory>
 										<PropertyValueFactory property="cout" />
