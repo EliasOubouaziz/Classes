@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 
 public class Menu extends Application {
 
+	/**Paramètrage du lancement de l'application
+	 *
+	 */
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		//Lit le fichier xml
@@ -30,6 +33,9 @@ public class Menu extends Application {
 		
 	}
 
+	/**Lancement de l'application
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
