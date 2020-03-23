@@ -6,34 +6,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="rootPane" prefHeight="555.0"
-	prefWidth="736.0" xmlns="http://javafx.com/javafx/8"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="fr.miage.toulouse.interfaceGraphique.MenuControleur">
+<AnchorPane fx:id="rootPane" prefHeight="555.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.miage.toulouse.interfaceGraphique.MenuControleur">
 	<children>
-		<Label alignment="TOP_CENTER" contentDisplay="CENTER"
-			layoutX="309.0" layoutY="36.0" text="MENU" textAlignment="CENTER">
+		<Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="309.0" layoutY="36.0" text="MENU" textAlignment="CENTER">
 			<font>
 				<Font name="System Bold" size="39.0" />
 			</font>
 		</Label>
-		<Button fx:id="btnChargmnt" layoutX="81.0" layoutY="149.0"
-			mnemonicParsing="false" onAction="#versChargement" prefHeight="39.0"
-			prefWidth="575.0" text="Charger des données" textAlignment="CENTER" />
-		<Button fx:id="btnEtatStock" layoutX="81.0" layoutY="214.0"
-			mnemonicParsing="false" onAction="#versEtatStock" prefHeight="39.0"
-			prefWidth="575.0" text="Etat des stocks" textAlignment="CENTER" />
-		<Button fx:id="btnGestionProd" layoutX="81.0" layoutY="278.0"
-			mnemonicParsing="false" onAction="#versChaineProd" prefHeight="39.0"
-			prefWidth="575.0" text="Gestion Chaines de Production"
-			textAlignment="CENTER" />
-		<Button fx:id="btnSaisieComm" layoutX="81.0" layoutY="348.0"
-			mnemonicParsing="false" onAction="#versCommande" prefHeight="39.0"
-			prefWidth="575.0" text="Saisie Commande" textAlignment="CENTER" />
-		<Button fx:id="btnAfficheResult" layoutX="81.0" layoutY="416.0"
-			mnemonicParsing="false" onAction="#versResult" prefHeight="39.0"
-			prefWidth="575.0" text="Affichage Résultat" textAlignment="CENTER" />
-		<Button fx:id="btnQuit" layoutX="81.0" layoutY="493.0"
-			mnemonicParsing="false" onAction="#quitter" text="Quitter" />
+		<Button fx:id="btnChargmnt" layoutX="81.0" layoutY="149.0" mnemonicParsing="false" onAction="#versChargement" prefHeight="39.0" prefWidth="575.0" text="Charger des données" textAlignment="CENTER" />
+		<Button fx:id="btnEtatStock" layoutX="81.0" layoutY="214.0" mnemonicParsing="false" onAction="#versEtatStock" prefHeight="39.0" prefWidth="575.0" text="Etat des stocks" textAlignment="CENTER" />
+		<Button fx:id="btnGestionProd" layoutX="81.0" layoutY="278.0" mnemonicParsing="false" onAction="#versChaineProd" prefHeight="39.0" prefWidth="575.0" text="Gestion Chaines de Production" textAlignment="CENTER" />
+		<Button fx:id="btnSaisieComm" layoutX="81.0" layoutY="348.0" mnemonicParsing="false" onAction="#versCommande" prefHeight="39.0" prefWidth="575.0" text="Saisie Commande" textAlignment="CENTER" />
+		<Button fx:id="btnQuit" layoutX="81.0" layoutY="493.0" mnemonicParsing="false" onAction="#quitter" text="Quitter" />
 	</children>
 </AnchorPane>

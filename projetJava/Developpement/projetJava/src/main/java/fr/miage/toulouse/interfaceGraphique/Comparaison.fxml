@@ -60,6 +60,7 @@
 							</font>
 						</Label>
 						<Button fx:id="btnRetour" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" onAction="#retourMenu" text="Retour" />
+						<Button fx:id="btnGraph" layoutX="1093.0" layoutY="25.0" mnemonicParsing="false" onAction="#versGraphs" text="Graphique" />
 					</children>
 				</Pane>
 			</top>

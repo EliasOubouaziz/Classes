@@ -27,6 +27,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+/**
+ * @author MARTRES Robin
+ *
+ */
 public class ComparaisonControleur {
 
 	@FXML
@@ -43,6 +47,9 @@ public class ComparaisonControleur {
 
 	@FXML
 	private Button btnChargerD;
+
+	@FXML
+	private Button btnGraph;
 
 	// Tableau de Gauche
 	@FXML
@@ -78,11 +85,11 @@ public class ComparaisonControleur {
 
 	// Sélecteur de fichier
 	final FileChooser fileChooser = new FileChooser();
-	
+
 	private static ArrayList<ChaineDeProd> listeGauche = new ArrayList<ChaineDeProd>();
-	
+
 	private static ArrayList<ChaineDeProd> listeDroite = new ArrayList<ChaineDeProd>();
-	
+
 	public static ArrayList<ChaineDeProd> getListeGauche() {
 		return listeGauche;
 	}
@@ -91,14 +98,13 @@ public class ComparaisonControleur {
 		return listeDroite;
 	}
 
-
 	@FXML
 	public void initialize() {
 		// Affecte les informations des chaines de prod au tableau
 		tableCdpG.setItems(getChainesDeProd());
 		sommeCout(true);
 	}
-	
+
 	/**
 	 * getChainesDeProd
 	 * 
@@ -162,7 +168,6 @@ public class ComparaisonControleur {
 				ComparaisonControleur.listeGauche.add(c);
 				c.getActivation();
 			}
-			
 
 			tableCdpG.setItems(listCG);
 			sommeCout(true);
@@ -176,7 +181,7 @@ public class ComparaisonControleur {
 		if (file != null) {
 			String url = file.getAbsolutePath();
 			ObservableList<ChaineDeProd> listCD = lireSave(url);
-			
+
 			for (ChaineDeProd c : listCD) {
 				ComparaisonControleur.listeDroite.add(c);
 				c.getActivation();
@@ -266,11 +271,11 @@ public class ComparaisonControleur {
 
 				somme = somme + c.getCout();
 			}
-			
+
 			totalGauche.setText("" + somme);
-			
+
 		} else {
-			
+
 			for (ChaineDeProd c : tableCdpD.getItems()) {
 
 				somme = somme + c.getCout();
@@ -279,6 +284,33 @@ public class ComparaisonControleur {
 
 		}
 
+	}
+
+	/**
+	 * @param e
+	 * @throws IOException
+	 */
+	public void versGraphs(ActionEvent e) throws IOException {
+
+		System.out.println("clic sur btnGraph - direction Graphique");
+
+		// Fermeture de la fenetre
+		Stage fen = (Stage) btnRetour.getScene().getWindow();
+
+		fen.close();
+
+		// Chargement de la scène suivante
+		FXMLLoader fxmlLoader = new FXMLLoader(
+				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/ResultatOkScene.fxml"));
+		Parent root1 = (Parent) fxmlLoader.load();
+
+		// Création de la nouvelle fenêtre
+		Stage newFen = new Stage();
+		newFen.setTitle("Graphique");
+		newFen.setScene(new Scene(root1));
+		newFen.setResizable(false);
+		newFen.show();
+		newFen.centerOnScreen();
 	}
 
 }
