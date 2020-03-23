@@ -5,7 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import fr.miage.toulouse.dev.ChaineDeProd;
 import fr.miage.toulouse.dev.Element;
 import fr.miage.toulouse.dev.LireFich;
 import javafx.collections.FXCollections;
@@ -47,40 +46,48 @@ public class StockControleur {
 
 	@FXML
 	private TableColumn<Element, String> colUnit;
-	
-	@FXML
-	private Button btnSave;
-	
-	// Sélecteur de fichier
-	final FileChooser fileChooser = new FileChooser();
-	
-	
 
 	@FXML
+	private Button btnSave;
+
+	// Sélecteur de fichier
+	final FileChooser fileChooser = new FileChooser();
+
+	/**
+	 * Initialise les éléments du tableau
+	 * 
+	 */
+	@FXML
 	public void initialize() {
-		//Affecte les éléments dans le tableau
+		// Affecte les éléments dans le tableau
 		tableStock.setItems(getElements());
-	
 
 	}
 
-	/**getElements 
+	/**
+	 * getElements
 	 * 
 	 * @return la liste des Eléments à afficher dans le tableau des stocks
 	 */
 	private ObservableList<Element> getElements() {
-		
-		//Récupère la liste des Elements chargés depuis le CSV
+
+		// Récupère la liste des Elements chargés depuis le CSV
 		ArrayList<Element> listElem = LireFich.getListElem();
 		ObservableList<Element> elems = FXCollections.observableArrayList();
-		
-		for(Element e : listElem) {
+
+		for (Element e : listElem) {
 			elems.add(e);
 		}
-		
+
 		return elems;
 	}
 
+	/**
+	 * Redirection vers la page de chargement
+	 * 
+	 * @param e
+	 * @throws IOException
+	 */
 	public void versChargement(ActionEvent e) throws IOException {
 		System.out.println("Stock - Clic sur btnChargmnt, Changement de fenêtre");
 
@@ -103,6 +110,12 @@ public class StockControleur {
 		newFen.centerOnScreen();
 	}
 
+	/**
+	 * Redirection vers le menu
+	 * 
+	 * @param e
+	 * @throws IOException
+	 */
 	public void retourMenu(ActionEvent e) throws IOException {
 		System.out.println("Stock - clic sur btnRetour");
 
@@ -124,7 +137,12 @@ public class StockControleur {
 		newFen.show();
 		newFen.centerOnScreen();
 	}
-	
+
+	/**
+	 * Sauvegarde dans un fichier csv les stocks
+	 * 
+	 * @param e
+	 */
 	public void sauvegarde(ActionEvent e) {
 		System.out.println("ChaineProd - clic sur btnSave");
 

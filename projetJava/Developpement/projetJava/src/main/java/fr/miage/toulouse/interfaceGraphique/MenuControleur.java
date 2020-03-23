@@ -31,6 +31,9 @@ public class MenuControleur implements Initializable {
 	@FXML
 	private Button btnGestionProd;
 
+	/**Ferme l'application
+	 * @param e clic sur le bouton
+	 */
 	public void quitter(ActionEvent e) {
 		System.out.println("Menu - Clic sur btnQuit, Fermeture du menu");
 
@@ -40,6 +43,10 @@ public class MenuControleur implements Initializable {
 
 	}
 
+	/**Redirection vers la page de chargement
+	 * @param e
+	 * @throws IOException
+	 */
 	public void versChargement(ActionEvent e) throws IOException {
 		System.out.println("Menu - Clic sur btnChargmnt, Changement de fenêtre");
 
@@ -62,6 +69,10 @@ public class MenuControleur implements Initializable {
 		newFen.centerOnScreen();
 	}
 
+	/**Redirection vers l'etat des stocks
+	 * @param e
+	 * @throws IOException
+	 */
 	public void versEtatStock(ActionEvent e) throws IOException {
 		System.out.println("Menu - Clic sur btnEtatStock, Changement de fenêtre");
 
@@ -85,6 +96,10 @@ public class MenuControleur implements Initializable {
 
 	}
 
+	/**Redirection vers gestion des chaines de prod
+	 * @param e
+	 * @throws IOException
+	 */
 	public void versChaineProd(ActionEvent e) throws IOException {
 		System.out.println("Menu - Clic sur btnGestionProd, Changement de fenêtre");
 
