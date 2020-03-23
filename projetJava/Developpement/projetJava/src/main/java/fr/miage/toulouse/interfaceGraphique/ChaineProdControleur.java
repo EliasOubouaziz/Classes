@@ -92,7 +92,7 @@ public class ChaineProdControleur {
 	public void EditEtat(TableColumn.CellEditEvent<ChaineDeProd, Integer> etatEdited) {
 		ChaineDeProd Cdp = tableCdp.getSelectionModel().getSelectedItem();
 		if (etatEdited.getNewValue() >= 0) {
-			Cdp.CommandeSup(LireFich.getListAchats(), LireFich.getListElem(), etatEdited.getOldValue());
+			Cdp.CommandeSup(LireFich.getListAchats(), LireFich.getListElem(), Cdp.getActivation());
 			Cdp.setActivation(etatEdited.getNewValue());
 			double cout = Cdp.coutCdP(LireFich.getListVentes(), LireFich.getListAchats(), LireFich.getListElem(),
 					etatEdited.getNewValue());
@@ -101,7 +101,6 @@ public class ChaineProdControleur {
 			Cdp.setPersNonQualifie(Cdp.getPersNonQualifieinit() * etatEdited.getNewValue());
 			Cdp.setPersQualifie(Cdp.getPersQualifieinit() * etatEdited.getNewValue());
 			Cdp.setTemps(Cdp.getTempsinit() * etatEdited.getNewValue());
-
 			initialize();
 		} else {
 			Cdp.setActivation(0);

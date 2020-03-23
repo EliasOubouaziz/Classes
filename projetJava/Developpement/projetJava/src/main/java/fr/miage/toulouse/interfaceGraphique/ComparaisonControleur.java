@@ -277,7 +277,7 @@ public class ComparaisonControleur {
 				Object key = iterateur2.next();
 			}
 
-			double cout = cdp.coutCdP(LireFich.getListVentes(), LireFich.getListAchats(), LireFich.getListElem(),
+			double cout = cdp.coutCdPComparaison(LireFich.getListVentes(), LireFich.getListAchats(), LireFich.getListElem(),
 					activation);
 			cdp.setCout(cout);
 

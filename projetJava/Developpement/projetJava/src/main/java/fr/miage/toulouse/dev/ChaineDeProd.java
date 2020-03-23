@@ -132,10 +132,11 @@ public class ChaineDeProd {
 										
 										boolean présent = false;
 										for(Commandes cmd : listCommandes) {
-											if(cmd.getId().equals(key.toString())) {
+										if(cmd.getId().equals(key.toString())) {
 												présent = true;
-												cmd.setQte(cmd.getQte()+(qteBesoin*this.entree.get(key)-elem.getQte()));
-											}
+												cmd.setQte(cmd.getQte()+(qteBesoin*this.entree.get(key)));
+
+										}
 										}
 										if(!présent) {
 											Commandes cmd = new Commandes(key.toString(),elem.getNom(),Double.parseDouble(ach.getPrix()),(qteBesoin*this.entree.get(key)-elem.getQte()));
@@ -144,6 +145,65 @@ public class ChaineDeProd {
 									
 									
 									
+									}	
+								}
+							}
+						}						
+				}
+			
+				Set listKeys1 = this.sortie.keySet();
+				Iterator iterateur1 = listKeys1.iterator(); 
+				while (iterateur1.hasNext()) {
+					Object key1 = iterateur1.next();
+					for (Ventes vte : ListVentes) {
+
+						if (vte.prix.keySet().toString().substring(1,5).equals(key1.toString())) {
+							double prix = Double.parseDouble(vte.prix.values().toString().substring(1,vte.prix.values().toString().length()-1));
+							somme = somme + (prix*this.sortie.get(key1)*NvActiv);
+						}
+						
+					}
+			
+				}
+			}
+			return somme;
+		}
+	
+	/**
+	 * Calcule le cout de production pour une chaine de production utiliser pour comprarer
+	 * 
+	 * @param ListVentes la liste des élèments avec leur prix de vente
+	 * @param ListAchats la liste des élèments avec leur prix d'achat
+	 * @param ListElem  la liste de tous les éléments
+	 * @param NvActiv le niveau d'activation désiré pour une chaine de production
+	 * @return le cout de production pour une chaine de production
+	 */
+	public double coutCdPComparaison(ArrayList<Ventes> ListVentes, ArrayList<Achats> ListAchats, ArrayList<Element> ListElem, int NvActiv) {
+		double qteBesoin;
+		double qtePossede;
+		double somme=0;
+		if(NvActiv<0) {
+			System.out.println("Veuillez saisir un niveau d'activation >= 0");
+			return 0;
+		} else if(NvActiv==0) {
+			return 0;
+		} else {
+			// Parcours les elements de la chaine de prod
+			Set listKeys = this.entree.keySet(); 
+			Iterator iterateur = listKeys.iterator(); 
+
+			while (iterateur.hasNext()) {
+				Object key = iterateur.next();
+				qteBesoin = NvActiv;
+						for(Element elem : ListElem) {
+							for (Achats ach : ListAchats) {
+								//si les 3 éléments correspondent
+								if (ach.getID().equals(key.toString()) && elem.getId().toString().equals(key.toString())) {
+									
+									// et que la quantité en stock est insuffisante
+									if(elem.getQte()<qteBesoin*this.entree.get(key)) {
+										somme = somme - ((qteBesoin*this.entree.get(key)-elem.getQte()) * Double.parseDouble(ach.getPrix()));
+														
 									}	
 								}
 							}
@@ -205,9 +265,9 @@ public class ChaineDeProd {
 											System.out.println(key.toString());
 											if(cmd.getId().equals(key.toString())) {
 												
-												cmd.setQte(cmd.getQte()-(qteBesoin*this.entree.get(key)-elem.getQte()));
+												cmd.setQte(cmd.getQte()-(qteBesoin*this.entree.get(key)));
 												
-												if(cmd.getQte()==0) {
+												if(cmd.getQte()<=0) {
 													elemsup=cmd;
 												}
 											}	
