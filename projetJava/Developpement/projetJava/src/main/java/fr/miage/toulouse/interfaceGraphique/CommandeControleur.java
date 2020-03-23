@@ -2,12 +2,15 @@ package fr.miage.toulouse.interfaceGraphique;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Optional;
+import java.util.Set;
 
 import fr.miage.toulouse.dev.ChaineDeProd;
 import fr.miage.toulouse.dev.Commandes;
 import fr.miage.toulouse.dev.Element;
 import fr.miage.toulouse.dev.LireFich;
+import fr.miage.toulouse.dev.Ventes;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -140,6 +143,45 @@ public class CommandeControleur {
 				}
 			}
 		}
+		ChaineDeProd.vidercommandes();
+		
+	}
+	
+	public void actualiserStocketlancer() {
+		ArrayList<Element> ListElem = LireFich.getListElem();
+		for(Commandes cmd : ChaineDeProd.getlistCommandes()) {
+			for(Element elem : ListElem) {
+				if(cmd.getId().equals(elem.getId())) {
+					double quantité=elem.getQte();
+					elem.setQte(cmd.getQte()+elem.getQte());
+					elem.setQte(elem.getQte()-(cmd.getQte()+quantité));
+				}
+			}
+		}
+		
+		ChaineDeProd.vidercommandes();
+		
+		for(ChaineDeProd cdp : LireFich.getListChdP()) {
+			Set listKeys1 = cdp.getSortie().keySet();
+			Iterator iterateur1 = listKeys1.iterator(); 
+			while (iterateur1.hasNext()) {
+				Object key1 = iterateur1.next();
+				for(Element elem : ListElem) {
+					if(key1.toString().equals(elem.getId())) {
+						elem.setQte(cdp.getSortie().get(key1).doubleValue()*cdp.getActivation());
+					}
+				}
+	
+			}
+			cdp.setActivation(0);
+			double cout = cdp.coutCdP(LireFich.getListVentes(), LireFich.getListAchats(), LireFich.getListElem(), 0);
+			cdp.setCout(cout);
+			cdp.setActivation(0);
+			cdp.setTemps(cdp.getTempsinit());
+			cdp.setPersNonQualifie(cdp.getPersNonQualifieinit());
+			cdp.setPersQualifie(cdp.getPersQualifieinit());
+		}
+				
 		
 	}
 	
@@ -148,7 +190,7 @@ public class CommandeControleur {
 		
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Valider");
-		alert.setHeaderText("Sauvegarde des achats, voulez-vous garder les chaines de production ?");
+		alert.setHeaderText("Sauvegarde des achats, voulez-vous lancer les chaines de production ?");
 
 		ButtonType oui = new ButtonType("OUI");
 		ButtonType non = new ButtonType("NON");
@@ -166,7 +208,7 @@ public class CommandeControleur {
 			System.out.println("NULL");
 		} else if (option.get() == oui) {
 			System.out.println("OUI");
-			actualiserStock();
+			actualiserStocketlancer();
 			
 			// Fermeture de la fenetre
 			Stage fen = (Stage) btnRetour.getScene().getWindow();
@@ -188,7 +230,7 @@ public class CommandeControleur {
 			
 		} else if (option.get() == non) {
 			System.out.println("NON");
-			
+			actualiserStock();
 			// Fermeture de la fenetre
 			Stage fen = (Stage) btnRetour.getScene().getWindow();
 

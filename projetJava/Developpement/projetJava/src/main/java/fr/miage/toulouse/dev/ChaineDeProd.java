@@ -235,6 +235,14 @@ public class ChaineDeProd {
 	
 	
 	
+
+
+
+
+
+
+
+
 	/**
 	 * 
 	 * Supprime les commandes qui sont liées à une chaine de prod quand 
@@ -283,6 +291,10 @@ public class ChaineDeProd {
 				}
 			}
 	}
+	
+	public static void vidercommandes() {
+		listCommandes.clear();
+	}
 	public String getId() {
 		return id;
 	}
@@ -319,6 +331,9 @@ public class ChaineDeProd {
 		return listCommandes;
 	}
 	
+	public static void setListCommandes(ArrayList<Commandes> listCommandes) {
+		ChaineDeProd.listCommandes = listCommandes;
+	}
 	
 	public int getTemps() {
 		return temps;
