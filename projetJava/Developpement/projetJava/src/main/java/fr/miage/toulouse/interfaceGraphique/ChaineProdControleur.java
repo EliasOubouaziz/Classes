@@ -223,7 +223,7 @@ public class ChaineProdControleur {
 
 		// Chargement de la scène suivante
 		FXMLLoader fxmlLoader = new FXMLLoader(
-				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/ComparaisonScene.fxml"));
+				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/Comparaison.fxml"));
 		Parent root1 = (Parent) fxmlLoader.load();
 
 		// Création de la nouvelle fenêtre

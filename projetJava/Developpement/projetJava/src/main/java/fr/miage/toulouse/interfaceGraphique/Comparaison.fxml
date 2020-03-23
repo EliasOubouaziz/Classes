@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="624.0" prefWidth="1215.0"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="fr.miage.toulouse.interfaceGraphique.ComparaisonControleur">
+	<children>
+		<BorderPane prefHeight="624.0" prefWidth="775.0"
+			AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+			AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+			<bottom>
+				<Pane prefHeight="66.0" prefWidth="775.0"
+					BorderPane.alignment="CENTER">
+					<children>
+						<Label layoutX="272.0" layoutY="23.0"
+							text="Somme des côuts :" textAlignment="CENTER">
+							<font>
+								<Font name="System Bold" size="14.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<TextField fx:id="totalGauche" editable="false"
+							layoutX="413.0" layoutY="18.0">
+							<font>
+								<Font name="System Bold" size="14.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</TextField>
+						<TextField fx:id="totalDroite" editable="false"
+							layoutX="1014.0" layoutY="18.0">
+							<font>
+								<Font name="System Bold" size="14.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</TextField>
+						<Label layoutX="873.0" layoutY="23.0"
+							text="Somme des côuts :" textAlignment="CENTER">
+							<font>
+								<Font name="System Bold" size="14.0" />
+							</font>
+							<opaqueInsets>
+								<Insets />
+							</opaqueInsets>
+						</Label>
+						<Button fx:id="btnChargerG" layoutX="64.0" layoutY="14.0"
+							mnemonicParsing="false" prefHeight="39.0" prefWidth="135.0"
+							text="Charger" />
+						<Button fx:id="btnChargerD" layoutX="668.0" layoutY="14.0"
+							mnemonicParsing="false" prefHeight="34.0" prefWidth="135.0"
+							text="Charger" />
+					</children>
+				</Pane>
+			</bottom>
+			<top>
+				<Pane prefHeight="89.0" prefWidth="775.0"
+					BorderPane.alignment="CENTER">
+					<children>
+						<Label alignment="CENTER" layoutX="444.0" layoutY="23.0"
+							text="Gestion des Chaines de production" textAlignment="CENTER">
+							<font>
+								<Font name="System Bold" size="20.0" />
+							</font>
+						</Label>
+						<Button fx:id="btnRetour" layoutX="14.0" layoutY="18.0"
+							mnemonicParsing="false" onAction="#retourMenu" text="Retour" />
+					</children>
+				</Pane>
+			</top>
+			<center>
+				<GridPane BorderPane.alignment="CENTER">
+					<columnConstraints>
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="100.0" />
+						<ColumnConstraints hgrow="SOMETIMES"
+							minWidth="10.0" prefWidth="100.0" />
+					</columnConstraints>
+					<rowConstraints>
+						<RowConstraints minHeight="10.0" prefHeight="30.0"
+							vgrow="SOMETIMES" />
+					</rowConstraints>
+					<children>
+						<TableView fx:id="tableCdpG" editable="true"
+							prefHeight="200.0" prefWidth="200.0">
+							<columns>
+								<TableColumn fx:id="colIdG" prefWidth="75.0"
+									text="ID" />
+								<TableColumn fx:id="colNomG" prefWidth="289.0"
+									text="Nom" />
+								<TableColumn fx:id="colEtatG" prefWidth="104.0"
+									text="Etat" />
+								<TableColumn fx:id="colCoutG" minWidth="2.0"
+									prefWidth="139.0" text="Coût" />
+							</columns>
+							<columnResizePolicy>
+								<TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+							</columnResizePolicy>
+						</TableView>
+						<TableView fx:id="tableCdpD" prefHeight="200.0"
+							prefWidth="200.0" GridPane.columnIndex="1">
+							<columns>
+								<TableColumn fx:id="colIdD" prefWidth="75.0"
+									text="ID" />
+								<TableColumn fx:id="colNomD" prefWidth="283.0"
+									text="Nom" />
+								<TableColumn fx:id="colEtatD" prefWidth="106.0"
+									text="Etat" />
+								<TableColumn fx:id="colCoutD" prefWidth="142.0"
+									text="Coût" />
+							</columns>
+						</TableView>
+					</children>
+				</GridPane>
+			</center>
+		</BorderPane>
+	</children>
+</AnchorPane>
