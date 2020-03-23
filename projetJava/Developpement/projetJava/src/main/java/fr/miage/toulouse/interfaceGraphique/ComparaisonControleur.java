@@ -86,18 +86,31 @@ public class ComparaisonControleur {
 	// Sélecteur de fichier
 	final FileChooser fileChooser = new FileChooser();
 
+	// Liste des chaines de production du tableau de gauche
 	private static ArrayList<ChaineDeProd> listeGauche = new ArrayList<ChaineDeProd>();
 
+	// Liste des chaines de production du tableau de droite
 	private static ArrayList<ChaineDeProd> listeDroite = new ArrayList<ChaineDeProd>();
 
+	/**
+	 * @return la liste des chaines de production du tableau de gauche
+	 */
 	public static ArrayList<ChaineDeProd> getListeGauche() {
 		return listeGauche;
 	}
 
+	/**
+	 * @return la liste des chaines de production du tableau de droite
+	 */
 	public static ArrayList<ChaineDeProd> getListeDroite() {
 		return listeDroite;
 	}
 
+	/**
+	 * Initialisation des éléments du tableau de gauche avec les chaines de prods en
+	 * cours
+	 * 
+	 */
 	@FXML
 	public void initialize() {
 		// Affecte les informations des chaines de prod au tableau
@@ -156,6 +169,12 @@ public class ComparaisonControleur {
 
 	}
 
+	/**
+	 * Chargement du tableau de gauche
+	 * 
+	 * @param e Action du clic sur le bouton "charger" à gauche
+	 * @throws IOException Erreur sur l'évênement
+	 */
 	public void chargementGauche(ActionEvent e) throws IOException {
 		System.out.println("Comparaison - clic sur btnGauche");
 
@@ -174,6 +193,12 @@ public class ComparaisonControleur {
 		}
 	}
 
+	/**
+	 * Chargement du tableau de droite
+	 * 
+	 * @param e Action du clic sur le bouton "charger" à droite
+	 * @throws IOException Erreur sur l'évênement
+	 */
 	public void chargementDroite(ActionEvent e) throws IOException {
 		System.out.println("Comparaison - clic sur btnDroite");
 

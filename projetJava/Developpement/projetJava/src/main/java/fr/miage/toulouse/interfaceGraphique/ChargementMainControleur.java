@@ -30,6 +30,12 @@ public class ChargementMainControleur {
 	// File chooser permettant de récupérer l'url du dossier
 	final DirectoryChooser dChooser = new DirectoryChooser();
 
+	/**
+	 * Permet de Retourner au menu lors du clic sur "retour"
+	 * 
+	 * @param e Action lors du clic sur le bouton
+	 * @throws IOException Erreur de l'évênement
+	 */
 	public void retourMenu(ActionEvent e) throws IOException {
 		System.out.println("ChargementMain - clic sur btnRetour");
 
@@ -53,6 +59,12 @@ public class ChargementMainControleur {
 
 	}
 
+	/**
+	 * Permet de rediriger la fenêtre sur la page de chargement d'un fichier
+	 * 
+	 * @param e Action lors du clic sur le bouton
+	 * @throws IOException Erreur de l'évênement
+	 */
 	public void versChargementFichier(ActionEvent e) throws IOException {
 		System.out.println("ChargementMain - clic sur btnChFic");
 
@@ -76,6 +88,13 @@ public class ChargementMainControleur {
 
 	}
 
+	/**
+	 * Permet le chargement d'un dossier contenant les .csv pour charger les
+	 * chaines/achats/éléments
+	 * 
+	 * @param e Action lors du clic sur le bouton
+	 * @throws IOException Erreur de l'évênement
+	 */
 	public void chargementDossier(ActionEvent e) throws IOException {
 		System.out.println("ChargementMain - clic sur btnChargementDossier");
 
@@ -91,15 +110,15 @@ public class ChargementMainControleur {
 			resChDossier.setText("Le dossier à bien été trouvé à l'adresse : " + urlD);
 
 			Boolean[] res = fr.miage.toulouse.dev.LireFich.LireFichier(urlD);
-			
+
 			String msg = "Les fichiers suivant ont été chargés : \n";
-			if(res[0]) {
+			if (res[0]) {
 				msg += "chaines | ";
 			}
-			if(res[1]) {
+			if (res[1]) {
 				msg += "elements | ";
 			}
-			if(res[2]) {
+			if (res[2]) {
 				msg += "prix | ";
 			}
 			resChDossier.setText(msg);
@@ -110,11 +129,16 @@ public class ChargementMainControleur {
 
 	}
 
+	/**
+	 * Paramétrage du DChooser
+	 * 
+	 * @param d DirectoryChooser à paramétrer
+	 */
 	private void configurationDChooser(DirectoryChooser d) {
 		// Définit le titre de la fenêtre de sélection
 		d.setTitle("Sélectionnez un dossier");
 		// Définit le répertoire initial
-		//d.setInitialDirectory(new File(System.getProperty("user.home")));
+		// d.setInitialDirectory(new File(System.getProperty("user.home")));
 	}
 
 }

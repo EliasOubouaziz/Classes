@@ -67,7 +67,7 @@ public class ChaineProdControleur {
 
 	@FXML
 	private Button btnCharger;
-	
+
 	@FXML
 	private Button btnValider;
 
@@ -241,7 +241,9 @@ public class ChaineProdControleur {
 
 	}
 
-	/**Méthode permettant de passer à la page de comparaison
+	/**
+	 * Méthode permettant de passer à la page de comparaison
+	 * 
 	 * @param e
 	 * @throws IOException
 	 */
@@ -267,40 +269,41 @@ public class ChaineProdControleur {
 		newFen.centerOnScreen();
 
 	}
+
 	/**
 	 * 
 	 * @param e
 	 */
 	public void clicValidation(ActionEvent e) {
 		System.out.println("Clic sur btnValider - Popup Validation");
-		
+
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Valider");
-        alert.setHeaderText("Sauvegarde des achats, voulez-vous garder les chaines de production ?");
- 
-        ButtonType oui = new ButtonType("OUI");
-        ButtonType non = new ButtonType("NON");
-        ButtonType annuler = new ButtonType("ANNULER");
- 
-        // Remove default ButtonTypes
-        alert.getButtonTypes().clear();
- 
-        alert.getButtonTypes().addAll(oui, non, annuler);
- 
-        // option != null.
-        Optional<ButtonType> option = alert.showAndWait();
- 
-        if (option.get() == null) {
-        	System.out.println("NULL");
-        } else if (option.get() == oui) {
-        	System.out.println("OUI");
-        } else if (option.get() == non) {
-        	System.out.println("NON");
-        } else if (option.get() == annuler) {
-            System.out.println("Annuler");
-        } else {
-            System.out.println("rien");
-        }
+		alert.setTitle("Valider");
+		alert.setHeaderText("Sauvegarde des achats, voulez-vous garder les chaines de production ?");
+
+		ButtonType oui = new ButtonType("OUI");
+		ButtonType non = new ButtonType("NON");
+		ButtonType annuler = new ButtonType("ANNULER");
+
+		// Remove default ButtonTypes
+		alert.getButtonTypes().clear();
+
+		alert.getButtonTypes().addAll(oui, non, annuler);
+
+		// option != null.
+		Optional<ButtonType> option = alert.showAndWait();
+
+		if (option.get() == null) {
+			System.out.println("NULL");
+		} else if (option.get() == oui) {
+			System.out.println("OUI");
+		} else if (option.get() == non) {
+			System.out.println("NON");
+		} else if (option.get() == annuler) {
+			System.out.println("Annuler");
+		} else {
+			System.out.println("rien");
+		}
 	}
 
 }

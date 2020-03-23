@@ -48,6 +48,10 @@ public class CommandeControleur {
 	@FXML
 	private ToggleGroup commande;
 
+	/**
+	 * Initialisation du tableau des commandes
+	 * 
+	 */
 	public void initialize() {
 		// TODO Auto-generated method stub
 		tableComm.setItems(getCommandes());
@@ -56,6 +60,11 @@ public class CommandeControleur {
 		colQte.setCellFactory(TextFieldTableCell.<Commandes, Double>forTableColumn(new DoubleStringConverter()));
 	}
 
+	/**
+	 * Permet l'édition des quantités
+	 * 
+	 * @param etatEdited colonne des Quantités
+	 */
 	public void EditQte(TableColumn.CellEditEvent<Commandes, Double> etatEdited) {
 		Commandes Comm = tableComm.getSelectionModel().getSelectedItem();
 		if (etatEdited.getNewValue() >= 0) {
@@ -68,6 +77,11 @@ public class CommandeControleur {
 		}
 	}
 
+	/**
+	 * Getter de la liste des commandes
+	 * 
+	 * @return la liste des commandes
+	 */
 	private ObservableList<Commandes> getCommandes() {
 
 		// Récupère la liste des Elements chargés depuis le CSV
@@ -81,6 +95,12 @@ public class CommandeControleur {
 		return Comm;
 	}
 
+	/**
+	 * Permet de retourner au menu
+	 * 
+	 * @param e Action lors du clic sur le bouton
+	 * @throws IOException Erreur sur lévênement
+	 */
 	public void retourMenu(ActionEvent e) throws IOException {
 		System.out.println("Chargement - clic sur btnRetour");
 
