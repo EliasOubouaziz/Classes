@@ -273,28 +273,37 @@ public class ChaineProdControleur {
 	/**
 	 * 
 	 * @param e
-	 * @throws IOException
 	 */
-	public void clicValidation(ActionEvent e) throws IOException {
+	public void clicValidation(ActionEvent e) {
 		System.out.println("Clic sur btnValider - Popup Validation");
 
-		// Fermeture de la fenetre
-		Stage fen = (Stage) btnValider.getScene().getWindow();
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Valider");
+		alert.setHeaderText("Sauvegarde des achats, voulez-vous garder les chaines de production ?");
 
-		fen.close();
+		ButtonType oui = new ButtonType("OUI");
+		ButtonType non = new ButtonType("NON");
+		ButtonType annuler = new ButtonType("ANNULER");
 
-		// Chargement de la scène suivante
-		FXMLLoader fxmlLoader = new FXMLLoader(
-				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/CommandeScene.fxml"));
-		Parent root1 = (Parent) fxmlLoader.load();
+		// Remove default ButtonTypes
+		alert.getButtonTypes().clear();
 
-		// Création de la nouvelle fenêtre
-		Stage newFen = new Stage();
-		newFen.setTitle("Saisie Commande");
-		newFen.setScene(new Scene(root1));
-		newFen.setResizable(false);
-		newFen.show();
-		newFen.centerOnScreen();
+		alert.getButtonTypes().addAll(oui, non, annuler);
+
+		// option != null.
+		Optional<ButtonType> option = alert.showAndWait();
+
+		if (option.get() == null) {
+			System.out.println("NULL");
+		} else if (option.get() == oui) {
+			System.out.println("OUI");
+		} else if (option.get() == non) {
+			System.out.println("NON");
+		} else if (option.get() == annuler) {
+			System.out.println("Annuler");
+		} else {
+			System.out.println("rien");
+		}
 	}
 
 }
