@@ -1,8 +1,11 @@
 package fr.miage.toulouse.interfaceGraphique;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import fr.miage.toulouse.dev.ChaineDeProd;
 import fr.miage.toulouse.dev.Element;
 import fr.miage.toulouse.dev.LireFich;
 import javafx.collections.FXCollections;
@@ -16,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class StockControleur {
@@ -43,11 +47,20 @@ public class StockControleur {
 
 	@FXML
 	private TableColumn<Element, String> colUnit;
+	
+	@FXML
+	private Button btnSave;
+	
+	// Sélecteur de fichier
+	final FileChooser fileChooser = new FileChooser();
+	
+	
 
 	@FXML
 	public void initialize() {
 		//Affecte les éléments dans le tableau
 		tableStock.setItems(getElements());
+	
 
 	}
 
@@ -110,6 +123,48 @@ public class StockControleur {
 		newFen.setResizable(false);
 		newFen.show();
 		newFen.centerOnScreen();
+	}
+	
+	public void sauvegarde(ActionEvent e) {
+		System.out.println("ChaineProd - clic sur btnSave");
+
+		// Set extension filter for text files
+		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("CSV Files (*.csv)", "*.csv");
+		fileChooser.getExtensionFilters().add(extFilter);
+
+		// Sélection du fichier à enregistrer
+		File file = fileChooser.showSaveDialog((Stage) btnSave.getScene().getWindow());
+
+		// S'il n'est pas null, enregistre
+		if (file != null) {
+
+			String url = file.getAbsolutePath();
+
+			// récupère la liste des chaines de production
+			ObservableList<Element> listElem = this.getElements();
+
+			File file2 = new File(url);
+			FileWriter fw;
+
+			try {
+
+				fw = new FileWriter(file2);
+				fw.write("Code;Nom;Quantité;Unité\n");
+				for (Element elem : listElem) {
+					fw.write(elem.getId() + ";");
+					fw.write(elem.getNom() + ";");
+					fw.write(elem.getQte() + ";");
+					fw.write(elem.getUnite() + "\n");
+				}
+
+				fw.close();
+
+			} catch (IOException e1) {
+
+				e1.printStackTrace();
+			}
+		}
+
 	}
 
 }
