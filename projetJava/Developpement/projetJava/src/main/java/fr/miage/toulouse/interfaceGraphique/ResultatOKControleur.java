@@ -48,14 +48,32 @@ public class ResultatOKControleur implements Initializable {
 	}
 	
 	public void recupdata() {
-		XYChart.Series donnée = new XYChart.Series();
-		donnée.setName("Premier ficier");
-		ArrayList<ChaineDeProd> listChdP = LireFich.getListChdP();
-
-		for (ChaineDeProd c : listChdP) {
-			donnée.getData().add(new XYChart.Data<>(c.getId(), c.getActivation()));
+		ArrayList<ChaineDeProd> listGauche = new ArrayList<ChaineDeProd>() ;
+		XYChart.Series gauche = new XYChart.Series();
+		XYChart.Series droite = new XYChart.Series();
+		gauche.setName("Liste Gauche");
+		droite.setName("Liste Droite");
+		
+		if (ComparaisonControleur.getListeGauche().isEmpty()) {
+			listGauche = LireFich.getListChdP();
 		}
-		barchart.getData().add(donnée);
+		else {
+			listGauche = ComparaisonControleur.getListeGauche();
+		}
+		
+		ArrayList<ChaineDeProd> listDroite = ComparaisonControleur.getListeDroite();
+	
+		for (ChaineDeProd c : listGauche) {
+			if (c.getActivation()>0)
+				gauche.getData().add(new XYChart.Data<>(c.getId(), c.getActivation()));
+		}
+		for (ChaineDeProd c : listDroite) {
+			if(c.getActivation()>0)
+			droite.getData().add(new XYChart.Data<>(c.getId(), c.getActivation()));
+		}
+		barchart.getData().add(gauche);
+		barchart.getData().add(droite);
+		
 		
 		
 	}
