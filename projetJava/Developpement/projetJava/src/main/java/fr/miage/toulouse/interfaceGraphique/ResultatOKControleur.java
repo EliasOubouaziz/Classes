@@ -29,9 +29,6 @@ public class ResultatOKControleur implements Initializable {
 	private Button btnRetour;
 	
 	@FXML
-	private Button btnExport;
-	
-	@FXML
 	private BarChart<CategoryAxis, NumberAxis> barchart; 
 	
 	@FXML
