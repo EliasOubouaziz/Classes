@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Optional;
-
 import fr.miage.toulouse.dev.ChaineDeProd;
 import fr.miage.toulouse.dev.LireFich;
 import javafx.collections.FXCollections;
@@ -15,10 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -273,37 +268,30 @@ public class ChaineProdControleur {
 	/**
 	 * 
 	 * @param e
+	 * @throws IOException 
 	 */
-	public void clicValidation(ActionEvent e) {
+	public void clicValidation(ActionEvent e) throws IOException {
 		System.out.println("Clic sur btnValider - Popup Validation");
 
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Valider");
-		alert.setHeaderText("Sauvegarde des achats, voulez-vous garder les chaines de production ?");
+		// Fermeture de la fenetre
+		Stage fen = (Stage) btnValider.getScene().getWindow();
 
-		ButtonType oui = new ButtonType("OUI");
-		ButtonType non = new ButtonType("NON");
-		ButtonType annuler = new ButtonType("ANNULER");
+		fen.close();
 
-		// Remove default ButtonTypes
-		alert.getButtonTypes().clear();
+		// Chargement de la scène suivante
+		FXMLLoader fxmlLoader = new FXMLLoader(
+				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/CommandeScene.fxml"));
+		Parent root1 = (Parent) fxmlLoader.load();
 
-		alert.getButtonTypes().addAll(oui, non, annuler);
+		// Création de la nouvelle fenêtre
+		Stage newFen = new Stage();
+		newFen.setTitle("Comparaison");
+		newFen.setScene(new Scene(root1));
+		newFen.setResizable(false);
+		newFen.show();
+		newFen.centerOnScreen();
 
-		// option != null.
-		Optional<ButtonType> option = alert.showAndWait();
-
-		if (option.get() == null) {
-			System.out.println("NULL");
-		} else if (option.get() == oui) {
-			System.out.println("OUI");
-		} else if (option.get() == non) {
-			System.out.println("NON");
-		} else if (option.get() == annuler) {
-			System.out.println("Annuler");
-		} else {
-			System.out.println("rien");
-		}
+		
 	}
 
 }

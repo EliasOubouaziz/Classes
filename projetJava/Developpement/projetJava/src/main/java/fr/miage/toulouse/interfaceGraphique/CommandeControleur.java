@@ -2,6 +2,7 @@ package fr.miage.toulouse.interfaceGraphique;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import fr.miage.toulouse.dev.Achats;
 import fr.miage.toulouse.dev.ChaineDeProd;
@@ -15,10 +16,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.util.converter.DoubleStringConverter;
@@ -138,6 +142,37 @@ public class CommandeControleur {
 			}
 		}
 		
+	}
+	
+	public void clicValider(ActionEvent e) {
+		
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Valider");
+		alert.setHeaderText("Sauvegarde des achats, voulez-vous garder les chaines de production ?");
+
+		ButtonType oui = new ButtonType("OUI");
+		ButtonType non = new ButtonType("NON");
+		ButtonType annuler = new ButtonType("ANNULER");
+
+		// Remove default ButtonTypes
+		alert.getButtonTypes().clear();
+
+		alert.getButtonTypes().addAll(oui, non, annuler);
+
+		// option != null.
+		Optional<ButtonType> option = alert.showAndWait();
+
+		if (option.get() == null) {
+			System.out.println("NULL");
+		} else if (option.get() == oui) {
+			System.out.println("OUI");
+		} else if (option.get() == non) {
+			System.out.println("NON");
+		} else if (option.get() == annuler) {
+			System.out.println("Annuler");
+		} else {
+			System.out.println("rien");
+		}
 	}
 
 }
