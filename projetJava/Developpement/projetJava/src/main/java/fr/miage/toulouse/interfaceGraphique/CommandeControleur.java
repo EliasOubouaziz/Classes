@@ -2,8 +2,12 @@ package fr.miage.toulouse.interfaceGraphique;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import fr.miage.toulouse.dev.Achats;
 import fr.miage.toulouse.dev.ChaineDeProd;
 import fr.miage.toulouse.dev.Commandes;
+import fr.miage.toulouse.dev.Element;
+import fr.miage.toulouse.dev.LireFich;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -102,6 +106,18 @@ public class CommandeControleur {
 		newFen.show();
 		newFen.centerOnScreen();
 
+	}
+	
+	public void actualiserStock(ActionEvent e) throws IOException{
+		ArrayList<Element> ListElem = LireFich.getListElem();
+		for(Commandes cmd : ChaineDeProd.getlistCommandes()) {
+			for(Element elem : ListElem) {
+				if(cmd.getId().equals(elem.getId())) {
+					elem.setQte(cmd.getQte()+elem.getQte());
+				}
+			}
+		}
+		
 	}
 
 }
