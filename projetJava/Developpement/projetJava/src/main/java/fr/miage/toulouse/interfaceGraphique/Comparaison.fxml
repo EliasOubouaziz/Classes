@@ -57,10 +57,10 @@
 						</Label>
 						<Button fx:id="btnChargerG" layoutX="64.0" layoutY="14.0"
 							mnemonicParsing="false" onAction="#chargementGauche"
-							prefHeight="39.0" prefWidth="135.0" text="Charger" />
+							prefHeight="34.0" prefWidth="135.0" text="Charger" />
 						<Button fx:id="btnChargerD" layoutX="668.0" layoutY="14.0"
-							mnemonicParsing="false" prefHeight="34.0" prefWidth="135.0"
-							text="Charger" />
+							mnemonicParsing="false" onAction="#chargementDroite"
+							prefHeight="34.0" prefWidth="135.0" text="Charger" />
 					</children>
 				</Pane>
 			</bottom>
@@ -69,7 +69,8 @@
 					BorderPane.alignment="CENTER">
 					<children>
 						<Label alignment="CENTER" layoutX="444.0" layoutY="23.0"
-							text="Gestion des Chaines de production" textAlignment="CENTER">
+							text="Comparaison de Chaines de production"
+							textAlignment="CENTER">
 							<font>
 								<Font name="System Bold" size="20.0" />
 							</font>

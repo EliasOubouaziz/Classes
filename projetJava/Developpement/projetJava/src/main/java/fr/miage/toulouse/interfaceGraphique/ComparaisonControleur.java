@@ -118,7 +118,20 @@ public class ComparaisonControleur {
 			ObservableList<ChaineDeProd> listCG = lireSave(url);
 
 			tableCdpG.setItems(listCG);
-			sommeCout();
+			sommeCout(true);
+		}
+	}
+
+	public void chargementDroite(ActionEvent e) throws IOException {
+		System.out.println("Comparaison - clic sur btnDroite");
+
+		File file = fileChooser.showOpenDialog((Stage) btnChargerD.getScene().getWindow());
+		if (file != null) {
+			String url = file.getAbsolutePath();
+			ObservableList<ChaineDeProd> listCG = lireSave(url);
+
+			tableCdpD.setItems(listCG);
+			sommeCout(false);
 		}
 	}
 
@@ -161,7 +174,6 @@ public class ComparaisonControleur {
 
 			String colSortie = split[3];
 			colSortie = colSortie.substring(1, colSortie.length() - 1);
-			System.out.println(colSortie);
 
 			String[] splitSortie = colSortie.split(", ");
 			for (int j = 0; j < splitSortie.length; j++) {
@@ -186,9 +198,6 @@ public class ComparaisonControleur {
 			double cout = cdp.coutCdP(LireFich.getListVentes(), LireFich.getListAchats(), LireFich.getListElem(),
 					activation);
 			cdp.setCout(cout);
-			System.out.println("COUT : " + cdp.getCout());
-			
-			System.out.println(cdp.getEntree().toString());
 
 			listChdp.add(cdp);
 
@@ -196,14 +205,27 @@ public class ComparaisonControleur {
 
 		return listChdp;
 	}
-	
-	private void sommeCout() {
-		double somme = 0;
-		for (ChaineDeProd c : tableCdpG.getItems()) {
 
-			somme = somme + c.getCout();
+	private void sommeCout(Boolean gauche) {
+		double somme = 0;
+		if (gauche) {
+
+			for (ChaineDeProd c : tableCdpG.getItems()) {
+
+				somme = somme + c.getCout();
+			}
+			
+			totalGauche.setText("" + somme);
+			
+		} else {
+			
+			for (ChaineDeProd c : tableCdpD.getItems()) {
+
+				somme = somme + c.getCout();
+			}
+			totalDroite.setText("" + somme);
+
 		}
-		totalGauche.setText("" + somme);
 
 	}
 
