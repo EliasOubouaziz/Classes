@@ -91,6 +91,7 @@ public class ComparaisonControleur {
 		return listeDroite;
 	}
 
+
 	@FXML
 	public void initialize() {
 		// Affecte les informations des chaines de prod au tableau
