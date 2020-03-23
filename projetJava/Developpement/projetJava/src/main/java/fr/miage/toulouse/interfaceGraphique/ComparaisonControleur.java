@@ -2,8 +2,14 @@ package fr.miage.toulouse.interfaceGraphique;
 
 import java.io.File;
 import java.io.IOException;
-
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 import fr.miage.toulouse.dev.ChaineDeProd;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,10 +19,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.converter.IntegerStringConverter;
 
 public class ComparaisonControleur {
 
@@ -28,10 +32,10 @@ public class ComparaisonControleur {
 
 	@FXML
 	private Button btnRetour;
-	
+
 	@FXML
 	private Button btnChargerG;
-	
+
 	@FXML
 	private Button btnChargerD;
 
@@ -66,7 +70,7 @@ public class ComparaisonControleur {
 
 	@FXML
 	private TableColumn<ChaineDeProd, Double> colCoutD;
-	
+
 	// Sélecteur de fichier
 	final FileChooser fileChooser = new FileChooser();
 
@@ -78,6 +82,7 @@ public class ComparaisonControleur {
 	 * @throws IOException Exception levée
 	 */
 	public void retourMenu(ActionEvent e) throws IOException {
+
 		System.out.println("Comparaison - clic sur btnRetour");
 
 		// Fermeture de la fenetre
@@ -87,7 +92,7 @@ public class ComparaisonControleur {
 
 		// Chargement de la scène suivante
 		FXMLLoader fxmlLoader = new FXMLLoader(
-				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/MenuScene.fxml"));
+				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/ChaineProdScene.fxml"));
 		Parent root1 = (Parent) fxmlLoader.load();
 
 		// Création de la nouvelle fenêtre
@@ -99,12 +104,50 @@ public class ComparaisonControleur {
 		newFen.centerOnScreen();
 
 	}
-	
-	private void chargementGauche(ActionEvent e) {
+
+	public void chargementGauche(ActionEvent e) throws IOException {
+		System.out.println("Comparaison - clic sur btnGauche");
+
 		File file = fileChooser.showOpenDialog((Stage) btnChargerG.getScene().getWindow());
 		if (file != null) {
 			String url = file.getAbsolutePath();
+			ObservableList<ChaineDeProd> listCG = lireSave(url);
+
+			tableCdpG.setItems(listCG);
 		}
+	}
+
+	private ObservableList<ChaineDeProd> lireSave(String url) {
+
+		Charset charset = Charset.forName("ISO-8859-1");
+		Path orderPath = Paths.get(url);
+		List<String> lines = null; // null mean no value by default
+		try {
+			lines = Files.readAllLines(orderPath, charset);
+		} catch (IOException e) {
+			System.out.println("Impossible de lire le fichier des chaines");
+		}
+		if (lines.size() < 2) {
+			System.out.println("Il n'y a pas de chaines dans le fichier");
+			return null;
+		}
+
+		ObservableList<ChaineDeProd> listChdp = FXCollections.observableArrayList();
+
+		for (int i = 1; i < lines.size(); i++) {
+
+			String[] split = lines.get(i).split(";");
+			String id = String.valueOf(split[0]);
+			String nom = String.valueOf(split[1]);
+			int activation = Integer.valueOf(split[4]);
+			ChaineDeProd cdp = new ChaineDeProd(id, nom, 0, 0, 0);
+			cdp.setActivation(activation);
+
+			listChdp.add(cdp);
+
+		}
+
+		return listChdp;
 	}
 
 }

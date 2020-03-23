@@ -82,14 +82,16 @@
 							minWidth="0.0" prefWidth="228.0" sortable="false"
 							text="Personnel Non Qualifié">
 							<cellValueFactory>
-								<PropertyValueFactory property="persNonQualifie" />
+								<PropertyValueFactory
+									property="persNonQualifie" />
 							</cellValueFactory>
 						</TableColumn>
 						<TableColumn fx:id="colQualif" editable="false"
 							minWidth="0.0" prefWidth="228.0" sortable="false"
 							text="Personnel Qualifié">
 							<cellValueFactory>
-								<PropertyValueFactory property="persQualifie" />
+								<PropertyValueFactory
+									property="persQualifie" />
 							</cellValueFactory>
 						</TableColumn>
 					</columns>
