@@ -79,15 +79,15 @@ public class ComparaisonControleur {
 	// Sélecteur de fichier
 	final FileChooser fileChooser = new FileChooser();
 	
-	private ArrayList<ChaineDeProd> listeGauche;
+	private static ArrayList<ChaineDeProd> listeGauche;
 	
-	private ArrayList<ChaineDeProd> listeDroite;
+	private static ArrayList<ChaineDeProd> listeDroite;
 	
-	public ArrayList<ChaineDeProd> getListeGauche() {
+	public static ArrayList<ChaineDeProd> getListeGauche() {
 		return listeGauche;
 	}
 
-	public ArrayList<ChaineDeProd> getListeDroite() {
+	public static ArrayList<ChaineDeProd> getListeDroite() {
 		return listeDroite;
 	}
 
