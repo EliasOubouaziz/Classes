@@ -131,7 +131,7 @@ public class CommandeControleur {
 
 	}
 	
-	public void actualiserStock(ActionEvent e) throws IOException{
+	public void actualiserStock() {
 		ArrayList<Element> ListElem = LireFich.getListElem();
 		for(Commandes cmd : ChaineDeProd.getlistCommandes()) {
 			for(Element elem : ListElem) {
@@ -143,7 +143,7 @@ public class CommandeControleur {
 		
 	}
 	
-	public void clicValider(ActionEvent e) {
+	public void clicValider(ActionEvent e) throws IOException {
 		System.out.println("clic sur btnValider - popup");
 		
 		Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -166,8 +166,47 @@ public class CommandeControleur {
 			System.out.println("NULL");
 		} else if (option.get() == oui) {
 			System.out.println("OUI");
+			actualiserStock();
+			
+			// Fermeture de la fenetre
+			Stage fen = (Stage) btnRetour.getScene().getWindow();
+
+			fen.close();
+
+			// Chargement de la scène suivante
+			FXMLLoader fxmlLoader = new FXMLLoader(
+					getClass().getResource("/fr/miage/toulouse/interfaceGraphique/ChaineProdScene.fxml"));
+			Parent root1 = (Parent) fxmlLoader.load();
+
+			// Création de la nouvelle fenêtre
+			Stage newFen = new Stage();
+			newFen.setTitle("Gestion Chianes de Production");
+			newFen.setScene(new Scene(root1));
+			newFen.setResizable(false);
+			newFen.show();
+			newFen.centerOnScreen();
+			
 		} else if (option.get() == non) {
 			System.out.println("NON");
+			
+			// Fermeture de la fenetre
+			Stage fen = (Stage) btnRetour.getScene().getWindow();
+
+			fen.close();
+
+			// Chargement de la scène suivante
+			FXMLLoader fxmlLoader = new FXMLLoader(
+					getClass().getResource("/fr/miage/toulouse/interfaceGraphique/ChaineProdScene.fxml"));
+			Parent root1 = (Parent) fxmlLoader.load();
+
+			// Création de la nouvelle fenêtre
+			Stage newFen = new Stage();
+			newFen.setTitle("Gestion Chianes de Production");
+			newFen.setScene(new Scene(root1));
+			newFen.setResizable(false);
+			newFen.show();
+			newFen.centerOnScreen();
+			
 		} else if (option.get() == annuler) {
 			System.out.println("Annuler");
 		} else {

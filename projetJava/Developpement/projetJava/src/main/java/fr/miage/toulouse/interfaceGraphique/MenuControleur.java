@@ -31,9 +31,6 @@ public class MenuControleur implements Initializable {
 	@FXML
 	private Button btnGestionProd;
 
-	@FXML
-	private Button btnSaisieComm;
-
 	public void quitter(ActionEvent e) {
 		System.out.println("Menu - Clic sur btnQuit, Fermeture du menu");
 
@@ -77,16 +74,15 @@ public class MenuControleur implements Initializable {
 		FXMLLoader fxmlLoader = new FXMLLoader(
 				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/StockScene.fxml"));
 		Parent root1 = (Parent) fxmlLoader.load();
-		
 
 		// Création de la nouvelle fenêtre
-		Stage newFen = new Stage();		
+		Stage newFen = new Stage();
 		newFen.setTitle("Etat des Stocks");
 		newFen.setScene(new Scene(root1));
 		newFen.setResizable(false);
 		newFen.show();
 		newFen.centerOnScreen();
-		
+
 	}
 
 	public void versChaineProd(ActionEvent e) throws IOException {
@@ -110,33 +106,11 @@ public class MenuControleur implements Initializable {
 		newFen.show();
 		newFen.centerOnScreen();
 	}
-	
-	public void versCommande(ActionEvent e) throws IOException {
-		System.out.println("Menu - Clic sur btnSaisieComm, Changement de fenêtre");
-
-		// Fermeture de la fenetre
-		Stage fen = (Stage) btnSaisieComm.getScene().getWindow();
-
-		fen.close();
-
-		// Chargement de la scène suivante
-		FXMLLoader fxmlLoader = new FXMLLoader(
-				getClass().getResource("/fr/miage/toulouse/interfaceGraphique/CommandeScene.fxml")); 
-		Parent root1 = (Parent) fxmlLoader.load();
-
-		// Création de la nouvelle fenêtre
-		Stage newFen = new Stage();
-		newFen.setTitle("Saisie Commande");
-		newFen.setScene(new Scene(root1));
-		newFen.setResizable(false);
-		newFen.show();
-		newFen.centerOnScreen();
-	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }
