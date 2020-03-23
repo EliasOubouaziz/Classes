@@ -24,61 +24,58 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class ResultatOKControleur implements Initializable {
-	
+
 	@FXML
 	private Button btnRetour;
-	
+
 	@FXML
-	private BarChart<CategoryAxis, NumberAxis> barchart; 
-	
+	private BarChart<CategoryAxis, NumberAxis> barchart;
+
 	@FXML
-	private CategoryAxis Axebas; 
-	
+	private CategoryAxis Axebas;
+
 	@FXML
 	private NumberAxis Axegauche;
 
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-				
+
 		recupdata();
-	
+
 	}
-	
+
 	public void recupdata() {
-		ArrayList<ChaineDeProd> listGauche = new ArrayList<ChaineDeProd>() ;
+		ArrayList<ChaineDeProd> listGauche = new ArrayList<ChaineDeProd>();
 		XYChart.Series gauche = new XYChart.Series();
 		XYChart.Series droite = new XYChart.Series();
 		gauche.setName("Liste Gauche");
 		droite.setName("Liste Droite");
-		
+
 		if (ComparaisonControleur.getListeGauche().isEmpty()) {
 			listGauche = LireFich.getListChdP();
-		}
-		else {
+		} else {
 			listGauche = ComparaisonControleur.getListeGauche();
 		}
-		
+
 		ArrayList<ChaineDeProd> listDroite = ComparaisonControleur.getListeDroite();
-	
+
 		for (ChaineDeProd c : listGauche) {
-			if (c.getActivation()>0)
+			if (c.getActivation() > 0)
 				gauche.getData().add(new XYChart.Data<>(c.getId(), c.getActivation()));
 		}
 		for (ChaineDeProd c : listDroite) {
-			if(c.getActivation()>0)
-			droite.getData().add(new XYChart.Data<>(c.getId(), c.getActivation()));
+			if (c.getActivation() > 0)
+				droite.getData().add(new XYChart.Data<>(c.getId(), c.getActivation()));
 		}
 		barchart.getData().add(gauche);
 		barchart.getData().add(droite);
-		
-		
-		
+
 	}
-	
+
 	public void show() {
 		System.out.println("test");
 	}
-	
+
 	public void retourMenu(ActionEvent e) throws IOException {
 		System.out.println("Saisie Commande - clic sur btnRetour");
 
