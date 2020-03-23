@@ -129,7 +129,8 @@ public class ChaineProdControleur {
 		return ChDP;
 	}
 
-	/**Méthode permettant d'afficher le cout total
+	/**
+	 * Méthode permettant d'afficher le cout total
 	 * 
 	 */
 	private void sommeCout() {
@@ -183,6 +184,12 @@ public class ChaineProdControleur {
 		System.out.println("MODIFICATION");
 	}
 
+	/**
+	 * Méthode permettant la sauvegarde dans un fichier csv de l'état des chaines de
+	 * production
+	 * 
+	 * @param e Action du clic sur le bouton sauvegarder
+	 */
 	public void sauvegarde(ActionEvent e) {
 		System.out.println("ChaineProd - clic sur btnSave");
 
@@ -226,6 +233,10 @@ public class ChaineProdControleur {
 
 	}
 
+	/**Méthode permettant de passer à la page de comparaison
+	 * @param e
+	 * @throws IOException
+	 */
 	public void versChargement(ActionEvent e) throws IOException {
 		System.out.println("ChaineProd - clic sur btnCharger");
 
