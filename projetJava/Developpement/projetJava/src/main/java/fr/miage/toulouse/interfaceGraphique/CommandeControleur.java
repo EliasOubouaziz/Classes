@@ -20,9 +20,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
+import javafx.util.converter.DoubleStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 
-public class CommandeControleur implements Initializable {
+public class CommandeControleur{
 
 	@FXML
 	private Button btnRetour;
@@ -51,10 +54,25 @@ public class CommandeControleur implements Initializable {
 	@FXML
 	private ToggleGroup commande;
 
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize() {
 		// TODO Auto-generated method stub
 		tableComm.setItems(getCommandes());
 		tableComm.setEditable(true);
+
+		colQte.setCellFactory(TextFieldTableCell.<Commandes, Double>forTableColumn(new DoubleStringConverter()));
+	}
+	
+	
+	public void EditQte(TableColumn.CellEditEvent<Commandes, Double> etatEdited) {
+		Commandes Comm = tableComm.getSelectionModel().getSelectedItem();
+		if (etatEdited.getNewValue() >= 0) {
+			Comm.setQte(etatEdited.getNewValue());
+			
+			initialize();
+		} else {
+			Comm.setQte(0);
+			initialize();
+		}
 	}
 	
 	private ObservableList<Commandes> getCommandes() {

@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 public class Ventes{
 	/**
-	 * Le prix de vente d'un élément
+	 * Identifiant d'un élément et son prix de vente associé
 	 */
 	protected HashMap <String, Double> prix ;
 	/**

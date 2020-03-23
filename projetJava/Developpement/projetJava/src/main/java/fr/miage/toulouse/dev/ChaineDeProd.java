@@ -7,8 +7,6 @@ import java.util.Set;
 
 import org.apache.commons.lang.ArrayUtils;
 
-import javafx.beans.property.SimpleIntegerProperty;
-
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;

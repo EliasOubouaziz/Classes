@@ -51,7 +51,7 @@
 								<PropertyValueFactory property="PrixUnit" />
 							</cellValueFactory>
 						</TableColumn>
-						<TableColumn fx:id="colQte" prefWidth="129.0" text="Quantité" >
+						<TableColumn fx:id="colQte" editable="true" onEditCommit="#EditQte" prefWidth="129.0" text="Quantité" >
 							<cellValueFactory>
 								<PropertyValueFactory property="Qte" />
 							</cellValueFactory>
