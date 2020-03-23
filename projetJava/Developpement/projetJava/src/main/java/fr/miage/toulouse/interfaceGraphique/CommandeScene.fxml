@@ -29,34 +29,40 @@
 							mnemonicParsing="false" onAction="#retourMenu" text="Retour" />
 
 						<Button fx:id="btnValiderCommande" layoutX="593.0"
-							layoutY="18.0" mnemonicParsing="false" text="Valider" />
+							layoutY="18.0" mnemonicParsing="false" text="Valider" onAction="#clicValider" />
 					</children>
 				</Pane>
 			</top>
 			<center>
-				<TableView fx:id="tableComm" editable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+				<TableView fx:id="tableComm" editable="true"
+					prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 					<columns>
-						<TableColumn fx:id="colCode" prefWidth="113.0" text="Code" >
+						<TableColumn fx:id="colCode" prefWidth="113.0"
+							text="Code">
 							<cellValueFactory>
 								<PropertyValueFactory property="id" />
 							</cellValueFactory>
 						</TableColumn>
-						<TableColumn fx:id="colNom" prefWidth="181.0" text="Nom" >
+						<TableColumn fx:id="colNom" prefWidth="181.0"
+							text="Nom">
 							<cellValueFactory>
 								<PropertyValueFactory property="nom" />
 							</cellValueFactory>
 						</TableColumn>
-						<TableColumn fx:id="colPU" prefWidth="132.0" text="Prix Unitaire" >
+						<TableColumn fx:id="colPU" prefWidth="132.0"
+							text="Prix Unitaire">
 							<cellValueFactory>
 								<PropertyValueFactory property="PrixUnit" />
 							</cellValueFactory>
 						</TableColumn>
-						<TableColumn fx:id="colQte" editable="true" onEditCommit="#EditQte" prefWidth="129.0" text="Quantité" >
+						<TableColumn fx:id="colQte" editable="true"
+							onEditCommit="#EditQte" prefWidth="129.0" text="Quantité">
 							<cellValueFactory>
 								<PropertyValueFactory property="Qte" />
 							</cellValueFactory>
 						</TableColumn>
-						<TableColumn fx:id="colPrixTot" prefWidth="129.0" text="Prix Total" >
+						<TableColumn fx:id="colPrixTot" prefWidth="129.0"
+							text="Prix Total">
 							<cellValueFactory>
 								<PropertyValueFactory property="PrixTotal" />
 							</cellValueFactory>

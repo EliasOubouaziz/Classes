@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import fr.miage.toulouse.dev.Achats;
 import fr.miage.toulouse.dev.ChaineDeProd;
 import fr.miage.toulouse.dev.Commandes;
 import fr.miage.toulouse.dev.Element;
@@ -17,12 +16,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.util.converter.DoubleStringConverter;
@@ -33,7 +32,7 @@ public class CommandeControleur {
 	private Button btnRetour;
 
 	@FXML
-	private Button btnValiderComm;
+	private Button btnValiderCommande;
 
 	@FXML
 	private TableView<Commandes> tableComm;
@@ -145,6 +144,7 @@ public class CommandeControleur {
 	}
 	
 	public void clicValider(ActionEvent e) {
+		System.out.println("clic sur btnValider - popup");
 		
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Valider");
