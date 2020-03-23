@@ -1,19 +1,14 @@
 package fr.miage.toulouse.interfaceGraphique;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
-
 import fr.miage.toulouse.dev.ChaineDeProd;
 import fr.miage.toulouse.dev.Commandes;
-import fr.miage.toulouse.dev.LireFich;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,16 +18,15 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Stage;
 import javafx.util.converter.DoubleStringConverter;
-import javafx.util.converter.IntegerStringConverter;
 
-public class CommandeControleur{
+public class CommandeControleur {
 
 	@FXML
 	private Button btnRetour;
 
 	@FXML
 	private Button btnValiderComm;
-	
+
 	@FXML
 	private TableView<Commandes> tableComm;
 
@@ -61,22 +55,21 @@ public class CommandeControleur{
 
 		colQte.setCellFactory(TextFieldTableCell.<Commandes, Double>forTableColumn(new DoubleStringConverter()));
 	}
-	
-	
+
 	public void EditQte(TableColumn.CellEditEvent<Commandes, Double> etatEdited) {
 		Commandes Comm = tableComm.getSelectionModel().getSelectedItem();
 		if (etatEdited.getNewValue() >= 0) {
 			Comm.setQte(etatEdited.getNewValue());
-			
+
 			initialize();
 		} else {
 			Comm.setQte(0);
 			initialize();
 		}
 	}
-	
+
 	private ObservableList<Commandes> getCommandes() {
-		
+
 		// Récupère la liste des Elements chargés depuis le CSV
 		ArrayList<Commandes> listComm = ChaineDeProd.getlistCommandes();
 		ObservableList<Commandes> Comm = FXCollections.observableArrayList();
@@ -84,10 +77,9 @@ public class CommandeControleur{
 		for (Commandes c : listComm) {
 			Comm.add(c);
 		}
-		
+
 		return Comm;
 	}
-	
 
 	public void retourMenu(ActionEvent e) throws IOException {
 		System.out.println("Chargement - clic sur btnRetour");

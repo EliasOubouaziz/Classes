@@ -66,6 +66,10 @@ public class ChaineProdControleur {
 	// Sélecteur de fichier
 	final FileChooser fileChooser = new FileChooser();
 
+	/**
+	 * Méthode appelée lors de l'initialisation de la page. Remplit les tableaux
+	 * 
+	 */
 	@FXML
 	public void initialize() {
 		// Affecte les informations des chaines de prod au tableau
@@ -76,6 +80,12 @@ public class ChaineProdControleur {
 		sommeCout();
 	}
 
+	/**
+	 * Méthode permettant d'éditer la colonne du niveau d'activation de la chaine de
+	 * production
+	 * 
+	 * @param etatEdited colonne du niveau d'activation
+	 */
 	public void EditEtat(TableColumn.CellEditEvent<ChaineDeProd, Integer> etatEdited) {
 		ChaineDeProd Cdp = tableCdp.getSelectionModel().getSelectedItem();
 		if (etatEdited.getNewValue() >= 0) {
@@ -85,10 +95,10 @@ public class ChaineProdControleur {
 					etatEdited.getNewValue());
 			System.out.println(cout);
 			Cdp.setCout(cout);
-			Cdp.setPersNonQualifie(Cdp.getPersNonQualifieinit()*etatEdited.getNewValue());
-			Cdp.setPersQualifie(Cdp.getPersQualifieinit()*etatEdited.getNewValue());
-			Cdp.setTemps(Cdp.getTempsinit()*etatEdited.getNewValue());
-			
+			Cdp.setPersNonQualifie(Cdp.getPersNonQualifieinit() * etatEdited.getNewValue());
+			Cdp.setPersQualifie(Cdp.getPersQualifieinit() * etatEdited.getNewValue());
+			Cdp.setTemps(Cdp.getTempsinit() * etatEdited.getNewValue());
+
 			initialize();
 		} else {
 			Cdp.setActivation(0);
@@ -119,6 +129,9 @@ public class ChaineProdControleur {
 		return ChDP;
 	}
 
+	/**Méthode permettant d'afficher le cout total
+	 * 
+	 */
 	private void sommeCout() {
 		double somme = 0;
 		for (ChaineDeProd c : tableCdp.getItems()) {
