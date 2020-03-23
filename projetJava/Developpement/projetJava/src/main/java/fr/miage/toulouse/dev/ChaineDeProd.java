@@ -244,7 +244,6 @@ public class ChaineDeProd {
 
 
 	/**
-	 * 
 	 * Supprime les commandes qui sont liées à une chaine de prod quand 
 	 * le niveau d'activation change
 	 * 
@@ -292,9 +291,15 @@ public class ChaineDeProd {
 			}
 	}
 	
+	/**
+	 * 
+	 * Permet de vider la liste des commandes
+	 */
 	public static void vidercommandes() {
 		listCommandes.clear();
 	}
+	
+	
 	public String getId() {
 		return id;
 	}

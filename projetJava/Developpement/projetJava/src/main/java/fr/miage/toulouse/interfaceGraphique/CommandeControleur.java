@@ -133,7 +133,9 @@ public class CommandeControleur {
 		newFen.centerOnScreen();
 
 	}
-	
+	/**
+	 * 	 Actualise les stocks mais ne lance pas les chianes de production
+	 */
 	public void actualiserStock() {
 		ArrayList<Element> ListElem = LireFich.getListElem();
 		for(Commandes cmd : ChaineDeProd.getlistCommandes()) {
@@ -144,9 +146,17 @@ public class CommandeControleur {
 			}
 		}
 		ChaineDeProd.vidercommandes();
+		for(ChaineDeProd cdp : LireFich.getListChdP()) {
+			double cout = cdp.coutCdP(LireFich.getListVentes(), LireFich.getListAchats(), LireFich.getListElem(), cdp.getActivation());
+			cdp.setCout(cout);
+		
+		}
 		
 	}
 	
+	/**
+	 * 	 Actualise les stocks et lance les chaines de production
+	 */
 	public void actualiserStocketlancer() {
 		ArrayList<Element> ListElem = LireFich.getListElem();
 		for(Commandes cmd : ChaineDeProd.getlistCommandes()) {
@@ -176,7 +186,6 @@ public class CommandeControleur {
 			cdp.setActivation(0);
 			double cout = cdp.coutCdP(LireFich.getListVentes(), LireFich.getListAchats(), LireFich.getListElem(), 0);
 			cdp.setCout(cout);
-			cdp.setActivation(0);
 			cdp.setTemps(cdp.getTempsinit());
 			cdp.setPersNonQualifie(cdp.getPersNonQualifieinit());
 			cdp.setPersQualifie(cdp.getPersQualifieinit());
