@@ -37,7 +37,6 @@
 							</font>
 						</Label>
 						<Button fx:id="btnRetour" mnemonicParsing="false" onAction="#retourMenu" text="Retour" />
-						<Button fx:id="btnExport" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" text="Exporter" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
 					</children>
 				</GridPane>
 			</top>
