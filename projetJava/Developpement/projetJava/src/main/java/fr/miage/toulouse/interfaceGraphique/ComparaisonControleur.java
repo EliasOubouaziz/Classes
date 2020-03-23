@@ -217,6 +217,13 @@ public class ComparaisonControleur {
 		}
 	}
 
+	/**
+	 * Lit un fichier csv de sauvegarde et renvoie une liste des chaines de prod
+	 * correspondantes
+	 * 
+	 * @param url url du fichier de sauvegarde à charger
+	 * @return la liste des chaines de prod contenues dans le fichier
+	 */
 	private ObservableList<ChaineDeProd> lireSave(String url) {
 
 		Charset charset = Charset.forName("ISO-8859-1");
@@ -277,8 +284,8 @@ public class ComparaisonControleur {
 				Object key = iterateur2.next();
 			}
 
-			double cout = cdp.coutCdPComparaison(LireFich.getListVentes(), LireFich.getListAchats(), LireFich.getListElem(),
-					activation);
+			double cout = cdp.coutCdPComparaison(LireFich.getListVentes(), LireFich.getListAchats(),
+					LireFich.getListElem(), activation);
 			cdp.setCout(cout);
 
 			listChdp.add(cdp);
@@ -288,6 +295,11 @@ public class ComparaisonControleur {
 		return listChdp;
 	}
 
+	/**
+	 * Calule le cout total
+	 * 
+	 * @param gauche boolean correspondant à gauche ou droite
+	 */
 	private void sommeCout(Boolean gauche) {
 		double somme = 0;
 		if (gauche) {
@@ -312,6 +324,8 @@ public class ComparaisonControleur {
 	}
 
 	/**
+	 * Redirection vers la page du graphique
+	 * 
 	 * @param e
 	 * @throws IOException
 	 */

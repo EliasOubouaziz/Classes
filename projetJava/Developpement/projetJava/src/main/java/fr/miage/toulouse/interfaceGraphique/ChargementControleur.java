@@ -151,6 +151,12 @@ public class ChargementControleur {
 		}
 	}
 
+	/**
+	 * Charge l'url du fichier csv des chaines de production dans le textfield
+	 * correspondant
+	 * 
+	 * @param e
+	 */
 	public void chargerChaine(ActionEvent e) {
 		System.out.println("Chargement - clic sur btnChargerChaine");
 		String url = "";
@@ -163,6 +169,11 @@ public class ChargementControleur {
 		}
 	}
 
+	/**
+	 * Charge l'url du fichier csv des commandes dans le textfield correspondant
+	 * 
+	 * @param e
+	 */
 	public void chargerCommande(ActionEvent e) {
 		System.out.println("Chargement - clic sur btnChargerComm");
 		String url = "";
